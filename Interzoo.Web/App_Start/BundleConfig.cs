@@ -51,7 +51,7 @@ namespace Interzoo.Web
                "~/js/SmoothScroll.min.js"));
 
             bundles.Add(new ScriptBundle("~/Scripts/color-switch").Include("~/js/blast.min.js"));
-            bundles.Add(new ScriptBundle("~/Scripts/bootstrap").Include("~/js/js/bootstrap.js"));
+            bundles.Add(new ScriptBundle("~/Scripts/bootstrap").Include("~/js/bootstrap.js"));
 
 
 
