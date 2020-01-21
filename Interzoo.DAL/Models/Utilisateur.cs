@@ -17,6 +17,7 @@ namespace Interzoo.DAL.Models
         private string _motDePasse;
         private DateTime _dateDeNaissance;
         private string photo;
+        private bool _isAdmin;
 
         public int IdUtilisateur { get => _idUtilisateur; set => _idUtilisateur = value; }
         public string Nom { get => _nom; set => _nom = value; }
@@ -26,6 +27,19 @@ namespace Interzoo.DAL.Models
         public DateTime DateDeNaissance { get => _dateDeNaissance; set => _dateDeNaissance = value; }
         public string Photo { get => photo; set => photo = value; }
 
+
+        public bool IsAdmin
+        {
+            get
+            {
+                return _isAdmin;
+            }
+
+            set
+            {
+                _isAdmin = value;
+            }
+        }
         public string HashMDP
         {
             get

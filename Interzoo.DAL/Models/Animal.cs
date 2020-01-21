@@ -14,6 +14,8 @@ namespace Interzoo.DAL.Models
         private string _nomScientifique;
         private string _regionOrigine;
         private int _idCategorie;
+        private string _photo;
+
 
         public int IdAnimal
         {
@@ -77,6 +79,19 @@ namespace Interzoo.DAL.Models
             set
             {
                 _idCategorie = value;
+            }
+        }
+
+        public string Photo
+        {
+            get
+            {
+                return _photo;
+            }
+
+            set
+            {
+                _photo = value;
             }
         }
     }

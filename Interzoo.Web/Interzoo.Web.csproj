@@ -211,7 +211,7 @@
     <Content Include="Views\Home\Formules.cshtml" />
     <Content Include="Views\Home\Pricing.cshtml" />
     <Content Include="Views\Home\Team.cshtml" />
-    <Content Include="Views\Home\PortefolioTestimonials.cshtml" />
+    <Content Include="Views\Home\Portfolio.cshtml" />
     <Content Include="Views\Home\Blog.cshtml" />
   </ItemGroup>
   <ItemGroup>

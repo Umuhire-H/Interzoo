@@ -24,9 +24,17 @@ namespace Interzoo.DAL.Repositories
         }
         public override bool delete(int id)
         {
-            Dictionary<string, object> Parameters = new Dictionary<string, object>();
-            Parameters.Add("@IdUtilisateur", id);
-            return base.delete(Parameters);
+            throw new NotImplementedException();
+        }
+        public bool delete(int id, bool isAdmin = false)
+        {
+            if (isAdmin)
+            {
+                Dictionary<string, object> Parameters = new Dictionary<string, object>();
+                Parameters.Add("@IdUtilisateur", id);
+                return base.delete(Parameters);
+            }
+           throw new InvalidOperationException () ;
         }
 
         public override IEnumerable<Utilisateur> getAll()
@@ -44,6 +52,7 @@ namespace Interzoo.DAL.Repositories
                 Prenom = sqdr["Prenom"].ToString(),
                 Courriel = sqdr["Courriel"].ToString(),
                 MotDePasse = sqdr["MotDePasse"].ToString(),
+                IsAdmin = (bool)sqdr["IsAdmin"],
                 DateDeNaissance = (DateTime)sqdr["DateDeNaissance"]
             };
         }
@@ -81,5 +90,7 @@ namespace Interzoo.DAL.Repositories
             Dictionary<string, object> parameters = utilisateurToDico(toUpdate);
             return base.update(parameters);
         }
+
+        
     }
 }
