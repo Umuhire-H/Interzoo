@@ -44,133 +44,239 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 </head>
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
-    <!-- banner -->
-    <div id="home">
-        <!-- --------------------------------  STAY - LAYOUT--------------------------------------------------->
-        <!-- color scheme -->
-        <div class="blast-box">
-            <div class="blast-frame">
-                <p>color schemes</p>
-                <div class="blast-colors d-flex justify-content-center">
-                    <div class="blast-color">#23d48f</div>
-                    <div class="blast-color">#d3b800</div>
-                    <div class="blast-color">#18e7d3</div>
-                    <div class="blast-color">#e5902a</div>
-                    <div class="blast-color">#16d9e9</div>
-                    <!-- you can add more colors here -->
-                </div>
-                <p class="blast-custom-colors">Choose Custom color</p>
-                <input type="color" name="blastCustomColor" value="#d3b800">
+    <!-- --------------------------------  END - STAY - LAYOUT--------------------------------------------------->
+    @RenderSection("header", required: true)
 
+    @RenderBody()
+
+    <!-- ------------------------------- STAY - LAYOUT--------------------------------------------------->
+    <!-- footer -->
+    <footer class="cpy-right bg-theme" data-blast="bgColor">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="wthree-social">
+                        <ul>
+                            <li>
+                                <a href="#">
+                                    <span class="fa fa-facebook-f icon_facebook"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="fa fa-twitter icon_twitter"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="fa fa-dribbble icon_dribbble"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="fa fa-google-plus icon_g_plus"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-lg-right mt-lg-0 mt-4">
+                    <p>
+                        © 2018 Creature. All rights reserved | Design by
+                        <a href="http://w3layouts.com"> W3layouts.</a>
+                    </p>
+                </div>
             </div>
-            <div class="blast-icon"><span class="fa fa-paint-brush" aria-hidden="true"></span></div>
         </div>
-        <!-- //color scheme -->
-        <!-- header -->
-        <header>
-            <nav class="navbar navbar-expand-lg navbar-light fixed-top navbar-expand-lg navbar-light navbar-fixed-top">
-                <h1>
-                    <a class="navbar-brand" href="index.html" data-blast="color">
-                        Creature
-                    </a>
-                </h1>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mx-lg-auto text-center">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="index.html" data-blast="color">
-                                Home
-                                <span class="sr-only">(current)</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  mt-lg-0 mt-3">
-                            <a class="nav-link scroll" href="#about">about</a>
-                        </li>
-                        <li class="nav-item mt-lg-0 mt-3">
-                            <a class="nav-link scroll" href="#services">features</a>
-                        </li>
-                        <li class="nav-item dropdown mt-lg-0 mt-3">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                               aria-haspopup="true" aria-expanded="false">
-                                Dropdown
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item scroll nav-link" href="#plans">pricing</a>
-                                <a class="dropdown-item scroll nav-link" href="#team">team</a>
-                                <a class="dropdown-item scroll nav-link" href="#portfolio">portfolio</a>
-                                <a class="dropdown-item scroll nav-link" href="#posts">latest posts</a>
-                            </div>
-                        </li>
-                        <li class="nav-item  mt-lg-0 mt-3">
-                            <a class="nav-link scroll" href="#contact">Contact</a>
-                        </li>
-                    </ul>
-                    <button type="button" class="btn  wthree-link-bnr bg-theme rounded-circle text-center mt-lg-0 mt-3" data-toggle="modal"
-                            aria-pressed="false" data-target="#exampleModal" data-blast="bgColor">
-                        <span class="fa fa-user text-white"></span>
+    </footer>
+    <!-- //footer -->
+    <!-- ------------------------------- END STAY - LAYOUT---------------------------------------------------->
+    <!-- ==================================================================================================--->
+    <!-- ==================================================================================================--->
+    <!-- ------------------------------- ??? LAYOUT ??? ou INDEX ???------------------------------------------>
+    <!-- login  -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Signin</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-
-            </nav>
-        </header>
-        <!-- //header -->
-        <!-- --------------------------------  END - STAY - LAYOUT--------------------------------------------------->
-        @RenderBody()
-        <!-- ------------------------------- STAY - LAYOUT--------------------------------------------------->
-        <!-- footer -->
-        <footer class="cpy-right bg-theme" data-blast="bgColor">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="wthree-social">
-                            <ul>
-                                <li>
-                                    <a href="#">
-                                        <span class="fa fa-facebook-f icon_facebook"></span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <span class="fa fa-twitter icon_twitter"></span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <span class="fa fa-dribbble icon_dribbble"></span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <span class="fa fa-google-plus icon_g_plus"></span>
-                                    </a>
-                                </li>
-                            </ul>
+                <div class="modal-body">
+                    <form action="#" method="post" class="p-sm-3">
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Username</label>
+                            <input type="text" class="form-control" placeholder="" name=" name" id="recipient-name"
+                                   required="">
                         </div>
-                    </div>
-                    <div class="col-lg-6 text-lg-right mt-lg-0 mt-4">
-                        <p>
-                            © 2018 Creature. All rights reserved | Design by
-                            <a href="http://w3layouts.com"> W3layouts.</a>
+                        <div class="form-group">
+                            <label for="password" class="col-form-label">Password</label>
+                            <input type="password" class="form-control" placeholder="" name="Password" id="password"
+                                   required="">
+                        </div>
+                        <div class="right-w3l">
+                            <input type="submit" class="form-control" value="Login">
+                        </div>
+                        <div class="row sub-w3l my-3">
+                            <div class="col-sm-6 sub-w3_pvt">
+                                <input type="checkbox" id="brand1" value="">
+                                <label for="brand1">
+                                    <span></span>Remember me?
+                                </label>
+                            </div>
+                            <div class="col-sm-6 forgot-w3l text-sm-right">
+                                <a href="#" class="text-secondary">Forgot Password?</a>
+                            </div>
+                        </div>
+                        <p class="text-center dont-do modal-footer1">
+                            Don't have an account?
+                            <a href="#" data-toggle="modal" data-target="#exampleModal1" class="font-weight-bold"
+                               data-blast="color">
+                                Register Now
+                            </a>
+
                         </p>
-                    </div>
+                    </form>
                 </div>
             </div>
-        </footer>
-        <!-- //footer -->
-        <!-- ------------------------------- END STAY - LAYOUT---------------------------------------------------->
-        <!-- ==================================================================================================--->
+        </div>
+    </div>
+    <!-- //login -->
+    <!-- register -->
+    <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel1">Register</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="#" method="post" class="p-sm-3">
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Username</label>
+                            <input type="text" class="form-control" placeholder="" name=" name" id="recipient-rname"
+                                   required="">
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-email" class="col-form-label">Email</label>
+                            <input type="email" class="form-control" placeholder="" name="Email" id="recipient-email"
+                                   required="">
+                        </div>
+                        <div class="form-group">
+                            <label for="password1" class="col-form-label">Password</label>
+                            <input type="password" class="form-control" placeholder="" name="Password" id="password1"
+                                   required="">
+                        </div>
+                        <div class="form-group">
+                            <label for="password2" class="col-form-label">Confirm Password</label>
+                            <input type="password" class="form-control" placeholder="" name="Confirm Password" id="password2"
+                                   required="">
+                        </div>
+                        <div class="sub-w3l">
+                            <div class="sub-w3_pvt">
+                                <input type="checkbox" id="brand2" value="">
+                                <label for="brand2" class="mb-3">
+                                    <span></span>I Accept to the Terms & Conditions
+                                </label>
+                            </div>
+                        </div>
+                        <div class="right-w3l">
+                            <input type="submit" class="form-control" value="Register">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- // register -->
+    <!-- blog modal1 -->
+    <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-theme">
+                    <h5 class="modal-title" id="exampleModalLabel2">Cras ultricies ligula sed.</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body text-center">
+                    <img src="images/g1.jpg" class="img-fluid" alt="" />
+                    <p class="text-left my-4">
+                        Quisque velit nisi, pretium ut lacinia in, elementum id enim. Curabitur non nulla sit amet
+                        nisl
+                        tempus convallis quis ac
+                        lectus. Cras ultricies ligula sed magna dictum porta.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //blog modal1 -->
+    <!-- blog modal2 -->
+    <div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel3"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-theme">
+                    <h5 class="modal-title" id="exampleModalLabel3">Cras ultricies ligula sed.</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body text-center">
+                    <img src="images/g2.jpg" class="img-fluid" alt="" />
+                    <p class="text-left my-4">
+                        Quisque velit nisi, pretium ut lacinia in, elementum id enim. Curabitur non nulla sit amet
+                        nisl
+                        tempus convallis quis ac
+                        lectus. Cras ultricies ligula sed magna dictum porta.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //blog modal2 -->
+    <!-- blog modal3 -->
+    <div class="modal fade" id="exampleModal4" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel4"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-theme">
+                    <h5 class="modal-title" id="exampleModalLabel4">Cras ultricies ligula sed magna.</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body text-center">
+                    <img src="images/g3.jpg" class="img-fluid" alt="" />
+                    <p class="text-left my-4">
+                        Quisque velit nisi, pretium ut lacinia in, elementum id enim. Curabitur non nulla sit amet
+                        nisl
+                        tempus convallis quis ac
+                        lectus. Cras ultricies ligula sed magna dictum porta.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //blog modal3-->
+    <!-- =================================END : ??? LAYOUT ??? ou INDEX ??? ===============================--->
+    <!-- ==================================================================================================--->
+    <!-- js -->
+    @Scripts.Render("~/Scripts/jquery-2.2.3")
 
-        <!-- js -->
-        @Scripts.Render("~/Scripts/jquery-2.2.3")
-
-        @*<script src="js/jquery-2.2.3.min.js"></script>*@
-        <!-- //js -->
-        <!-- script for password match -->
-        @Scripts.Render("~/Scripts/password")
-        @*<script>
+    @*<script src="js/jquery-2.2.3.min.js"></script>*@
+    <!-- //js -->
+    <!-- script for password match -->
+    @Scripts.Render("~/Scripts/password")
+    @*<script>
             window.onload = function () {
                 document.getElementById("password1").onchange = validatePassword;
                 document.getElementById("password2").onchange = validatePassword;
@@ -186,11 +292,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 //empty string means no validation error
             }
         </script>*@
-        <!-- script for password match -->
-        <!-- Banner  Responsiveslides -->
-        @Scripts.Render("~/Scripts/responsiveslides")
+    <!-- script for password match -->
+    <!-- Banner  Responsiveslides -->
+    @Scripts.Render("~/Scripts/responsiveslides")
 
-        @*<script src="js/responsiveslides.min.js"></script>
+    @*<script src="js/responsiveslides.min.js"></script>
         <script>
             //// You can also use"$(window).load(function() {"
             //$(function () {
@@ -211,26 +317,26 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
             //});
         </script>*@
-        <!-- //Banner  Responsiveslides -->
-        <!-- Scrolling Nav JavaScript -->
-        @Scripts.Render("~/Scripts/scrolling")
-        @*<script src="js/scrolling-nav.js"></script>
+    <!-- //Banner  Responsiveslides -->
+    <!-- Scrolling Nav JavaScript -->
+    @Scripts.Render("~/Scripts/scrolling")
+    @*<script src="js/scrolling-nav.js"></script>
         <script src="js/counter.js"></script>*@
-        <!-- portfolio -->
-        @Scripts.Render("~/Scripts/portfolio")
+    <!-- portfolio -->
+    @Scripts.Render("~/Scripts/portfolio")
 
-        @*<script src="js/jquery.picEyes.js"></script>
+    @*<script src="js/jquery.picEyes.js"></script>
         <script>
             $(function () {
                 //picturesEyes($('.demo li'));
                 $('.demo li').picEyes();
             });
         </script>*@
-        <!-- //portfolio -->
-        <!-- start-smooth-scrolling -->
-        @Scripts.Render("~/Scripts/smooth-scrolling")
+    <!-- //portfolio -->
+    <!-- start-smooth-scrolling -->
+    @Scripts.Render("~/Scripts/smooth-scrolling")
 
-        @*<script src="js/move-top.js"></script>
+    @*<script src="js/move-top.js"></script>
         <script src="js/easing.js"></script>
         <script>
             jQuery(document).ready(function ($) {
@@ -243,11 +349,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 });
             });
         </script>*@
-        <!-- //end-smooth-scrolling -->
-        <!-- smooth-scrolling-of-move-up LAYOUT -->
-        @Scripts.Render("~/Scripts/smooth-scrolling-of-move-up")
+    <!-- //end-smooth-scrolling -->
+    <!-- smooth-scrolling-of-move-up LAYOUT -->
+    @Scripts.Render("~/Scripts/smooth-scrolling-of-move-up")
 
-        @*<script>
+    @*<script>
             $(document).ready(function () {
                 /*
                 var defaults = {
@@ -264,17 +370,17 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             });
         </script>
         <script src="js/SmoothScroll.min.js"></script>*@
-        <!-- //smooth-scrolling-of-move-up -->
-        <!-- color switch -->
-        @Scripts.Render("~/Scripts/color-switch")
+    <!-- //smooth-scrolling-of-move-up -->
+    <!-- color switch -->
+    @Scripts.Render("~/Scripts/color-switch")
 
-        @*<script src="js/blast.min.js"></script>*@
-        <!-- Bootstrap core JavaScript
+    @*<script src="js/blast.min.js"></script>*@
+    <!-- Bootstrap core JavaScript
     ================================================== -->
-        <!-- Placed at the end of the document so the pages load faster -->
-        @Scripts.Render("~/Scripts/bootstrap")
+    <!-- Placed at the end of the document so the pages load faster -->
+    @Scripts.Render("~/Scripts/bootstrap")
 
-        @*<script src="js/bootstrap.js"></script>*@
+    @*<script src="js/bootstrap.js"></script>*@
 
 </body>
 
