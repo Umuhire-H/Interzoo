@@ -45,9 +45,13 @@
     <Compile Include="Interfaces\IEntity.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Models\Animal.cs" />
+    <Compile Include="Models\AnimalCaracteristique.cs" />
     <Compile Include="Models\AnimalParrain.cs" />
+    <Compile Include="Models\Caracteristique.cs" />
     <Compile Include="Models\Categorie.cs" />
     <Compile Include="Models\CategorieRole.cs" />
+    <Compile Include="Models\FlashCadeau.cs" />
+    <Compile Include="Models\FlashCadeauFormule.cs" />
     <Compile Include="Models\Formule.cs" />
     <Compile Include="Models\Parrain.cs" />
     <Compile Include="Models\Role.cs" />
