@@ -34,20 +34,7 @@ namespace Interzoo.DAL.Repositories
             return base.getAll(mapSqldataRtoUtilisateur);
 
         }
-        // -----------
-        private Utilisateur mapSqldataRtoUtilisateur (SqlDataReader sqdr)
-        {
-            return new Utilisateur()
-            {
-                IdUtilisateur = (int)sqdr["IdUtilisateur"],
-                Nom = sqdr["Nom"].ToString(),
-                Prenom = sqdr["Prenom"].ToString(),
-                Courriel = sqdr["Courriel"].ToString(),
-                MotDePasse = sqdr["MotDePasse"].ToString(),
-                DateDeNaissance = (DateTime)sqdr["DateDeNaissance"]
-            };
-        }
-        // -----------
+       
         public override Utilisateur getOne(int id)
         {
             Dictionary<string, object> Parameters = new Dictionary<string, object>();
@@ -62,7 +49,29 @@ namespace Interzoo.DAL.Repositories
             toInsert.IdUtilisateur = id;
             return toInsert;
         }
-        //------------
+       
+
+        public override bool update(Utilisateur toUpdate)
+        {
+            Dictionary<string, object> parameters = utilisateurToDico(toUpdate);
+            return base.update(parameters);
+        }
+
+        // -----------
+        // -----------
+        private Utilisateur mapSqldataRtoUtilisateur(SqlDataReader sqdr)
+        {
+            return new Utilisateur()
+            {
+                IdUtilisateur = (int)sqdr["IdUtilisateur"],
+                Nom = sqdr["Nom"].ToString(),
+                Prenom = sqdr["Prenom"].ToString(),
+                Courriel = sqdr["Courriel"].ToString(),
+                MotDePasse = sqdr["MotDePasse"].ToString(),
+                DateDeNaissance = (DateTime)sqdr["DateDeNaissance"]
+            };
+        }
+        
         private Dictionary<string, object> utilisateurToDico(Utilisateur toInsert)
         {
             return new Dictionary<string, object>
@@ -71,15 +80,9 @@ namespace Interzoo.DAL.Repositories
                 ["Prenom"] = toInsert.Prenom,
                 ["Courriel"] = toInsert.Courriel,
                 ["MotDePasse"] = toInsert.HashMDP,
-                ["DateDeNaissance"] =  toInsert.DateDeNaissance
+                ["DateDeNaissance"] = toInsert.DateDeNaissance
             };
         }
         // -----------
-
-        public override bool update(Utilisateur toUpdate)
-        {
-            Dictionary<string, object> parameters = utilisateurToDico(toUpdate);
-            return base.update(parameters);
-        }
     }
 }

@@ -10,12 +10,22 @@ namespace Interzoo.Web
         {
             bundles.Add(new ScriptBundle("~/Scripts/loadEvent").Include(
                 "~/js/loadEvent.js"));
-            bundles.Add(new StyleBundle("~/Content/headerCss").Include(
-                "~/css/bootstrap.css",
-                "~/css/blast.min.css",
-                "~/css/portfolio.css",
-                "~/css/style.css",
+            // --------------------------------------------------------------
+            bundles.Add(new StyleBundle("~/Content/bootstrap").Include(
+                "~/css/bootstrap.css"));
+            bundles.Add(new StyleBundle("~/Content/blast.min").Include(
+                 "~/css/blast.min.css"));
+
+            bundles.Add(new StyleBundle("~/Content/portfolio").Include(
+               "~/css/portfolio.css"));
+
+            bundles.Add(new StyleBundle("~/Content/style").Include(
+               "~/css/style.css"));
+
+            bundles.Add(new StyleBundle("~/Content/font-awesome.min").Include(
                 "~/css/font-awesome.min.css"));
+
+            // ----------------------------------------------------------------
             bundles.Add(new ScriptBundle("~/Scripts/jquery-2.2.3").Include(
                 "~/js/jquery-2.2.3.min.js"));
                 
