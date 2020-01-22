@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Interzoo.Web.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -14,9 +15,11 @@ namespace Interzoo.Web.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Login()
+        public ActionResult Login(LoginModel lm)
         {
-            return RedirectToAction("index", new )
+            
+
+            return RedirectToAction("Index", new { Controller = "Home", Area = "" }); // dès que area sera  fait : alors regirigé vers l'AREA
         }
     }
 }
