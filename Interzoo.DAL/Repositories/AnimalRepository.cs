@@ -32,21 +32,7 @@ namespace Interzoo.DAL.Repositories
         {
             return base.getAll(mapSqlDataRtoAnimal);
         }
-        // --------------------
-        private Animal mapSqlDataRtoAnimal(SqlDataReader sqdr)
-        {
-            return new Animal()
-            {
-                IdAnimal = (int)sqdr["IdAnimal"],
-                Nom = sqdr["Nom"].ToString(),
-                NomScientifique = sqdr["RegionOrigine"].ToString(),
-                RegionOrigine = sqdr["Courriel"].ToString(),
-                Photo = sqdr["photo"].ToString(),
-                IdCategorie = (int)sqdr["IdCategorie"]
-            };
-        }
-        // -----------
-        // --------------------
+       
 
         public override Animal getOne(int id)
         {
@@ -62,7 +48,27 @@ namespace Interzoo.DAL.Repositories
             toInsert.IdAnimal = id;
             return toInsert;
         }
+        public override bool update(Animal toUpdate)
+        {
+            Dictionary<string, object> parameters = AnimalToDico(toUpdate);
+            return base.update(parameters);
+        }
+
         //------------
+        // --------------------
+        private Animal mapSqlDataRtoAnimal(SqlDataReader sqdr)
+        {
+            return new Animal()
+            {
+                IdAnimal = (int)sqdr["IdAnimal"],
+                Nom = sqdr["Nom"].ToString(),
+                NomScientifique = sqdr["RegionOrigine"].ToString(),
+                RegionOrigine = sqdr["Courriel"].ToString(),
+                Photo = sqdr["photo"].ToString(),
+                IdCategorie = (int)sqdr["IdCategorie"]
+            };
+        }
+       
         private Dictionary<string, object> AnimalToDico(Animal toInsert)
         {
             return new Dictionary<string, object>
@@ -75,11 +81,7 @@ namespace Interzoo.DAL.Repositories
             };
         }
         // -----------
-
-        public override bool update(Animal toUpdate)
-        {
-            Dictionary<string, object> parameters = AnimalToDico(toUpdate);
-            return base.update(parameters);
-        }
+        // -----------
+       
     }
 }

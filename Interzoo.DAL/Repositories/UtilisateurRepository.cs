@@ -13,10 +13,10 @@ namespace Interzoo.DAL.Repositories
         public UtilisateurRepository (string cnstring) : base(cnstring)
         {
             DeleteCommand = @"DELETE FROM Utilisateur WHERE IdUtilisateur=@IdUtilisateur";
-            UpdateCommand = @"UPDATE Utilisateur SET Nom=@Nom, Prenom=@Prenom, DateDeNaissance=@DateDeNaissance, Courriel=@Courriel,  MotDePasse = @MotDePasse, Photo=@Photo 
+            UpdateCommand = @"UPDATE Utilisateur SET Nom=@Nom, Prenom=@Prenom, DateDeNaissance=@DateDeNaissance, Courriel=@Courriel,  MotDePasse = @MotDePasse, Photo=@Photo, IsAdmin=@IsAdmin, IdRole=@IdRole
                          WHERE IdUtilisateur=@IdUtilisateur;";
-            InsertCommand = @"INSERT INTO  Utilisateur (Nom ,Prenom ,Surnom ,Courriel ,MotDePasse, Photo) OUTPUT inserted.IdUtilisateur 
-                            VALUES(@Nom, @Prenom, @Surnom, @Courriel,@MotDePasse, @Photo )";
+            InsertCommand = @"INSERT INTO  Utilisateur (Nom ,Prenom ,DateDeNaissance ,Courriel ,MotDePasse, Photo,IsAdmin, IdRole) OUTPUT inserted.IdUtilisateur 
+                            VALUES(@Nom, @Prenom, @DateDeNaissance, @Courriel,@MotDePasse, @Photo, @IsAdmin, @IdRole )";
 
             SelectAllCommand = "Select * from Utilisateur";
             SelectOneCommand = $"Select * from Utilisateur where IdUtilisateur=@IdUtilisateur";
@@ -75,7 +75,7 @@ namespace Interzoo.DAL.Repositories
                 Nom = sqdr["Nom"].ToString(),
                 Prenom = sqdr["Prenom"].ToString(),
                 Courriel = sqdr["Courriel"].ToString(),
-                MotDePasse = sqdr["MotDePasse"].ToString(),
+                // MotDePasse = sqdr["MotDePasse"].ToString(),
                 DateDeNaissance = (DateTime)sqdr["DateDeNaissance"]
             };
         }
@@ -87,7 +87,7 @@ namespace Interzoo.DAL.Repositories
                 ["Nom"] = toInsert.Nom,
                 ["Prenom"] = toInsert.Prenom,
                 ["Courriel"] = toInsert.Courriel,
-                ["MotDePasse"] = toInsert.HashMDP,
+                ["MotDePasse"] = toInsert.HashMDP, // <<<<<=====================
                 ["DateDeNaissance"] = toInsert.DateDeNaissance
             };
         }

@@ -110,15 +110,16 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="#" method="post" class="p-sm-3">
+                    <form action="/Login/Login" method="post" class="p-sm-3">
+                        @* @Html.AntiForgeryToken()*@
                         <div class="form-group">
-                            <label for="recipient-name" class="col-form-label">Username</label>
-                            <input type="text" class="form-control" placeholder="" name=" name" id="recipient-name"
+                            <label for="recipient-name" class="col-form-label">Email</label>
+                            <input type="email" class="form-control" placeholder="soso@sisi.com " name="Courriel" id="recipient-name"
                                    required="">
                         </div>
                         <div class="form-group">
-                            <label for="password" class="col-form-label">Password</label>
-                            <input type="password" class="form-control" placeholder="" name="Password" id="password"
+                            <label for="password" class="col-form-label">Mot de Passe</label>
+                            <input type="password" class="form-control" placeholder="" name="MotdePasse" id="password"
                                    required="">
                         </div>
                         <div class="right-w3l">
@@ -136,14 +137,19 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             </div>
                         </div>
                         <p class="text-center dont-do modal-footer1">
+                            @*@if (@ViewBag.ErrorMessage != null)
+                            {                         
+                            <br /> <span class="alert alert-danger">@Html.Raw(ViewBag.ErrorMessage)</span> <br />
+                            
+                           }*@
                             Don't have an account?
-                            <a href="#" data-toggle="modal" data-target="#exampleModal1" class="font-weight-bold"
+                            <a href="#exampleModal1" data-toggle="modal" data-target="#exampleModal1" class="font-weight-bold"
                                data-blast="color">
                                 Register Now
                             </a>
 
-                        </p>
-                    </form>
+                            </p>
+                        </form>
                 </div>
             </div>
         </div>
@@ -161,25 +167,35 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="#" method="post" class="p-sm-3">
+                    <form enctype="multipart/form-data" action="/Register/Index" method="post" class="p-sm-3">
                         <div class="form-group">
-                            <label for="recipient-name" class="col-form-label">Username</label>
-                            <input type="text" class="form-control" placeholder="" name=" name" id="recipient-rname"
+                            <label for="recipient-name" class="col-form-label">Nom</label>
+                            <input type="text" class="form-control" placeholder="" name="Nom" id="recipient-rname"
+                                   required="">
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Prenom</label>
+                            <input type="text" class="form-control" placeholder="" name="Prenom" id="recipient-rname"
                                    required="">
                         </div>
                         <div class="form-group">
                             <label for="recipient-email" class="col-form-label">Email</label>
-                            <input type="email" class="form-control" placeholder="" name="Email" id="recipient-email"
+                            <input type="email" class="form-control" placeholder="" name="Courriel" id="recipient-email"
                                    required="">
                         </div>
                         <div class="form-group">
-                            <label for="password1" class="col-form-label">Password</label>
-                            <input type="password" class="form-control" placeholder="" name="Password" id="password1"
+                            <label for="password1" class="col-form-label">Mot de passe</label>
+                            <input type="password" class="form-control" placeholder="" name="MotDePasse" id="password1"
                                    required="">
                         </div>
                         <div class="form-group">
-                            <label for="password2" class="col-form-label">Confirm Password</label>
-                            <input type="password" class="form-control" placeholder="" name="Confirm Password" id="password2"
+                            <label for="password2" class="col-form-label">Confirmez le mot de passe</label>
+                            <input type="password" class="form-control" placeholder="" name="ConfirmeMotDePasse" id="password2"
+                                   required="">
+                        </div>
+                        <div class="form-group">
+                            <label for="password2" class="col-form-label">Une photo de profil</label>
+                            <input type="file" class="form-control" placeholder="Chargez ..." name="" id="picture1"
                                    required="">
                         </div>
                         <div class="sub-w3l">
@@ -193,6 +209,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         <div class="right-w3l">
                             <input type="submit" class="form-control" value="Register">
                         </div>
+                        @if (ViewBag.SuccessMessage != null)
+                        {
+                            <div class="alert alert-info">
+                                @ViewBag.SuccessMessage
+                            </div>
+                        }
                     </form>
                 </div>
             </div>

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Interzoo.DAL.Models
 {
-    class AnimalCaracteristique : IEntity<CompositeKey<int, int>>
+    public class AnimalCaracteristique : IEntity<CompositeKey<int, int>>
     {
         private int _idAnimal;
         private int _idCaracteristique;

@@ -94,5 +94,8 @@ namespace Interzoo.DAL.Models
                 _photo = value;
             }
         }
+        //----------extras
+        //public Dictionary<Caracteristique , AnimalCaracteristique>caracteritiqueValeur { get; set; }
+        public IEnumerable<AnimalCaracteristique> valeurCaracteristique { get; set; }
     }
 }

@@ -60,7 +60,6 @@
     <Compile Include="Repositories\AnimalRepository.cs" />
     <Compile Include="Repositories\BaseRepository.cs" />
     <Compile Include="Repositories\UtilisateurRepository.cs" />
-    <Compile Include="ToolsDAL\sqlDataReaderToEntity.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ToolBox\ToolBox.csproj">
@@ -68,6 +67,8 @@
       <Name>ToolBox</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="ToolsDAL\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
