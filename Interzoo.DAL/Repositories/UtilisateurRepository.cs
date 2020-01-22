@@ -42,6 +42,14 @@ namespace Interzoo.DAL.Repositories
             return base.getAll(mapSqldataRtoUtilisateur);
 
         }
+        // getALL de table Role : 
+        public IEnumerable<Role> getAllRolesForRegisterModel()
+        {
+            SelectAllCommand = "Select * from Role INNER JOIN Utilisateur on Role.IdRole=Utilisateur.IdRole";
+            return base.getAll(mapSqldataRtoUtilisateur);
+
+        }
+
        
         public override Utilisateur getOne(int id)
         {

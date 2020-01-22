@@ -12,7 +12,32 @@ namespace Interzoo.DAL.Models
         private int _idRole;
         private string _typeRole;
 
-        public int IdRole { get => _idRole; set => _idRole = value; }
-        public string TypeRole { get => _typeRole; set => _typeRole = value; }
+        public int IdRole
+        {
+            get
+            {
+                return _idRole;
+            }
+
+            set
+            {
+                _idRole = value;
+            }
+        }
+
+        public string TypeRole
+        {
+            get
+            {
+                return _typeRole;
+            }
+
+            set
+            {
+                _typeRole = value;
+            }
+        }
+
+      
     }
 }

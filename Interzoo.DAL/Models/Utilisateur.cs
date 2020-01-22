@@ -68,5 +68,12 @@ namespace Interzoo.DAL.Models
                 _idRole = value;
             }
         }
+        // ----EXTRAs
+        public IEnumerable<Role> ListeRole
+        {
+            get; set;
+        }
+
+
     }
 }

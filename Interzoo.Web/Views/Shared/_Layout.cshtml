@@ -4,6 +4,8 @@ Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
+@model Interzoo.Web.Models.RegisterModel
+
 
 <!DOCTYPE html>
 <html lang="zxx">
@@ -184,20 +186,28 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                    required="">
                         </div>
                         <div class="form-group">
-                            @* ROLE *@
-                            <label for="recipient-name" class="col-form-label">Staut </label>
-                            <select type="text" class="form-control" placeholder="Votre statut" name="Prenom" id="recipient-rname"
+                            @* ROLE --- value sera : @Model.IdRole
+                                    --- name sera champEXtra: via requete JOIN @model..*@
+                            <label for="recipient-name" class="col-form-label"> Statut </label>
+                            <select type="text" class="form-control" placeholder="Votre statut" name="IdRole" id="recipient-rname"
                                     required="">
-                                <option class="form-control" value="Parrain"> Parrain</option>
-                                <option class="form-control" value="Personnel">Bénévole</option>
+                                @foreach (var item in Model.ListeRole)
+                                {
+                                    if (Model.IdRole == null)
+                                    {
+                                        <option class="form-control" value="@{Model.IdRole}">Futur.e parrain.marraine</option>
+                                    }
+                                    <option class="form-control" value="@{Model.IdRole}">@Model.NomRole</option>
+                                }
                             </select>
                         </div>
                         @* isADMIN *@
-                        @*<div class="form-group">
-            <label for="recipient-email" class="col-form-label">Admin</label>
-            <input type="email" class="form-control" placeholder="" name="Courriel" id="recipient-email"
-                   required="">
-        </div>*@
+                        <div class="form-group">
+                            <label for="recipient-email" class="col-form-label">Administrateur</label>
+                            <input type="hidden" class="form-control" placeholder="" value ="0" name="IsAdmin" id="recipient-email"
+                                   required="">
+                        </div>
+                        @* END isAdmin *@
                         <div class="form-group">
                             <label for="recipient-email" class="col-form-label">Email</label>
                             <input type="email" class="form-control" placeholder="" name="Courriel" id="recipient-email"
