@@ -73,7 +73,9 @@ namespace Interzoo.DAL.Models
         {
             get; set;
         }
-
-
+        public Utilisateur()
+        {
+            this.ListeRole = new List<Role>();
+        }
     }
 }

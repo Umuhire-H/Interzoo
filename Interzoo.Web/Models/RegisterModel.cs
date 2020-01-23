@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Interzoo.DAL.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -141,6 +142,7 @@ namespace Interzoo.Web.Models
             }
         }
         
+        public IEnumerable<Role> ListeRole { get; set; }
         
     }
 }

@@ -10,6 +10,7 @@ namespace Interzoo.DAL.Repositories
 {
     public class UtilisateurRepository : BaseRepository<Utilisateur, int>
     {
+        private ToolBox.Database.Connection _myOconn;
         public UtilisateurRepository (string cnstring) : base(cnstring)
         {
             DeleteCommand = @"DELETE FROM Utilisateur WHERE IdUtilisateur=@IdUtilisateur";
@@ -43,14 +44,25 @@ namespace Interzoo.DAL.Repositories
 
         }
         // getALL de table Role : 
-        public IEnumerable<Role> getAllRolesForRegisterModel()
+        public IEnumerable<Role> getAllRolesForRegisterModel(string cnstring)
         {
             SelectAllCommand = "Select * from Role INNER JOIN Utilisateur on Role.IdRole=Utilisateur.IdRole";
-            return base.getAll(mapSqldataRtoUtilisateur);
-
+            //----
+            
+            ///1. -objet Command : cmd contient en lui le dico de param + la query -
+            ToolBox.Database.Command cmd = new ToolBox.Database.Command(SelectAllCommand);
+            ///2. -  dico of parameters -
+            Dictionary<string, object> QueryParameters = new Dictionary<string, object>();
+            foreach (KeyValuePair<string, object> item in QueryParameters)
+            {
+                cmd.AddParameter(item.Key, item.Value);
+            }
+            ///3. -objet de connection-
+            _myOconn = new ToolBox.Database.Connection(cnstring);
+            return _myOconn.ExecuteReader<Role>(cmd, mapSqldataRtoRole);
+            ///      
         }
-
-       
+     
         public override Utilisateur getOne(int id)
         {
             Dictionary<string, object> Parameters = new Dictionary<string, object>();
@@ -101,9 +113,16 @@ namespace Interzoo.DAL.Repositories
         }
         // -----------
 
+        private Role mapSqldataRtoRole(SqlDataReader sqdr)
+        {
+            return new Role()
+            {
+                IdRole = (int)sqdr["IdRole"],
+                TypeRole = sqdr["TypeRole"].ToString()               
+            };
+        }
 
-    
 
-        
+
     }
 }
