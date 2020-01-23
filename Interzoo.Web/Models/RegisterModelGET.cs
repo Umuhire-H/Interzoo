@@ -130,10 +130,10 @@ namespace Interzoo.Web.Models
         }
        
         public IEnumerable<Role> ListeRole { get; set; }
-        //public RegisterModel ()
-        //{
+        public RegisterModelGET()
+        {
 
-        //    this.ListeRole = getAllRolesForRegisterModel(ConfigurationManager.ConnectionStrings["My_Asptest_Cnstr"].ConnectionString);
-        //}
+            this.ListeRole = new List<Role>();
+        }
     }
 }

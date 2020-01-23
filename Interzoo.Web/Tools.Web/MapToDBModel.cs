@@ -9,7 +9,8 @@ namespace Interzoo.Web.Tools.Web
 {
     public static class MapToDBModel
     {
-        public static Utilisateur LoginToUtilisateur(LoginModel lm)
+        // départ_VUE : ---- Models_DB <---- ModelsVUE 
+        public static Utilisateur loginToUtilisateur(LoginModel lm)
         {
             return new Utilisateur()
             {
@@ -21,5 +22,9 @@ namespace Interzoo.Web.Tools.Web
         //{
         //    r
         //}
+
+        // départ_DB : ---- ModelsVUE <---- Models_DB   
+        // public static RegisterModelGET 
+
     }
 }

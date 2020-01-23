@@ -15,9 +15,10 @@ namespace Interzoo.Web.Controllers
         public ActionResult Index()
         {
             UtilisateurRepository ur = new UtilisateurRepository(ConfigurationManager.ConnectionStrings["My_Asptest_Cnstr"].ConnectionString);
+            // IEnum<Role> --> List<Role>
             RegisterModelGET rm = new RegisterModelGET();
-            rm.ListeRole = ur.getAllRolesForRegisterModel(ConfigurationManager.ConnectionStrings["My_Asptest_Cnstr"].ConnectionString);
-
+            rm.ListeRole = ur.getAllRolesForRegisterModel (ConfigurationManager.ConnectionStrings["My_Asptest_Cnstr"].ConnectionString).ToList();
+            
             return View(rm);
         }
     }
