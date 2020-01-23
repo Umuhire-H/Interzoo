@@ -18,7 +18,15 @@ namespace Interzoo.Web.Tools.Web
                 MotDePasse = lm.MotDePasse
             };
         }
-       
+        //public static Role RoleTORoleModel(RoleModel rm)
+        //{
+        //    return new Role()
+        //    {
+        //        IdRole = rm.IdRole,
+        //        TypeRole = rm.TypeRole
+        //    };
+
+        //}
 
     }
 }

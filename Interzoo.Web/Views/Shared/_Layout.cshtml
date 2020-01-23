@@ -5,6 +5,7 @@ License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 @model Interzoo.Web.Models.RegisterModelGET
+@*@model IEnumerable<Interzoo.Web.Models.RoleModel>*@
 
 
 <!DOCTYPE html>
@@ -189,10 +190,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             @* ROLE --- value sera : @Model.IdRole
                                     --- name sera champEXtra: via requete JOIN @model..*@
                             <label for="recipient-name" class="col-form-label"> Statut </label>
-                            <select type="text" class="form-control" placeholder="Votre statut" name="ListeRole" id="recipient-rname"
+                            <select type="text" class="form-control" placeholder="Votre statut" name="ListeRoleModel" id="recipient-rname"
                                     required="">
                                 <option class="form-control" value="0">Futur.e  parrain.marraine</option>
-                                @foreach (var item in Model.ListeRole)
+                                @foreach (var item in Model.ListeRoleModel)
                                 {
                                     @*if (item.IdRole == 0)
                                     { <option class="form-control" value="0">Futur.e  parrain.marraine</option>

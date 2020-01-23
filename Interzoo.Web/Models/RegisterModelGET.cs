@@ -114,10 +114,16 @@ namespace Interzoo.Web.Models
         {
             get; set;
         }
+        public IEnumerable<RoleModel> ListeRoleModel
+        {
+            get; set;
+        }
         public RegisterModelGET()
         {
 
             this.ListeRole = new List<Role>();
+            this.ListeRoleModel = new List<RoleModel>();
+
         }
     }
 

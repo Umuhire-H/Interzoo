@@ -1,5 +1,6 @@
 ﻿using Interzoo.DAL.Repositories;
 using Interzoo.Web.Models;
+using Interzoo.Web.Tools.Web;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -21,11 +22,17 @@ namespace Interzoo.Web.Controllers
 
             UtilisateurRepository ur = new UtilisateurRepository(ConfigurationManager.ConnectionStrings["h_Cnstr"].ConnectionString);
             // List<Role>  = List<modelDAL>  ----->  vue connait pas modelDAL --> creation modelVUE
-            RegisterModelGET rm = new RegisterModelGET();
-            List<Role> = new li
-                ur.getAllRolesForRegisterModel(ConfigurationManager.ConnectionStrings["h_Cnstr"].ConnectionString).ToList();
-            rm.ListeRole
-            return View(rm);
+            RegisterModelGET regisM = new RegisterModelGET();
+            // this is a list<ROLE>
+            regisM.ListeRole = ur.getAllRolesForRegisterModel(ConfigurationManager.ConnectionStrings["h_Cnstr"].ConnectionString).ToList();
+            // list<RoleMODEL>
+                       
+            foreach (var item in regisM.ListeRole)
+            {
+                regisM.ListeRoleModel.Add(mapToVIEWmodels.RoleTORoleModel(item));
+            }
+            
+            return View(regisM);
         }
     }
 }
