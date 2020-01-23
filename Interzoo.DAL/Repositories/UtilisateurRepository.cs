@@ -44,7 +44,7 @@ namespace Interzoo.DAL.Repositories
 
         }
         // getALL de table Role : 
-        public IEnumerable<Role> getAllRolesForRegisterModel(string cnstring)
+        public IEnumerable<Role> getAllRolesForRegisterModel(string sameCnstr)
         {
             SelectAllCommand = "Select * from Role INNER JOIN Utilisateur on Role.IdRole=Utilisateur.IdRole";
             //----
@@ -58,7 +58,7 @@ namespace Interzoo.DAL.Repositories
                 cmd.AddParameter(item.Key, item.Value);
             }
             ///3. -objet de connection-
-            _myOconn = new ToolBox.Database.Connection(cnstring);
+            _myOconn = new ToolBox.Database.Connection(sameCnstr);
             return _myOconn.ExecuteReader<Role>(cmd, mapSqldataRtoRole);
             ///      
         }

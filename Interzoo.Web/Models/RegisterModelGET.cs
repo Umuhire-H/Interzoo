@@ -7,7 +7,7 @@ using System.Web;
 
 namespace Interzoo.Web.Models
 {
-    public class RegisterModel
+    public class RegisterModelGET //
     {
         
         private string _nom;
@@ -18,7 +18,7 @@ namespace Interzoo.Web.Models
         private DateTime _dateDeNaissance;
         private string photo;
         private bool _isAdmin;
-        private int _idRole;
+        
 
       
         [Required(ErrorMessage ="Veuillez compléter le champ 'Nom'")]
@@ -128,25 +128,12 @@ namespace Interzoo.Web.Models
                 _isAdmin = value;
             }
         }
-        //[Required(ErrorMessage =("veuillez selectionner une option"))]
-        //public int IdRole
-        //{
-        //    get
-        //    {
-        //        return _idRole;
-        //    }
-
-        //    set
-        //    {
-        //        _idRole = value;
-        //    }
-        //}
-        
+       
         public IEnumerable<Role> ListeRole { get; set; }
-        public RegisterModel ()
-        {
+        //public RegisterModel ()
+        //{
 
-            this.ListeRole = new List<Role>();
-        }
+        //    this.ListeRole = getAllRolesForRegisterModel(ConfigurationManager.ConnectionStrings["My_Asptest_Cnstr"].ConnectionString);
+        //}
     }
 }

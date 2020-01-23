@@ -4,7 +4,7 @@ Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
-@model Interzoo.Web.Models.RegisterModel
+@model Interzoo.Web.Models.RegisterModelGET
 
 
 <!DOCTYPE html>
@@ -191,13 +191,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             <label for="recipient-name" class="col-form-label"> Statut </label>
                             <select type="text" class="form-control" placeholder="Votre statut" name="ListeRole" id="recipient-rname"
                                     required="">
+                                <option class="form-control" value="0">Futur.e  parrain.marraine</option>
                                 @foreach (var item in Model.ListeRole)
                                 {
-                                    if (item.IdRole == 0)
-                                    {
-                                        <option class="form-control" value="@{item.IdRole}">Futur.e parrain.marraine</option>
-                                    }
-                                    <option class="form-control" value="@{item.IdRole}">@item.TypeRole</option>
+                                    @*if (item.IdRole == 0)
+                                    { <option class="form-control" value="0">Futur.e  parrain.marraine</option>
+                                    }*@
+
+                                    <option class="form-control" value="@item.IdRole">@item.TypeRole</option>
                                 }
                             </select>
                         </div>

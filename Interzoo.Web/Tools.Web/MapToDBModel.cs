@@ -17,9 +17,9 @@ namespace Interzoo.Web.Tools.Web
                 MotDePasse = lm.MotDePasse
             };
         }
-        public static Utilisateur RegisterToUtilisateur(RegisterModel rm)
-        {
-            r
-        }
+        //public static Utilisateur RegisterToUtilisateur(RegisterModel rm)
+        //{
+        //    r
+        //}
     }
 }
