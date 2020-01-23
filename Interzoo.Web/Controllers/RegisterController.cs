@@ -14,11 +14,17 @@ namespace Interzoo.Web.Controllers
         // GET: Register
         public ActionResult Index()
         {
-            UtilisateurRepository ur = new UtilisateurRepository(ConfigurationManager.ConnectionStrings["My_Asptest_Cnstr"].ConnectionString);
-            // IEnum<Role> --> List<Role>
+            //UtilisateurRepository ur = new UtilisateurRepository(ConfigurationManager.ConnectionStrings["My_Asptest_Cnstr"].ConnectionString);
+            //// IEnum<Role> --> List<Role>
+            //RegisterModelGET rm = new RegisterModelGET();
+            //rm.ListeRole = ur.getAllRolesForRegisterModel (ConfigurationManager.ConnectionStrings["My_Asptest_Cnstr"].ConnectionString).ToList();
+
+            UtilisateurRepository ur = new UtilisateurRepository(ConfigurationManager.ConnectionStrings["h_Cnstr"].ConnectionString);
+            // List<Role>  = List<modelDAL>  ----->  vue connait pas modelDAL --> creation modelVUE
             RegisterModelGET rm = new RegisterModelGET();
-            rm.ListeRole = ur.getAllRolesForRegisterModel (ConfigurationManager.ConnectionStrings["My_Asptest_Cnstr"].ConnectionString).ToList();
-            
+            List<Role> = new li
+                ur.getAllRolesForRegisterModel(ConfigurationManager.ConnectionStrings["h_Cnstr"].ConnectionString).ToList();
+            rm.ListeRole
             return View(rm);
         }
     }
