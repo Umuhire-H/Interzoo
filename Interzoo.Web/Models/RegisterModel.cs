@@ -128,21 +128,25 @@ namespace Interzoo.Web.Models
                 _isAdmin = value;
             }
         }
-        [Required(ErrorMessage =("veuillez selectionner une option"))]
-        public int IdRole
-        {
-            get
-            {
-                return _idRole;
-            }
+        //[Required(ErrorMessage =("veuillez selectionner une option"))]
+        //public int IdRole
+        //{
+        //    get
+        //    {
+        //        return _idRole;
+        //    }
 
-            set
-            {
-                _idRole = value;
-            }
-        }
+        //    set
+        //    {
+        //        _idRole = value;
+        //    }
+        //}
         
         public IEnumerable<Role> ListeRole { get; set; }
-        
+        public RegisterModel ()
+        {
+
+            this.ListeRole = new List<Role>();
+        }
     }
 }

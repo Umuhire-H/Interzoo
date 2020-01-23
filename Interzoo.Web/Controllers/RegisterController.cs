@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Interzoo.DAL.Repositories;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,6 +12,7 @@ namespace Interzoo.Web.Controllers
         // GET: Register
         public ActionResult Index()
         {
+            UtilisateurRepository ur = new UtilisateurRepository ()
             return View();
         }
     }

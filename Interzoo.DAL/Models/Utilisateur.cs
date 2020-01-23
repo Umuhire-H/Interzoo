@@ -69,13 +69,10 @@ namespace Interzoo.DAL.Models
             }
         }
         // ----EXTRAs
-        public IEnumerable<Role> ListeRole
-        {
-            get; set;
-        }
-        public Utilisateur()
-        {
-            this.ListeRole = new List<Role>();
-        }
+        //public IEnumerable<Role> ListeRole
+        //{
+        //    get; set;
+        //}
+      
     }
 }
