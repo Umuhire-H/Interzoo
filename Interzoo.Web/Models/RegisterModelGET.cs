@@ -14,7 +14,7 @@ namespace Interzoo.Web.Models
         //private string _motDePasse;
         //private DateTime _dateDeNaissance;
         //private string photo;
-        private bool _isAdmin;
+        // private bool _isAdmin;
         
 
         //public string Nom

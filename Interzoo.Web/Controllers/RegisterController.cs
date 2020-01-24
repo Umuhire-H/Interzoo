@@ -26,13 +26,21 @@ namespace Interzoo.Web.Controllers
             // this is a list<ROLE>
             regisM.ListeRole = ur.getAllRolesForRegisterModel(ConfigurationManager.ConnectionStrings["h_Cnstr"].ConnectionString).ToList();
             // list<RoleMODEL>
-            
+            // essai 1
+            //foreach (var item in regisM.ListeRole)
+            //{
+            //    (regisM.ListeRoleModel.ToList()).Add(mapToVIEWmodels.RoleTORoleModel(item));
+            //}
+            //return View(regisM);
+
+            // essai 1
+            List<RoleModel> lr = new List<RoleModel>();
             foreach (var item in regisM.ListeRole)
             {
-                (regisM.ListeRoleModel.ToList()).Add(mapToVIEWmodels.RoleTORoleModel(item));
+                lr.Add(mapToVIEWmodels.RoleTORoleModel(item));
             }
-            
-            return View(regisM);
+
+            return View(lr);
         }
     }
 }

@@ -46,7 +46,8 @@ namespace Interzoo.DAL.Repositories
         // getALL de table Role : 
         public IEnumerable<Role> getAllRolesForRegisterModel(string sameCnstr)
         {
-            SelectAllCommand = "Select * from Role INNER JOIN Utilisateur on Role.IdRole=Utilisateur.IdRole";
+            // SelectAllCommand = "Select * from Role INNER JOIN Utilisateur on Role.IdRole=Utilisateur.IdRole";
+            SelectAllCommand = "Select * from Role ";
             //----
             
             ///1. -objet Command : cmd contient en lui le dico de param + la query -
