@@ -193,14 +193,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             <select type="text" class="form-control" placeholder="Votre statut" name="ListeRoleModel" id="recipient-rname"
                                     required="">
                                 <option class="form-control" value="0">Futur.e  parrain.marraine</option>
-                                @foreach (var item in Model.ListeRoleModel)
-                                {
-                                    @*if (item.IdRole == 0)
-                                    { <option class="form-control" value="0">Futur.e  parrain.marraine</option>
-                                    }*@
-
-                                    <option class="form-control" value="@item.IdRole">@item.TypeRole</option>
-                                }
+                                <option class="form-control" value="1">Vétérinaire</option>
+                                <option class="form-control" value="2">Gardien</option>
+                                <option class="form-control" value="1">Gardien</option>
                             </select>
                         </div>
                         @* isADMIN *@
