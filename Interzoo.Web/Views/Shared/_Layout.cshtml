@@ -4,8 +4,7 @@ Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
-@model Interzoo.Web.Models.RegisterModelGET
-@*@model IEnumerable<Interzoo.Web.Models.RoleModel>*@
+
 
 
 <!DOCTYPE html>
@@ -170,7 +169,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form enctype="multipart/form-data" action="/Register/Index" method="post" class="p-sm-3">
+                    <form enctype="multipart/form-data" action="/Register/RegisterPost" method="post" class="p-sm-3">
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Nom</label>
                             <input type="text" class="form-control" placeholder="" name="Nom" id="recipient-rname"
@@ -195,7 +194,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                 <option class="form-control" value="0">Futur.e  parrain.marraine</option>
                                 <option class="form-control" value="1">Vétérinaire</option>
                                 <option class="form-control" value="2">Gardien</option>
-                                <option class="form-control" value="1">Gardien</option>
+                                <option class="form-control" value="3">Bénévole</option>
                             </select>
                         </div>
                         @* isADMIN *@
