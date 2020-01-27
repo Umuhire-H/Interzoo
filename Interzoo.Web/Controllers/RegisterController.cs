@@ -29,28 +29,60 @@ namespace Interzoo.Web.Controllers
         public ActionResult Register(RegisterModelPOST rmPost, HttpPostedFileBase photo)
         {
             UtilisateurRepository ur = new UtilisateurRepository(ConfigurationManager.ConnectionStrings["My_Asptest_Cnstr"].ConnectionString);
-            // 1. Ajouter MMembre sans photo
-            = ur.insert(MapToDBModel.registerToUtilisateur(rmPost)
-            // 2. photo : 
-            List<string> listeMIME = new List<string>() { "image/jpeg", "image/png", "image/gif" };
-            if (!listeMIME.Contains(photo.ContentType) || photo.ContentLength > 80000)
+            if (!ModelState.IsValid)
             {
-                ViewBag.ErrorMessage = "Votre photo ne possède pas une extension autorisée (choisissez parmis : png, jpg, gif)";
+                foreach (ModelState each_modelState in ViewData.ModelState.Values)
+                {
+                    foreach(ModelError each_error in each_modelState.Errors)
+                    {
+                        ViewBag.ErrorMessage += each_error.ErrorMessage + "<br>";
+                    }
+                }
                 return View("Index");
-            }
-
-
-            if (La  photo is ok)
-            {
-
-                 return RedirectToAction("Index", new { controller = "Home", area = "Personnel" });
             }
             else
             {
+                // 1. Ajouter MMembre sans photo
+                ProfileModel pm = mapToVIEWmodels.utilisateurTOprofileModel(ur.insert(MapToDBModel.registerToUtilisateur(rmPost)));
 
-                return RedirectToAction("Index", new { controller = "Home", area = "" });
-            }
+                // 2. photo : 
+                if (pm != null)
+                {
+                    List<string> listeMIME = new List<string>() { "image/jpeg", "image/png", "image/gif" };
+                    if (!listeMIME.Contains(photo.ContentType) || photo.ContentLength > 80000)
+                    {
+                        ViewBag.ErrorMessage = "Votre photo ne possède pas une extension autorisée (choisissez parmis : png, jpg, gif)";
+                        return View("Index");
+                    }
+                    int id_pm = pm.IdUtilisateur;
+                    string[] splitPhotoname = photo.FileName.Split(new char[] { '.' }, StringSplitOptions.RemoveEmptyEntries);
+                    string ext = splitPhotoname[splitPhotoname.Length - 1];
+                    string photoNew = id_pm + "." + ext;
+                    string chemin = Server.MapPath("~/photos/utilisateur/");
+                    string photoToSave = chemin + "/" + photoNew;
+                    pm.Photo = photoToSave;
+                    // try catch 
+                    bool reussi = ur.update(MapToDBModel.profileTOUtilisateur(pm));
+                    //
+                    if (reussi && pm.IdRole == 0)
+                    {
+                        return RedirectToAction("Index", new { controller = "Home", area = "Parrain" });
 
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", new { controller = "Home", area = "Personnel" });
+
+                    }
+                    //
+
+                }
+                else
+                {
+                    //return RedirectToAction("Index", new { controller = "Home", area = "" });
+                    return View("Index");
+                }
+            }               
         }
     }
 }

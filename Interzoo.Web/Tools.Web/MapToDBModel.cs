@@ -32,6 +32,21 @@ namespace Interzoo.Web.Tools.Web
                 IdRole = rmPost.IdRole
             };
         }
+        public static Utilisateur profileTOUtilisateur (ProfileModel pm)
+        {
+            return new Utilisateur()
+            {
+                IdUtilisateur = pm.IdUtilisateur,
+                Nom = pm.Nom,
+                Prenom = pm.Prenom,
+                Courriel = pm.Courriel,
+                MotDePasse = pm.MotDePasse,
+                DateDeNaissance = pm.DateDeNaissance,
+                Photo = pm.Photo,
+                IsAdmin = pm.IsAdmin,
+                IdRole = pm.IdRole
+            };
+        }
     
 
     }

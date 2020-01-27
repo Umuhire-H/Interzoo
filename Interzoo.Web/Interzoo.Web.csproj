@@ -225,6 +225,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="photos\animal\" />
+    <Folder Include="photos\utilisateur\" />
     <Folder Include="Views\Login\" />
     <Folder Include="Views\Register\" />
   </ItemGroup>
