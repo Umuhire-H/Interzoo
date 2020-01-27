@@ -32,15 +32,7 @@ namespace Interzoo.Web.Tools.Web
                 IdRole = rmPost.IdRole
             };
         }
-        //public static Role RoleTORoleModel(RoleModel rm)
-        //{
-        //    return new Role()
-        //    {
-        //        IdRole = rm.IdRole,
-        //        TypeRole = rm.TypeRole
-        //    };
-
-        //}
+    
 
     }
 }

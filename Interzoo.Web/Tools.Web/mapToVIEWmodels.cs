@@ -19,6 +19,21 @@ namespace Interzoo.Web.Tools.Web
             };
 
         }
+        public static ProfileModel utilisateurTOprofileModel(Utilisateur u)
+        {
+            return new ProfileModel()
+            {
+                IdUtilisateur = u.IdUtilisateur,
+                Nom = u.Nom,
+                Prenom = u.Prenom,
+                Courriel = u.Courriel,
+                MotDePasse = u.MotDePasse,
+                DateDeNaissance = u.DateDeNaissance,
+                Photo = u.Photo,
+                IsAdmin = u.IsAdmin,
+                IdRole = u.IdRole
+            };
+        }
     }
 
     

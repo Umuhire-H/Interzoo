@@ -28,10 +28,22 @@ namespace Interzoo.Web.Controllers
         [HttpPost]
         public ActionResult Register(RegisterModelPOST rmPost, HttpPostedFileBase photo)
         {
-            if(rmPost != null)
+            UtilisateurRepository ur = new UtilisateurRepository(ConfigurationManager.ConnectionStrings["My_Asptest_Cnstr"].ConnectionString);
+            // 1. Ajouter MMembre sans photo
+            = ur.insert(MapToDBModel.registerToUtilisateur(rmPost)
+            // 2. photo : 
+            List<string> listeMIME = new List<string>() { "image/jpeg", "image/png", "image/gif" };
+            if (!listeMIME.Contains(photo.ContentType) || photo.ContentLength > 80000)
+            {
+                ViewBag.ErrorMessage = "Votre photo ne possède pas une extension autorisée (choisissez parmis : png, jpg, gif)";
+                return View("Index");
+            }
+
+
+            if (La  photo is ok)
             {
 
-            return RedirectToAction("Index", new { controller = "Home", area = "Personnel" });
+                 return RedirectToAction("Index", new { controller = "Home", area = "Personnel" });
             }
             else
             {

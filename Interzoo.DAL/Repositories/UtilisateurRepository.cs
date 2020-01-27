@@ -88,7 +88,7 @@ namespace Interzoo.DAL.Repositories
 
         // -----------
         // -----------
-        private Utilisateur mapSqldataRtoUtilisateur(SqlDataReader sqdr)
+        private Utilisateur mapSqldataRtoUtilisateur(SqlDataReader sqdr) // RETOUR <- DB
         {
             return new Utilisateur()
             {
@@ -96,25 +96,31 @@ namespace Interzoo.DAL.Repositories
                 Nom = sqdr["Nom"].ToString(),
                 Prenom = sqdr["Prenom"].ToString(),
                 Courriel = sqdr["Courriel"].ToString(),
-                // MotDePasse = sqdr["MotDePasse"].ToString(),
-                DateDeNaissance = (DateTime)sqdr["DateDeNaissance"]
+                DateDeNaissance = (DateTime)sqdr["DateDeNaissance"],
+                Photo = sqdr["Photo"].ToString(), // sera vide
+                IsAdmin = (bool)sqdr["IsAdmin"],
+                IdRole = (int)sqdr["IdRole"]
+
             };
         }
         
-        private Dictionary<string, object> utilisateurToDico(Utilisateur toInsert)
+        private Dictionary<string, object> utilisateurToDico(Utilisateur toInsert) // Etape pour ALLER -> DB
         {
             return new Dictionary<string, object>
             {
                 ["Nom"] = toInsert.Nom,
                 ["Prenom"] = toInsert.Prenom,
                 ["Courriel"] = toInsert.Courriel,
-                ["MotDePasse"] = toInsert.HashMDP, // <<<<<=====================
-                ["DateDeNaissance"] = toInsert.DateDeNaissance
+                ["MotDePasse"] = toInsert.HashMDP, 
+                ["DateDeNaissance"] = toInsert.DateDeNaissance,
+                ["Photo"] = toInsert.Photo,
+                ["IsAdmin"] = toInsert.IsAdmin,
+                ["IdRole"] = toInsert.IdRole                
             };
         }
         // -----------
 
-        private Role mapSqldataRtoRole(SqlDataReader sqdr)
+        private Role mapSqldataRtoRole(SqlDataReader sqdr) // RETOUR <- DB
         {
             return new Role()
             {
