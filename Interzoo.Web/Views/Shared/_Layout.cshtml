@@ -187,7 +187,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         </div>
                         <div class="form-group">
                             @* ROLE --- value sera : @Model.IdRole
-                                    --- name sera champEXtra: via requete JOIN @model..*@
+            --- name sera champEXtra: via requete JOIN @model..*@
                             <label for="recipient-name" class="col-form-label"> Statut </label>
                             <select type="text" class="form-control" placeholder="Votre statut" name="IdRole" id="recipient-rname"
                                     required>
@@ -200,7 +200,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         @* isADMIN *@
                         <div class="form-group">
                             <label for="recipient-email" class="col-form-label">Administrateur</label>
-                            <input type="hidden" class="form-control" placeholder="" value ="0" name="IsAdmin" id="recipient-email"
+                            <input type="hidden" class="form-control" placeholder="" value="0" name="IsAdmin" id="recipient-email"
                                    required>
                         </div>
                         @* END isAdmin *@
@@ -224,23 +224,28 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             <input type="file" class="form-control" placeholder="Chargez ..." name="Photo" id="picture1"
                                    required>
                         </div>
-                        @*<div class="sub-w3l">
-                            <div class="sub-w3_pvt">
-                                <input type="checkbox" id="brand2" value="">
-                                <label for="brand2" class="mb-3">
-                                    <span></span>I Accept to the Terms & Conditions
-                                </label>
-                            </div>
-                        </div>*@
+                                @*<div class="sub-w3l">
+                    <div class="sub-w3_pvt">
+                        <input type="checkbox" id="brand2" value="">
+                        <label for="brand2" class="mb-3">
+                            <span></span>I Accept to the Terms & Conditions
+                        </label>
+                    </div>
+                </div>*@
                         <div class="right-w3l">
                             <input type="submit" class="form-control" value="Register">
                         </div>
                         @if (ViewBag.SuccessMessage != null)
-                        {
+                         {
                             <div class="alert alert-info">
                                 @ViewBag.SuccessMessage
                             </div>
-                        }
+                         }
+                        @if (@ViewBag.ErrorMessage != null)
+                         {
+                            <br /> <span class="alert alert-danger">@Html.Raw(ViewBag.ErrorMessage)</span> <br />
+
+                         }
                     </form>
                 </div>
             </div>
@@ -259,7 +264,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     </button>
                 </div>
                 <div class="modal-body text-center">
-                    <img src="images/g1.jpg" class="img-fluid" alt="" />
+                    <img src="~/images/g1.jpg" class="img-fluid" alt="" />
                     <p class="text-left my-4">
                         Quisque velit nisi, pretium ut lacinia in, elementum id enim. Curabitur non nulla sit amet
                         nisl
@@ -283,7 +288,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     </button>
                 </div>
                 <div class="modal-body text-center">
-                    <img src="images/g2.jpg" class="img-fluid" alt="" />
+                    <img src="~/images/g2.jpg" class="img-fluid" alt="" />
                     <p class="text-left my-4">
                         Quisque velit nisi, pretium ut lacinia in, elementum id enim. Curabitur non nulla sit amet
                         nisl
@@ -307,7 +312,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     </button>
                 </div>
                 <div class="modal-body text-center">
-                    <img src="images/g3.jpg" class="img-fluid" alt="" />
+                    <img src="~/images/g3.jpg" class="img-fluid" alt="" />
                     <p class="text-left my-4">
                         Quisque velit nisi, pretium ut lacinia in, elementum id enim. Curabitur non nulla sit amet
                         nisl

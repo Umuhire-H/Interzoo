@@ -19,11 +19,30 @@ namespace Interzoo.Web.Controllers
 
             return View();
         }
-
+        public ActionResult Blog()
+        {
+            return View();
+        }
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
 
+            return View();
+        }
+        public ActionResult Formules()
+        {
+            return View();
+        }
+        public ActionResult Portfolio()
+        {
+            return View();
+        }
+        public ActionResult Pricing()
+        {
+            return View();
+        }
+        public ActionResult Team()
+        {
             return View();
         }
     }

@@ -120,6 +120,10 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Parrain\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Parrain\ParrainAreaRegistration.cs" />
+    <Compile Include="Areas\PersonnelController.cs" />
+    <Compile Include="Areas\Personnel\PersonnelAreaRegistration.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
@@ -191,6 +195,8 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.woff2" />
     <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="Areas\Parrain\Views\web.config" />
+    <Content Include="Areas\Personnel\Views\web.config" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -217,17 +223,24 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_Header.cshtml" />
-    <Content Include="Views\Home\Formules.cshtml" />
     <Content Include="Views\Home\Pricing.cshtml" />
+    <Content Include="Views\Home\Formules.cshtml" />
     <Content Include="Views\Home\Team.cshtml" />
     <Content Include="Views\Home\Portfolio.cshtml" />
     <Content Include="Views\Home\Blog.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Parrain\Data\" />
+    <Folder Include="Areas\Parrain\Views\Home\" />
+    <Folder Include="Areas\Parrain\Views\Shared\" />
+    <Folder Include="Areas\Personnel\Controllers\" />
+    <Folder Include="Areas\Personnel\Data\" />
+    <Folder Include="Areas\Personnel\Views\Shared\" />
     <Folder Include="photos\animal\" />
     <Folder Include="photos\utilisateur\" />
     <Folder Include="Views\Login\" />
+    <Folder Include="Views\Personnel\" />
     <Folder Include="Views\Register\" />
   </ItemGroup>
   <ItemGroup>
