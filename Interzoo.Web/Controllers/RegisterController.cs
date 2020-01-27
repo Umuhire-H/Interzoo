@@ -15,33 +15,30 @@ namespace Interzoo.Web.Controllers
         // GET: Register
         public ActionResult Index()
         {
+            //  ============== I3 =====================
+            // ========================================
             //UtilisateurRepository ur = new UtilisateurRepository(ConfigurationManager.ConnectionStrings["My_Asptest_Cnstr"].ConnectionString);
-            //// IEnum<Role> --> List<Role>
-            //RegisterModelGET rm = new RegisterModelGET();
-            //rm.ListeRole = ur.getAllRolesForRegisterModel (ConfigurationManager.ConnectionStrings["My_Asptest_Cnstr"].ConnectionString).ToList();
 
-            UtilisateurRepository ur = new UtilisateurRepository(ConfigurationManager.ConnectionStrings["h_Cnstr"].ConnectionString);
-            // List<Role>  = List<modelDAL>  ----->  vue connait pas modelDAL --> creation modelVUE
-            RegisterModelGET regisM = new RegisterModelGET();
-            // this is a list<ROLE>
-            regisM.ListeRole = ur.getAllRolesForRegisterModel(ConfigurationManager.ConnectionStrings["h_Cnstr"].ConnectionString).ToList();
-            // list<RoleMODEL>
-            // essai 1
-            //foreach (var item in regisM.ListeRole)
-            //{
-            //    (regisM.ListeRoleModel.ToList()).Add(mapToVIEWmodels.RoleTORoleModel(item));
-            //}
-            //return View(regisM);
 
-            // essai 1
-            List<RoleModel> lr = new List<RoleModel>();
-            foreach (var item in regisM.ListeRole)
+            // ============== HOME ====================
+            // ========================================
+            // UtilisateurRepository ur = new UtilisateurRepository(ConfigurationManager.ConnectionStrings["h_Cnstr"].ConnectionString);
+            return RedirectToAction("Index", new { controller = "Home", area = "" });
+        }
+        [HttpPost]
+        public ActionResult Register(RegisterModelPOST rmPost, HttpPostedFileBase photo)
+        {
+            if(rmPost != null)
             {
-                lr.Add(mapToVIEWmodels.RoleTORoleModel(item));
+
+            return RedirectToAction("Index", new { controller = "Home", area = "Personnel" });
+            }
+            else
+            {
+
+                return RedirectToAction("Index", new { controller = "Home", area = "" });
             }
 
-            return View(lr);
         }
-        public Action
     }
 }

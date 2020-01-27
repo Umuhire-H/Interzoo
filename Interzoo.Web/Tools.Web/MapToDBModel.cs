@@ -18,6 +18,20 @@ namespace Interzoo.Web.Tools.Web
                 MotDePasse = lm.MotDePasse
             };
         }
+       public static Utilisateur registerToUtilisateur (RegisterModelPOST rmPost)
+        {
+            return new Utilisateur()
+            {
+                Nom = rmPost.Nom,
+                Prenom = rmPost.Prenom,
+                Courriel = rmPost.Courriel,
+                MotDePasse = rmPost.MotDePasse,
+                DateDeNaissance = rmPost.DateDeNaissance,
+                Photo = rmPost.Photo,
+                IsAdmin = rmPost.IsAdmin,
+                IdRole = rmPost.IdRole
+            };
+        }
         //public static Role RoleTORoleModel(RoleModel rm)
         //{
         //    return new Role()
