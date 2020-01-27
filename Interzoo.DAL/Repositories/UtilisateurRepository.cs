@@ -70,7 +70,16 @@ namespace Interzoo.DAL.Repositories
             Parameters.Add("@IdUtilisateur", id);
             return base.getOne(mapSqldataRtoUtilisateur, Parameters);
         }
-
+        //----
+        public Utilisateur verifLogin(Utilisateur u)
+        {
+            SelectOneCommand = $"Select * from Utilisateur WHERE Courriel=@Courriel AND MotDePasse = @MotDePasse";
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@Courriel", u.Courriel);
+            Parameters.Add("@IdUtilisateur", u.MotDePasse);
+            return base.getOne(mapSqldataRtoUtilisateur, Parameters);
+        }
+        // ----
         public override Utilisateur insert(Utilisateur toInsert)
         {
             Dictionary<string, object> Parameters = utilisateurToDico(toInsert);

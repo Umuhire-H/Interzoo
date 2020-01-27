@@ -26,6 +26,7 @@ namespace Interzoo.Web.Controllers
             return RedirectToAction("Index", new { controller = "Home", area = "" });
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Register(RegisterModelPOST rmPost, HttpPostedFileBase photo)
         {
             UtilisateurRepository ur = new UtilisateurRepository(ConfigurationManager.ConnectionStrings["My_Asptest_Cnstr"].ConnectionString);
