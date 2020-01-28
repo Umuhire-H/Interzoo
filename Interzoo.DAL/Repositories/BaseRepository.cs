@@ -12,7 +12,7 @@ namespace Interzoo.DAL.Repositories
     public abstract class BaseRepository<T, TKey> : IRepository<T, TKey> where T : IEntity<TKey>, new() where TKey : struct
     {
         // champs + constructeur + prop
-         private Connection _oconn;
+         protected Connection _oconn;
         // protected Connection _oconn;
         private string _deleteCommand;
         private string _updateComand;

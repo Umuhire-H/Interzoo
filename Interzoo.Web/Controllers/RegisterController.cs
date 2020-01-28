@@ -20,11 +20,11 @@ namespace Interzoo.Web.Controllers
             //RegisterModelGET rm = new RegisterModelGET();
             //rm.ListeRole = ur.getAllRolesForRegisterModel (ConfigurationManager.ConnectionStrings["My_Asptest_Cnstr"].ConnectionString).ToList();
 
-            UtilisateurRepository ur = new UtilisateurRepository(ConfigurationManager.ConnectionStrings["h_Cnstr"].ConnectionString);
+           // UtilisateurRepository ur = new UtilisateurRepository(ConfigurationManager.ConnectionStrings["h_Cnstr"].ConnectionString);
             // List<Role>  = List<modelDAL>  ----->  vue connait pas modelDAL --> creation modelVUE
-            RegisterModelGET regisM = new RegisterModelGET();
+            //RegisterModelGET regisM = new RegisterModelGET();
             // this is a list<ROLE>
-            regisM.ListeRole = ur.getAllRolesForRegisterModel(ConfigurationManager.ConnectionStrings["h_Cnstr"].ConnectionString).ToList();
+            //regisM.ListeRole = ur.getAllRolesForRegisterModel(ConfigurationManager.ConnectionStrings["h_Cnstr"].ConnectionString).ToList();
             // list<RoleMODEL>
             // essai 1
             //foreach (var item in regisM.ListeRole)
@@ -35,10 +35,10 @@ namespace Interzoo.Web.Controllers
 
             // essai 1
             List<RoleModel> lr = new List<RoleModel>();
-            foreach (var item in regisM.ListeRole)
-            {
-                lr.Add(mapToVIEWmodels.RoleTORoleModel(item));
-            }
+            //foreach (var item in regisM.ListeRole)
+            //{
+            //    lr.Add(mapToVIEWmodels.RoleTORoleModel(item));
+            //}
 
             return View(lr);
         }

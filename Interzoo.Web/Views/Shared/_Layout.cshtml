@@ -4,8 +4,7 @@ Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
-@model Interzoo.Web.Models.RegisterModelGET
-@*@model IEnumerable<Interzoo.Web.Models.RoleModel>*@
+
 
 
 <!DOCTYPE html>
@@ -168,7 +167,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                </div>
+                </div> 
                 <div class="modal-body">
                     <form enctype="multipart/form-data" action="/Register/Index" method="post" class="p-sm-3">
                         <div class="form-group">
@@ -193,7 +192,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             <select type="text" class="form-control" placeholder="Votre statut" name="ListeRoleModel" id="recipient-rname"
                                     required="">
                                 <option class="form-control" value="0">Futur.e  parrain.marraine</option>
-                                @foreach (var item in Model.ListeRoleModel)
+                                @foreach (var item in Model)
                                 {
                                     @*if (item.IdRole == 0)
                                     { <option class="form-control" value="0">Futur.e  parrain.marraine</option>
@@ -377,7 +376,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         </script>*@
     <!-- //Banner  Responsiveslides -->
     <!-- Scrolling Nav JavaScript -->
-    @Scripts.Render("~/Scripts/scrolling")
+    @*@Scripts.Render("~/Scripts/scrolling")*@
     @*<script src="js/scrolling-nav.js"></script>
         <script src="js/counter.js"></script>*@
     <!-- portfolio -->
@@ -392,7 +391,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         </script>*@
     <!-- //portfolio -->
     <!-- start-smooth-scrolling -->
-    @Scripts.Render("~/Scripts/smooth-scrolling")
+    @*@Scripts.Render("~/Scripts/smooth-scrolling")*@
 
     @*<script src="js/move-top.js"></script>
         <script src="js/easing.js"></script>
@@ -409,7 +408,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         </script>*@
     <!-- //end-smooth-scrolling -->
     <!-- smooth-scrolling-of-move-up LAYOUT -->
-    @Scripts.Render("~/Scripts/smooth-scrolling-of-move-up")
+    @*@Scripts.Render("~/Scripts/smooth-scrolling-of-move-up")*@
 
     @*<script>
             $(document).ready(function () {
