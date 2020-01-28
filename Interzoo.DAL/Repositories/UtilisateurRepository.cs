@@ -10,7 +10,7 @@ namespace Interzoo.DAL.Repositories
 {
     public class UtilisateurRepository : BaseRepository<Utilisateur, int>
     {
-        private ToolBox.Database.Connection _myOconn;
+       
         public UtilisateurRepository (string cnstring) : base(cnstring)
         {
             DeleteCommand = @"DELETE FROM Utilisateur WHERE IdUtilisateur=@IdUtilisateur";
@@ -44,23 +44,19 @@ namespace Interzoo.DAL.Repositories
 
         }
         // getALL de table Role : 
-        public IEnumerable<Role> getAllRolesForRegisterModel(string sameCnstr)
+        public IEnumerable<Role> getAllRolesForRegisterModel()
         {
-            // SelectAllCommand = "Select * from Role INNER JOIN Utilisateur on Role.IdRole=Utilisateur.IdRole";
-            SelectAllCommand = "Select * from Role ";
-            //----
             
             ///1. -objet Command : cmd contient en lui le dico de param + la query -
-            ToolBox.Database.Command cmd = new ToolBox.Database.Command(SelectAllCommand);
+            ToolBox.Database.Command cmd = new ToolBox.Database.Command("Select * from Role ");
             ///2. -  dico of parameters -
             Dictionary<string, object> QueryParameters = new Dictionary<string, object>();
             foreach (KeyValuePair<string, object> item in QueryParameters)
             {
                 cmd.AddParameter(item.Key, item.Value);
             }
-            ///3. -objet de connection-
-            _myOconn = new ToolBox.Database.Connection(sameCnstr);
-            return _myOconn.ExecuteReader<Role>(cmd, mapSqldataRtoRole);
+     
+            return _oconn.ExecuteReader<Role>(cmd, mapSqldataRtoRole);
             ///      
         }
      
