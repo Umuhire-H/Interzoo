@@ -1,5 +1,4 @@
-﻿using Interzoo.DAL.Models;
-using Interzoo.DAL.Repositories;
+﻿using Interzoo.DAL.Repositories;
 using Interzoo.Web.Models;
 using Interzoo.Web.Tools.Web;
 using System;
@@ -58,13 +57,13 @@ namespace Interzoo.Web.Controllers
         private List<RoleModel> LoadRoles()
         {
             UtilisateurRepository ur = new UtilisateurRepository(ConfigurationManager.ConnectionStrings["My_Asptest_Cnstr"].ConnectionString);
-            List<Role> ListeRole = ur.getAllRolesForRegisterModel().ToList();
-            List<RoleModel> lr = new List<RoleModel>();
-            foreach (var item in ListeRole)
-            {
-                lr.Add(mapToVIEWmodels.RoleTORoleModel(item));
-            }
-            return lr;
+            //List<Role> ListeRole = ur.getAllRolesForRegisterModel().ToList();
+            //List<RoleModel> lr = new List<RoleModel>();
+            //foreach (var item in ListeRole)
+            //{
+            //    lr.Add(mapToVIEWmodels.RoleTORoleModel(item));
+            //}
+            return ur.getAllRolesForRegisterModel().Select(item => mapToVIEWmodels.RoleTORoleModel(item)).ToList();
         }
     }
 }
