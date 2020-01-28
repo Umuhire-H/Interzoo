@@ -39,7 +39,7 @@ namespace Interzoo.Web.Controllers
                         ViewBag.ErrorMessage += each_error.ErrorMessage + "<br>";
                     }
                 }
-                return View("Index");
+                return RedirectToAction("Index");
             }
             else
             {
@@ -80,8 +80,8 @@ namespace Interzoo.Web.Controllers
                 }
                 else
                 {
-                    //return RedirectToAction("Index", new { controller = "Home", area = "" });
-                    return View("Index");
+
+                    return RedirectToAction("Index");
                 }
             }               
         }
