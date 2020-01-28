@@ -22,6 +22,7 @@ namespace Interzoo.Web.Tools.Web
         {
             return new Utilisateur()
             {
+                //IdUtilisateur = rmPost.IdUtilisateur, // car  rmPOST n'en contient pas
                 Nom = rmPost.Nom,
                 Prenom = rmPost.Prenom,
                 Courriel = rmPost.Courriel,

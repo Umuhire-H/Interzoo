@@ -43,6 +43,7 @@ namespace Interzoo.Web.Controllers
             }
             else
             {
+                
                 // 1. Ajouter MMembre sans photo
                 ProfileModel pm = mapToVIEWmodels.utilisateurTOprofileModel(ur.insert(MapToDBModel.registerToUtilisateur(rmPost)));
 
@@ -55,13 +56,14 @@ namespace Interzoo.Web.Controllers
                         ViewBag.ErrorMessage = "Votre photo ne possède pas une extension autorisée (choisissez parmis : png, jpg, gif)";
                         return View("Index");
                     }
-                    int id_pm = pm.IdUtilisateur;
+                    
                     string[] splitPhotoname = photo.FileName.Split(new char[] { '.' }, StringSplitOptions.RemoveEmptyEntries);
                     string ext = splitPhotoname[splitPhotoname.Length - 1];
-                    string photoNew = id_pm + "." + ext;
+                    string photoNew = pm.IdUtilisateur + "." + ext;
                     string chemin = Server.MapPath("~/photos/utilisateur/");
                     string photoToSave = chemin + "/" + photoNew;
-                    pm.Photo = photoToSave;
+                    photo.SaveAs(photoToSave);
+                    pm.Photo = photoNew;
                     // try catch 
                     bool reussi = ur.update(MapToDBModel.profileTOUtilisateur(pm));
                     //

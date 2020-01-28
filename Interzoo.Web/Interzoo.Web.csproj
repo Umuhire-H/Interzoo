@@ -197,6 +197,9 @@
     <Content Include="fonts\FontAwesome.otf" />
     <Content Include="Areas\Parrain\Views\web.config" />
     <Content Include="Areas\Personnel\Views\web.config" />
+    <Content Include="Areas\Parrain\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Parrain\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Parrain\Views\Home\Index.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -232,8 +235,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Parrain\Data\" />
-    <Folder Include="Areas\Parrain\Views\Home\" />
-    <Folder Include="Areas\Parrain\Views\Shared\" />
     <Folder Include="Areas\Personnel\Controllers\" />
     <Folder Include="Areas\Personnel\Data\" />
     <Folder Include="Areas\Personnel\Views\Shared\" />

@@ -17,7 +17,7 @@ namespace Interzoo.DAL.Repositories
             UpdateCommand = @"UPDATE Utilisateur SET Nom=@Nom, Prenom=@Prenom, DateDeNaissance=@DateDeNaissance, Courriel=@Courriel,  MotDePasse = @MotDePasse, Photo=@Photo, IsAdmin=@IsAdmin, IdRole=@IdRole
                          WHERE IdUtilisateur=@IdUtilisateur;";
             InsertCommand = @"INSERT INTO  Utilisateur (Nom ,Prenom ,DateDeNaissance ,Courriel ,MotDePasse, Photo,IsAdmin, IdRole) OUTPUT inserted.IdUtilisateur 
-                            VALUES(@Nom, @Prenom, @DateDeNaissance, @Courriel,@MotDePasse, @Photo, @IsAdmin, @IdRole )";
+                            VALUES(@Nom, @Prenom, @DateDeNaissance, @Courriel, @MotDePasse, @Photo, @IsAdmin, @IdRole )";
 
             SelectAllCommand = "Select * from Utilisateur";
             SelectOneCommand = $"Select * from Utilisateur where IdUtilisateur=@IdUtilisateur";
@@ -72,7 +72,7 @@ namespace Interzoo.DAL.Repositories
             SelectOneCommand = $"Select * from Utilisateur WHERE Courriel=@Courriel AND MotDePasse = @MotDePasse";
             Dictionary<string, object> Parameters = new Dictionary<string, object>();
             Parameters.Add("@Courriel", u.Courriel);
-            Parameters.Add("@IdUtilisateur", u.MotDePasse);
+            Parameters.Add("@MotDePasse", u.MotDePasse);
             return base.getOne(mapSqldataRtoUtilisateur, Parameters);
         }
         // ----
@@ -113,6 +113,8 @@ namespace Interzoo.DAL.Repositories
         {
             return new Dictionary<string, object>
             {
+               
+                ["IdUtilisateur"] = toInsert.IdUtilisateur,
                 ["Nom"] = toInsert.Nom,
                 ["Prenom"] = toInsert.Prenom,
                 ["Courriel"] = toInsert.Courriel,

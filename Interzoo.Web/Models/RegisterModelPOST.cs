@@ -8,6 +8,7 @@ namespace Interzoo.Web.Models
 {
     public class RegisterModelPOST //
     {
+        private string _idUtilisateur;//
         private string _nom;//
         private string _prenom;//
         private string _courriel;//
@@ -18,6 +19,19 @@ namespace Interzoo.Web.Models
         private bool _isAdmin;//
         private int _idRole;//
 
+
+        public string IdUtilisateur
+        {
+            get
+            {
+                return _idUtilisateur;
+            }
+
+            set
+            {
+                _idUtilisateur = value;
+            }
+        }
         [Required(ErrorMessage ="Veuillez compléter le champ 'Nom'")]
         public string Nom
         {
@@ -138,6 +152,6 @@ namespace Interzoo.Web.Models
             }
         }
 
-
+      
     }
 }

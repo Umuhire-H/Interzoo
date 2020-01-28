@@ -49,25 +49,39 @@ namespace Interzoo.Web.Controllers
         public ActionResult Login(LoginModel lm)
         {
             UtilisateurRepository ur = new UtilisateurRepository(ConfigurationManager.ConnectionStrings["My_Asptest_Cnstr"].ConnectionString);
-
-            ProfileModel pm = mapToVIEWmodels.utilisateurTOprofileModel(ur.verifLogin(MapToDBModel.loginToUtilisateur(lm)));
-            if (pm != null)
+            if (!ModelState.IsValid)
             {
-                SessionUtilisateur.ConnectedUser = pm;
-                SessionUtilisateur.IsConnected = true;
-                //return RedirectToAction("Index", new
-                //{
-                //    Controller = "Home",
-                //    Area = ""
-                //}); 
+                foreach (ModelState each_modelState in ViewData.ModelState.Values)
+                {
+                    foreach (ModelError each_error in each_modelState.Errors)
+                    {
+                        ViewBag.ErrorMessage += each_error.ErrorMessage + "<br>";
+                    }
+                }
+                return RedirectToAction("Index");
             }
             else
             {
-                ViewBag.ErrorInLoginProcess = "Error with tne email or password";
+
+                ProfileModel pm = mapToVIEWmodels.utilisateurTOprofileModel(ur.verifLogin(MapToDBModel.loginToUtilisateur(lm)));
+                if (pm != null)
+                {
+                    SessionUtilisateur.ConnectedUser = pm;
+                    SessionUtilisateur.IsConnected = true;
+                    //return RedirectToAction("Index", new
+                    //{
+                    //    Controller = "Home",
+                    //    Area = ""
+                    //}); 
+                }
+                else
+                {
+                    ViewBag.ErrorInLoginProcess = "Error with tne email or password";
                 
+                }
+                return RedirectToAction("Index", new { Controller = "Home", Area = "" });
+                //if ou else : faut passer par index de ce controller : pour suite des verif (parrain...)  
             }
-            return RedirectToAction("Index", new { Controller = "Home", Area = "" });
-            //if ou else : faut passer par index de ce controller : pour suite des verif (parrain...)  
         }
         public RedirectToRouteResult Logout()
         {
