@@ -3,7 +3,11 @@
 @{
     ViewBag.Title = "Index";
 }
-
+@section header{
+    @{
+        Html.RenderPartial("~/Views/Shared/_Header.cshtml");
+    }
+}
 <h2>Index</h2>
 
 <div>

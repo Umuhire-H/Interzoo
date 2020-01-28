@@ -72,7 +72,7 @@ namespace Interzoo.DAL.Repositories
             SelectOneCommand = $"Select * from Utilisateur WHERE Courriel=@Courriel AND MotDePasse = @MotDePasse";
             Dictionary<string, object> Parameters = new Dictionary<string, object>();
             Parameters.Add("@Courriel", u.Courriel);
-            Parameters.Add("@MotDePasse", u.MotDePasse);
+            Parameters.Add("@MotDePasse", u.HashMDP);
             return base.getOne(mapSqldataRtoUtilisateur, Parameters);
         }
         // ----
