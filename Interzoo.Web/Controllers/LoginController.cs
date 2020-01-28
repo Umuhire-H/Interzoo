@@ -38,7 +38,12 @@ namespace Interzoo.Web.Controllers
                     //    return View();
                 }                
             }
-            return View();
+            //return View();
+            return RedirectToAction("Index", new
+            {
+                Controller = "Home",
+                Area = ""
+            });
         }
         [HttpPost]
         public ActionResult Login(LoginModel lm)
