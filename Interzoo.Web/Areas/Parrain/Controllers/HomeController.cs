@@ -17,5 +17,16 @@ namespace Interzoo.Web.Areas.Parrain.Controllers
             ParrainModel pm = new ParrainModel();
             return View(pm);
         }
+        public RedirectToRouteResult Logout()
+        {
+
+            Session.Abandon();
+            return RedirectToAction("Index", new
+            {
+                Controller = "Home",
+                Area = ""
+            });
+
+        }
     }
 }

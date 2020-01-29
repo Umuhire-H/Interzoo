@@ -20,15 +20,15 @@ namespace Interzoo.Web.Controllers
             {
                 switch (SessionUtilisateur.ConnectedUser.IdRole)
                 {
-                    case '0':
+                    case 0:
                         return RedirectToAction("Index", new
                         {
                             Controller = "Home",
                             Area = "Parrain"
                         });                        
-                    case '1':
-                    case '2':
-                    case '3':
+                    case 1:
+                    case 2:
+                    case 3:
                         return RedirectToAction("Index", new
                         {
                             Controller = "Home",
@@ -68,31 +68,17 @@ namespace Interzoo.Web.Controllers
                 {
                     SessionUtilisateur.ConnectedUser = pm;
                     SessionUtilisateur.IsConnected = true;
-                    //return RedirectToAction("Index", new
-                    //{
-                    //    Controller = "Home",
-                    //    Area = ""
-                    //}); 
+                    return RedirectToAction("Index");
                 }
                 else
                 {
                     ViewBag.ErrorInLoginProcess = "Error with tne email or password";
-                
-                }
                 return RedirectToAction("Index", new { Controller = "Home", Area = "" });
+                }
+                
                 //if ou else : faut passer par index de ce controller : pour suite des verif (parrain...)  
             }
         }
-        public RedirectToRouteResult Logout()
-        {
-            
-            Session.Abandon();
-            return RedirectToAction("Index", new
-            {
-                Controller = "Home",
-                Area = ""
-            });
-            
-        }
+        
     }
 }
