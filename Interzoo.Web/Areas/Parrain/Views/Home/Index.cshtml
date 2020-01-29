@@ -2,23 +2,52 @@
 @{
     ViewBag.Title = "Parrain|Index";
 }
-@section header{
-    @{
-        Html.RenderPartial("~/Views/Shared/_Header.cshtml");
-    }
-}
 
+<!-- banner = home -->
+    <div id="home">
+        <!-- --------------------------------  STAY - LAYOUT--------------------------------------------------->
+        <!-- color scheme -->
+        <div class="blast-box">
+            <div class="blast-frame">
+                <p>color schemes</p>
+                <div class="blast-colors d-flex justify-content-center">
+                    <div class="blast-color">#23d48f</div>
+                    <div class="blast-color">#d3b800</div>
+                    <div class="blast-color">#18e7d3</div>
+                    <div class="blast-color">#e5902a</div>
+                    <div class="blast-color">#16d9e9</div>
+                    <!-- you can add more colors here -->
+                </div>
+                <p class="blast-custom-colors">Choose Custom color</p>
+                <input type="color" name="blastCustomColor" value="#d3b800">
 
+            </div>
+            <div class="blast-icon"><span class="fa fa-paint-brush" aria-hidden="true"></span></div>
+        </div>
+        <!-- //color scheme -->
+        <!-- header -->
+        @section header{
+            @{
+                Html.RenderPartial("~/Views/Shared/_Header.cshtml");
+            }
+        }
 
+        <!-- //header -->
 
+    <div class="callbacks_container" style="background-color:black; min-height:5em">
 
-<h2>Area|Parrain|Index</h2>
+    </div>
+        
 
-<div>
-    <h4> Bonjour, @Model.InfoParrain.Nom  @Model.InfoParrain.Prenom</h4>
-   
+        
+    
+    </div><div class="container">
+    <div class="rslides">
+        <h4> Bonjour, @Model.InfoParrain.Nom  @Model.InfoParrain.Prenom</h4>
+
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
