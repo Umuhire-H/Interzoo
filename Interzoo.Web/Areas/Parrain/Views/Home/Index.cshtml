@@ -1,92 +1,17 @@
-﻿@model Interzoo.Web.Models.ProfileModel
-
+﻿
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Parrain|Index";
 }
 @section header{
     @{
         Html.RenderPartial("~/Views/Shared/_Header.cshtml");
     }
 }
-<h2>Index</h2>
+<h2>Area|Parrain|Index</h2>
 
 <div>
-    <h4>ProfileModel</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.IdUtilisateur)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.IdUtilisateur)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Nom)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Nom)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Prenom)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Prenom)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Courriel)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Courriel)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.MotDePasse)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MotDePasse)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DateDeNaissance)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DateDeNaissance)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Photo)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Photo)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.IsAdmin)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.IsAdmin)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.IdRole)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.IdRole)
-        </dd>
-
-    </dl>
+    <h4> Bonjour, @Model.InfoParrain.Nom  @Model.InfoParrain.Prenom</h4>
+   
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |

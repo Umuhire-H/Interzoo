@@ -121,6 +121,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Parrain\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Parrain\ModelsParrain\ParrainModel.cs" />
     <Compile Include="Areas\Parrain\ParrainAreaRegistration.cs" />
     <Compile Include="Areas\PersonnelController.cs" />
     <Compile Include="Areas\Personnel\PersonnelAreaRegistration.cs" />

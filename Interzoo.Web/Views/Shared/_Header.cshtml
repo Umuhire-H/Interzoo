@@ -23,8 +23,8 @@
                 </li>
                 @* ------------------------------------ *@
                 @*<li class="nav-item mt-lg-0 mt-3">
-                    <a class="nav-link scroll" href="~/Home/Formules">features</a>
-                </li>*@
+                <a class="nav-link scroll" href="~/Home/Formules">features</a>
+            </li>*@
                 @* --------- *@
                 <li class="nav-item dropdown mt-lg-0 mt-3">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
@@ -35,7 +35,7 @@
                         <a class="nav-link scroll" href="~/Home/Formules">Formules</a>
                         <a class="dropdown-item scroll nav-link" href="~/Home/Pricing">Prix</a>
                         <a class="dropdown-item scroll nav-link" href="~/Home/Pricing">Nos Promos</a>
-                        
+
                     </div>
                 </li>
                 @* ------------------------------------ *@
@@ -55,10 +55,21 @@
                 </li>
             </ul>
             @* ----------button pointant vers logOut si connected----------------- *@
-            <button type="button" class="btn  wthree-link-bnr bg-theme rounded-circle text-center mt-lg-0 mt-3" data-toggle="modal"
-                    aria-pressed="false" data-target="#exampleModal" data-blast="bgColor">
-                <span class="fa fa-user text-white"></span>
-            </button>
+            @if (!Interzoo.Web.Tools.Web.SessionUtilisateur.IsConnected)
+            {
+                <button type="button" class="btn  wthree-link-bnr bg-theme rounded-circle text-center mt-lg-0 mt-3" data-toggle="modal"
+                        aria-pressed="false" data-target="#exampleModal" data-blast="bgColor">
+                    <span class="fa fa-user text-white"></span>
+                </button>
+            }
+            else
+            {
+                <button type="button" class="btn  wthree-link-bnr bg-theme rounded-circle text-center mt-lg-0 mt-3"
+                        aria-pressed="false" data-blast="bgColor">
+                    <span class="fa fa-lock text-white"></span>
+                </button>
+
+            }
             @* ------------------------------------------------------------------- *@
         </div>
 
