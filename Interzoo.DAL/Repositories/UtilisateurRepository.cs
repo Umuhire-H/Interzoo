@@ -45,8 +45,7 @@ namespace Interzoo.DAL.Repositories
         }
         // getALL de table Role : 
         public IEnumerable<Role> getAllRolesForRegisterModel()
-        {
-            
+        {          
             ///1. -objet Command : cmd contient en lui le dico de param + la query -
             ToolBox.Database.Command cmd = new ToolBox.Database.Command("Select * from Role ");
             ///2. -  dico of parameters -
