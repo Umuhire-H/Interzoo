@@ -10,6 +10,10 @@ namespace Interzoo.Web.Areas.Parrain.ModelsParrain
     public class ParrainModel
     {
         public ProfileModel InfoParrain { get; set; }
+        public IEnumerable<AnimalModel> AnimauxAdoptes
+        {
+            get; set;
+        }
         public ParrainModel()
         {
             this.InfoParrain = SessionUtilisateur.ConnectedUser;
