@@ -14,8 +14,43 @@ namespace Interzoo.DAL.Models
         private int _idCaracteristique;
         private string _nomCaracteristique;
 
-        public int IdAnimal { get => _idAnimal; set => _idAnimal = value; }
-        public int IdCaracteristique { get => _idCaracteristique; set => _idCaracteristique = value; }
-        public string NomCaracteristique { get => _nomCaracteristique; set => _nomCaracteristique = value; }
+        public int IdAnimal
+        {
+            get
+            {
+                return _idAnimal;
+            }
+
+            set
+            {
+                _idAnimal = value;
+            }
+        }
+        public int IdCaracteristique
+        {
+            get
+            {
+                return _idCaracteristique;
+            }
+
+            set
+            {
+                _idCaracteristique = value;
+            }
+        }
+        public string NomCaracteristique
+        {
+            get
+            {
+                return _nomCaracteristique;
+            }
+
+            set
+            {
+                _nomCaracteristique = value;
+            }
+        }
+
+ 
     }
 }

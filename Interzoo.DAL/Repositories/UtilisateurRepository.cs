@@ -15,7 +15,7 @@ namespace Interzoo.DAL.Repositories
         {
             DeleteCommand = @"DELETE FROM Utilisateur WHERE IdUtilisateur=@IdUtilisateur";
             UpdateCommand = @"UPDATE Utilisateur SET Nom=@Nom, Prenom=@Prenom, DateDeNaissance=@DateDeNaissance, Courriel=@Courriel,  MotDePasse = @MotDePasse, Photo=@Photo, IsAdmin=@IsAdmin, IdRole=@IdRole
-                         WHERE IdUtilisateur=@IdUtilisateur;";
+                         WHERE IdUtilisateur=@IdUtilisateur";
             InsertCommand = @"INSERT INTO  Utilisateur (Nom ,Prenom ,DateDeNaissance ,Courriel ,MotDePasse, Photo,IsAdmin, IdRole) OUTPUT inserted.IdUtilisateur 
                             VALUES(@Nom, @Prenom, @DateDeNaissance, @Courriel, @MotDePasse, @Photo, @IsAdmin, @IdRole )";
 

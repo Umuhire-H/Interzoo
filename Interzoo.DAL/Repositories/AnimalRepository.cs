@@ -13,7 +13,7 @@ namespace Interzoo.DAL.Repositories
         public AnimalRepository(string cnString) : base(cnString)
         {
             DeleteCommand = @"DELETE * FROM Animal WHERE IdAnimal=@IdAnimal";
-            UpdateCommand = @"UPDATE Animal SET Nom=@Nom, NomScientifique=@NomScientifique, RegionOrigine=@RegionOrigine, IdCategorie=@IdCategorie, Photo=@Photo   WHERE IdAnimal=@IdAnimal;";
+            UpdateCommand = @"UPDATE Animal SET Nom=@Nom, NomScientifique=@NomScientifique, RegionOrigine=@RegionOrigine, IdCategorie=@IdCategorie, Photo=@Photo   WHERE IdAnimal=@IdAnimal";
             InsertCommand = @"INSERT INTO  Animal (Nom ,NomScientifique ,RegionOrigine ,IdCategorie , Photo) OUTPUT inserted.IdAnimal 
                             VALUES(@Nom, @NomScientifique, @RegionOrigine, @IdCategorie, @Photo )";
 
