@@ -60,6 +60,8 @@
     <Compile Include="Repositories\AnimalCaracteristiqueRepository.cs" />
     <Compile Include="Repositories\AnimalRepository.cs" />
     <Compile Include="Repositories\BaseRepository.cs" />
+    <Compile Include="Repositories\CaracteristiqueRepository.cs" />
+    <Compile Include="Repositories\FormuleRepository.cs" />
     <Compile Include="Repositories\UtilisateurRepository.cs" />
   </ItemGroup>
   <ItemGroup>

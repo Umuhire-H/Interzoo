@@ -36,7 +36,17 @@ namespace Interzoo.DAL.Repositories
         {
             return base.getAll(mapSqlDRtoAnimalCaracteristique);
         }
-       
+        public IEnumerable<AnimalCaracteristique> getAllCaractVALUEOfOneAnimal (int id/*CompositeKey<int, int> id*/)
+        {
+            SelectOneCommand = @"Select * from AnimalCaracteristique 
+                                    WHERE IdAnimal=@IdAnimal";
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@IdAnimal", id);
+            //Parameters.Add("@IdAnimal", id.PK1);
+            //Parameters.Add("@IdCaracteristique", id.PK2);
+            return base.getAll(mapSqlDRtoAnimalCaracteristique, Parameters);
+        }
+        
 
         public override AnimalCaracteristique getOne(CompositeKey<int, int> id)
         {

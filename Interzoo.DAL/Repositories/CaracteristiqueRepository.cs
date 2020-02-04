@@ -35,6 +35,17 @@ namespace Interzoo.DAL.Repositories
         {
             return base.getAll(sqlDataRtoCaracteristique);
         }
+        //
+        public  IEnumerable<Caracteristique> getAllCaractTYPEOfOneAnimal(int id)
+        {
+            SelectOneCommand = @"Select * from Caracteristique 
+                              INNER JOIN AnimalCaracteristique on AnimalCaracteristique.IdCaracteristique=Caracteristique.IdCaracteristique
+                              INNER JOIN Animal on Animal.IdAnimal=AnimalCaracteristique.IdAnimal
+                                    WHERE IdAnimal=@IdAnimal";
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@IdAnimal", id);
+            return base.getAll(sqlDataRtoCaracteristique, Parameters);
+        }
 
         public override Caracteristique getOne(int id)
         {
