@@ -135,6 +135,7 @@
     <Compile Include="Models\AnimalModel.cs" />
     <Compile Include="Models\CaracteristiqueModel.cs" />
     <Compile Include="Models\FormuleModel.cs" />
+    <Compile Include="Models\IntroductionViewModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\ProfileModel.cs" />
     <Compile Include="Models\RegisterModelPOST.cs" />
