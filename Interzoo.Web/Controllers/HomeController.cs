@@ -37,13 +37,13 @@ namespace Interzoo.Web.Controllers
         }
         public ActionResult Formules()
         {
-            IntroductionViewModel ivm = new IntroductionViewModel();
-            ivm.RoleModels = LoadRoles();
-            //--
-            FormuleRepository fr = new FormuleRepository(ConfigurationManager.ConnectionStrings["h_Cnstr"/*"My_Asptest_Cnstr"*/].ConnectionString);
-            //  
-            ivm.Formules = fr.getAll().Select(formule => mapToVIEWmodels.formuleToFormuleModel(formule)).ToList();
-            return View(ivm);
+            //IntroductionViewModel ivm = new IntroductionViewModel();
+            //ivm.RoleModels = LoadRoles();
+            ////--
+            //FormuleRepository fr = new FormuleRepository(ConfigurationManager.ConnectionStrings["h_Cnstr"/*"My_Asptest_Cnstr"*/].ConnectionString);
+            ////  
+            //ivm.Formules = fr.getAll().Select(formule => mapToVIEWmodels.formuleToFormuleModel(formule)).ToList();
+            return View(LoadRoles()/*ivm*/);
         }
         public ActionResult Portfolio()
         {
