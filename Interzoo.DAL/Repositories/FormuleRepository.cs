@@ -37,6 +37,16 @@ namespace Interzoo.DAL.Repositories
         {
             return base.getAll(sqldataRtoFormule);
         }
+        public  IEnumerable<Formule> getAllFormulesOneUtilisateur(int idUtilisateur)
+        {
+            SelectAllCommand = @"Select * from Formule 
+                INNER JOIN Parrain on Parrain.IdFormule=Formule.idFormule
+                INNER JOIN Utilisateur on Utilisateur.IdUtilisateur=Parrain.IdUtilisateur
+                WHERE Utilisateur.IdUtilisateur=@IdUtilisateur";
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@IdUtilisateur", idUtilisateur);
+            return base.getAll(sqldataRtoFormule, Parameters);
+        }
 
         public override Formule getOne(int id)
         {
