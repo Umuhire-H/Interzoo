@@ -2,11 +2,39 @@
 <section class="py-lg-5 py-4" id="plans">
     <div class="container py-md-5">
         <div class="title-desc text-center pb-sm-3">
-            <h3 class="main-title-w3pvt">recent projects</h3>
-            <p>helping animals & working on environmental issues.</p>
+            <h3 class="main-title-w3pvt">Our Packages</h3>
+            <p> Choose the One and start helping your animal</p>
         </div>
         <div class="row price-row">
-            <div class="col-lg-4 col-sm-6 column mb-lg-0 mb-4">
+            @{
+                foreach (var item in Model.Formules)
+                {
+                        <div class="col-lg-4 col-sm-6 column mb-lg-0 mb-4">
+                            <div class="box" data-blast="borderColor">
+                                <div class="title">
+                                    <span class="fa fa-gg" data-blast="color"></span>
+                                    <h5 data-blast="color">@item.Nom</h5>
+                                </div>
+                                <div class="price">
+                                    <h6>Price - <sup>$</sup><span class="font-weight-bold">@item.Prix</span></h6>
+                                </div>
+                                <div class="option">
+                                    <ul>
+                                        <li>@item.Description</li>
+                                        
+                                        
+                                    </ul>
+                                </div>
+                                <button type="button" class="btn w3ls-btn bg-theme  d-block" data-toggle="modal" aria-pressed="false"
+                                        data-target="#exampleModal" data-blast="bgColor">
+                                    I choose this !
+                                </button>
+                            </div>
+                        </div>
+            
+                }
+            }
+            @*<div class="col-lg-4 col-sm-6 column mb-lg-0 mb-4">
                 <div class="box" data-blast="borderColor">
                     <div class="title">
                         <span class="fa fa-gg" data-blast="color"></span>
@@ -28,7 +56,7 @@
                         donate now
                     </button>
                 </div>
-            </div>
+            </div>*@
             <div class="col-lg-4 col-sm-6 column mb-lg-0 mb-4">
                 <div class="box" data-blast="borderColor">
                     <div class="title">
