@@ -48,7 +48,51 @@ namespace Interzoo.Web.Tools.Web
                 IdRole = pm.IdRole
             };
         }
-    
+        //--
+        public static Animal animalToAnimalModel(AnimalModel am)
+        {
+            return new Animal()
+            {
+                IdAnimal = am.IdAnimal, // <==
+                Nom = am.Nom,
+                NomScientifique = am.NomScientifique,
+                RegionOrigine = am.RegionOrigine,
+                IdCategorie = am.IdCategorie,
+                Photo = am.Photo
+            };
+        }
+
+        public static AnimalCaracteristique animalCaracToAnimalCaractModel(AnimalCaracteristiqueModel acm)
+        {
+            return new AnimalCaracteristique()
+            {
+                IdAnimal = acm.IdAnimal,
+                IdCaracteristique = acm.IdCaracteristique,
+                NomCaracteristique = acm.NomCaracteristique
+            };
+        }
+        public static Caracteristique caracToCaractModel(CaracteristiqueModel cm)
+        {
+            return new Caracteristique()
+            {
+                IdCaracteristique = cm.IdCaracteristique,
+                TypeCaracteristique = cm.TypeCaracteristique
+            };
+        }
+        //--
+        public static FormuleModel formuleToFormuleModel(Formule f)
+        {
+            return new FormuleModel()
+            {
+                IdFormule = f.IdFormule,
+                Nom = f.Nom,
+                Description = f.Description,
+                Prix = f.Prix,
+                DateDebut = f.DateDebut,
+                DateFin = f.DateFin
+            };
+        }
+
 
     }
 }

@@ -93,5 +93,10 @@ namespace Interzoo.DAL.Models
                 _dateFin = value;
             }
         }
+        // extras
+        public IEnumerable<Formule> FormulesOneUtilisateur
+        {
+            get;set;
+        }
     }
 }

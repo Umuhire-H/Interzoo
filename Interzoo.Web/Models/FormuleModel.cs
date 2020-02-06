@@ -91,5 +91,10 @@ namespace Interzoo.Web.Models
                 _dateFin = value;
             }
         }
+        // extras
+        public IEnumerable<FormuleModel> FormulesOneUtilisateur
+        {
+            get; set;
+        }
     }
 }

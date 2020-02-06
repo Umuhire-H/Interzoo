@@ -9,7 +9,7 @@ namespace Interzoo.Web.Tools.Web
 {
     public static class mapToVIEWmodels
     {
-        
+
         public static RoleModel RoleTORoleModel(Role r)
         {
             return new RoleModel()
@@ -32,6 +32,35 @@ namespace Interzoo.Web.Tools.Web
                 Photo = u.Photo,
                 IsAdmin = u.IsAdmin,
                 IdRole = u.IdRole
+            };
+        }
+        public static AnimalModel animalToAnimalModel(Animal a)
+        {
+            return new AnimalModel()
+            {
+                IdAnimal = a.IdAnimal,
+                Nom = a.Nom,
+                NomScientifique = a.NomScientifique,
+                RegionOrigine = a.RegionOrigine,
+                IdCategorie = a.IdCategorie,
+                Photo = a.Photo
+            };
+        }
+        public static AnimalCaracteristiqueModel animalCaracToAnimalCaractModel(AnimalCaracteristique ac)
+        {
+            return new AnimalCaracteristiqueModel()
+            {
+                IdAnimal = ac.IdAnimal,
+                IdCaracteristique = ac.IdCaracteristique,
+                NomCaracteristique = ac.NomCaracteristique
+            };
+        }
+        public static CaracteristiqueModel caracToCaractModel(Caracteristique c)
+        {
+            return new CaracteristiqueModel()
+            {
+                IdCaracteristique = c.IdCaracteristique,
+                TypeCaracteristique = c.TypeCaracteristique
             };
         }
         public static FormuleModel formuleToFormuleModel(Formule f)
