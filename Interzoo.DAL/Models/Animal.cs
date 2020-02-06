@@ -90,15 +90,15 @@ namespace Interzoo.DAL.Models
             }
         }
         //----------extras
-        public Dictionary<Caracteristique , AnimalCaracteristique>caracteriticTypeValue { get; set; }
-        public IEnumerable<AnimalCaracteristique> allCaracteristicsValues
-        {
-            get; set;
-        }
-        public IEnumerable<Caracteristique> allCaracteristicsTypes
-        {
-            get; set;
-        }
         public IEnumerable<Animal> AllAnimalsOneGodparent { get; set; }
+        public Dictionary<Caracteristique , AnimalCaracteristique>caracteriticTypeValue { get; set; }
+        //public IEnumerable<AnimalCaracteristique> allCaracteristicsValues
+        //{
+        //    get; set;
+        //}
+        //public IEnumerable<Caracteristique> allCaracteristicsTypes
+        //{
+        //    get; set;
+        //}
     }
 }

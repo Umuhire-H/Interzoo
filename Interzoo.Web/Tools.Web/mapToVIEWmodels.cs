@@ -34,6 +34,18 @@ namespace Interzoo.Web.Tools.Web
                 IdRole = u.IdRole
             };
         }
+        public static FormuleModel formuleToFormuleModel(Formule f)
+        {
+            return new FormuleModel()
+            {
+                IdFormule = f.IdFormule,
+                Nom = f.Nom,
+                Description = f.Description,
+                Prix = f.Prix,
+                DateDebut = f.DateDebut,
+                DateFin = f.DateFin
+            };
+        }
     }
 
     

@@ -87,6 +87,13 @@ namespace Interzoo.Web.Models
             }
         }
         // extra
-        
+        public IEnumerable<AnimalModel> AllAnimalsOneGodparent
+        {
+            get; set;
+        }
+        public Dictionary<CaracteristiqueModel, AnimalCaracteristiqueModel> caracteriticTypeValue
+        {
+            get; set;
+        }
     }
 }
