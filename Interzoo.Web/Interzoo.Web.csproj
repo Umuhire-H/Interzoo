@@ -201,6 +201,7 @@
     <Content Include="js\scrolling-nav.js" />
     <Content Include="js\smooth-scrolling-of-move-up.js" />
     <Content Include="js\SmoothScroll.min.js" />
+    <Content Include="photos\utilisateur\12.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="fonts\fontawesome-webfont.eot" />
@@ -252,7 +253,6 @@
     <Folder Include="Areas\Personnel\Data\" />
     <Folder Include="Areas\Personnel\Views\Shared\" />
     <Folder Include="photos\animal\" />
-    <Folder Include="photos\utilisateur\" />
     <Folder Include="Views\Login\" />
     <Folder Include="Views\Personnel\" />
     <Folder Include="Views\Register\" />
