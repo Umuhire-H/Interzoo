@@ -29,7 +29,7 @@ namespace Interzoo.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Register(RegisterModelPOST rmPost, HttpPostedFileBase photo)
         {            
-            UtilisateurRepository ur = new UtilisateurRepository(ConfigurationManager.ConnectionStrings["h_Cnstr"/*"My_Asptest_Cnstr"*/].ConnectionString);
+            UtilisateurRepository ur = new UtilisateurRepository(ConfigurationManager.ConnectionStrings[/*"h_Cnstr"*/"My_Asptest_Cnstr"].ConnectionString);
             if (!ModelState.IsValid)
             {
                 foreach (ModelState each_modelState in ViewData.ModelState.Values)

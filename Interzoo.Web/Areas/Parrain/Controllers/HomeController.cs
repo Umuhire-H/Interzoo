@@ -14,7 +14,9 @@ namespace Interzoo.Web.Areas.Parrain.Controllers
         public ActionResult Index()
         {
             ViewBag.title = "Area Parrain - Marraine";
-            ParrainModel pm = new ParrainModel();
+            ParrainModel pm = new ParrainModel(); // donc contient : infosOfConnectedUser + IsConnected 
+            
+            // ici stocker le formule choisi : pm.FormuleOneUtilisateur
             return View(pm);
         }
         public RedirectToRouteResult Logout()

@@ -14,14 +14,15 @@ namespace Interzoo.Web.Areas.Parrain.ModelsParrain
         {
             get; set;
         }
-        public IEnumerable<FormuleModel> FormulesOneUtilisateur
+        public FormuleModel FormuleOneUtilisateur
         {
             get;set;
         }
-        
+        public bool isConnected { get; set; }
         public ParrainModel()
         {
             this.InfoParrain = SessionUtilisateur.ConnectedUser;
+            this.isConnected = SessionUtilisateur.IsConnected;
             this.AnimauxAdoptes = new List<AnimalModel>();
         }
     }

@@ -18,7 +18,6 @@ namespace Interzoo.DAL.Repositories
                          WHERE IdUtilisateur=@IdUtilisateur";
             InsertCommand = @"INSERT INTO  Utilisateur (Nom ,Prenom ,DateDeNaissance ,Courriel ,MotDePasse, Photo,IsAdmin, IdRole) OUTPUT inserted.IdUtilisateur 
                             VALUES(@Nom, @Prenom, @DateDeNaissance, @Courriel, @MotDePasse, @Photo, @IsAdmin, @IdRole )";
-
             SelectAllCommand = "Select * from Utilisateur";
             SelectOneCommand = $"Select * from Utilisateur where IdUtilisateur=@IdUtilisateur";
 
