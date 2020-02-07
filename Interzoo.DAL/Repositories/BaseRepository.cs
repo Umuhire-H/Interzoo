@@ -54,9 +54,12 @@ namespace Interzoo.DAL.Repositories
         protected IEnumerable<T> getAll(Func<SqlDataReader, T> callback, Dictionary<string, object> QueryParameters = null)
         {
             Command cmd = new Command(SelectAllCommand);
-            foreach (KeyValuePair<string, object> item in QueryParameters)
+            if (QueryParameters != null)
             {
-                cmd.AddParameter(item.Key, item.Value);
+                foreach (KeyValuePair<string, object> item in QueryParameters)
+                {
+                    cmd.AddParameter(item.Key, item.Value);
+                }
             }
             return _oconn.ExecuteReader<T>(cmd, callback);
         }

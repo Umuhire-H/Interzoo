@@ -194,7 +194,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                 @{
                                     if (!Interzoo.Web.Tools.Web.SessionUtilisateur.IsConnected)
                                     {
-                                        foreach (var rolM in Model)
+                                        foreach (var rolM in Model.RoleModels)
                                         {
                                             <option class="form-control" value=@rolM.IdRole>@rolM.TypeRole</option>
                                         }

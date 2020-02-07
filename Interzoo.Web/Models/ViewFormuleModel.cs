@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Interzoo.Web.Models
 {
-    public class IntroductionViewModel
+    public class ViewFormuleModel
     {
         public List<RoleModel> RoleModels
         {
@@ -15,7 +15,7 @@ namespace Interzoo.Web.Models
         {
             get; set;
         }
-        public IntroductionViewModel()
+        public ViewFormuleModel()
         {
             this.RoleModels = new List<RoleModel>();
             this.Formules = new List<FormuleModel>();
