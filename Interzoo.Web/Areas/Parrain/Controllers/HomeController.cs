@@ -1,5 +1,6 @@
 ﻿using Interzoo.DAL.Repositories;
 using Interzoo.Web.Areas.Parrain.ModelsParrain;
+using Interzoo.Web.Models;
 using Interzoo.Web.Tools.Web;
 using System;
 using System.Collections.Generic;
@@ -18,7 +19,10 @@ namespace Interzoo.Web.Areas.Parrain.Controllers
         {
             ViewBag.title = "Area Parrain - Marraine";
             ParrainModel pm = new ParrainModel(); // donc contient : infosOfConnectedUser + IsConnected 
-            
+            if (TempData["chosenPackage"] != null)
+            {
+                pm.FormuleOneUtilisateur = TempData["chosenPackage"] as FormuleModel;
+            }
             // ici stocker le formule choisi : pm.FormuleOneUtilisateur : voir 
             return View(pm);
         }
@@ -26,8 +30,7 @@ namespace Interzoo.Web.Areas.Parrain.Controllers
         public ActionResult ChosenFormule(int id)
         {
             FormuleRepository fr = new FormuleRepository(ConfigurationManager.ConnectionStrings[/*"h_Cnstr"*/"My_Asptest_Cnstr"].ConnectionString);
-            ParrainModel pm = new ParrainModel();
-            pm.FormuleOneUtilisateur = mapToVIEWmodels.formuleToFormuleModel(fr.getOne(id));
+            TempData["chosenPackage"] = mapToVIEWmodels.formuleToFormuleModel(fr.getOne(id));
             return RedirectToAction("Index");
         }
         public RedirectToRouteResult Logout()
