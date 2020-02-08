@@ -91,9 +91,13 @@ namespace Interzoo.Web.Models
         {
             get; set;
         }
-        public Dictionary<CaracteristiqueModel, AnimalCaracteristiqueModel> caracteriticTypeValue
+        public Dictionary<CaracteristiqueModel, AnimalCaracteristiqueModel> CaracteriticTypeValue
         {
             get; set;
+        }
+        public AnimalModel()
+        {
+            this.CaracteriticTypeValue = new Dictionary<CaracteristiqueModel, AnimalCaracteristiqueModel>();
         }
     }
 }

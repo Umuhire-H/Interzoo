@@ -14,7 +14,7 @@ namespace Interzoo.Web.Areas.Parrain.ModelsParrain
         {
             get; set;
         }
-        public FormuleModel FormuleOneUtilisateur
+        public FormuleModel TheFormule
         {
             get;set;
         }

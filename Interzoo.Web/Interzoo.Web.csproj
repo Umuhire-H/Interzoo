@@ -143,6 +143,7 @@
     <Compile Include="Models\ProfileModel.cs" />
     <Compile Include="Models\RegisterModelPOST.cs" />
     <Compile Include="Models\RoleModel.cs" />
+    <Compile Include="Models\ViewIndexModel.cs" />
     <Compile Include="Models\ViewPortfolioModel.cs" />
     <Compile Include="Models\ViewTeamModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

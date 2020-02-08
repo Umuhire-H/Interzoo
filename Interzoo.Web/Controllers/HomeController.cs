@@ -14,16 +14,16 @@ namespace Interzoo.Web.Controllers
     {
         public ActionResult Index()
         {
-            ViewFormuleModel ivm = new ViewFormuleModel();
-            ivm.RoleModels = LoadRoles();
-            return View(ivm);
+            ViewIndexModel vim = new ViewIndexModel();
+            vim.RoleModels = LoadRoles();
+            return View(vim);
         }
 
         public ActionResult About()
         {
-            ViewFormuleModel ivm = new ViewFormuleModel();
-            ivm.RoleModels = LoadRoles();
-            return View(ivm);
+            ViewAboutModel vam = new ViewAboutModel();
+            vam.RoleModels = LoadRoles();
+            return View(vam);
         }
 
         public ActionResult Contact()
@@ -37,36 +37,31 @@ namespace Interzoo.Web.Controllers
 
         public ActionResult Blog()
         {
-            ViewFormuleModel ivm = new ViewFormuleModel();
-            ivm.RoleModels = LoadRoles();
-            return View(ivm);
+            ViewBlogModel vbm = new ViewBlogModel();
+            vbm.RoleModels = LoadRoles();
+            return View(vbm);
         }
         public ActionResult Formules()
         {
-            ViewFormuleModel ivm = new ViewFormuleModel();
-            ivm.RoleModels = LoadRoles();
+            ViewFormuleModel vfm = new ViewFormuleModel();
+            vfm.RoleModels = LoadRoles();
             //--
             FormuleRepository fr = new FormuleRepository(ConfigurationManager.ConnectionStrings["h_Cnstr" /*"My_Asptest_Cnstr"*/].ConnectionString);
-            ivm.Formules = fr.getAll().Select(formule => mapToVIEWmodels.formuleToFormuleModel(formule)).ToList();
-            return View(/*LoadRoles()*/ivm);
+            vfm.Formules = fr.getAll().Select(formule => mapToVIEWmodels.formuleToFormuleModel(formule)).ToList();
+            return View(/*LoadRoles()*/vfm);
         }
         public ActionResult Portfolio()
         {
-            ViewFormuleModel ivm = new ViewFormuleModel();
-            ivm.RoleModels = LoadRoles();
-            return View(ivm);
+            ViewPortfolioModel vpm = new ViewPortfolioModel();
+            vpm.RoleModels = LoadRoles();
+            return View(vpm);
         }
-        public ActionResult Pricing()
-        {
-            ViewFormuleModel ivm = new ViewFormuleModel();
-            ivm.RoleModels = LoadRoles();
-            return View(ivm);
-        }
+
         public ActionResult Team()
         {
-            ViewFormuleModel ivm = new ViewFormuleModel();
-            ivm.RoleModels = LoadRoles();
-            return View(ivm);
+            ViewTeamModel vtm = new ViewTeamModel();
+            vtm.RoleModels = LoadRoles();
+            return View(vtm);
         }
 
         private List<RoleModel> LoadRoles()

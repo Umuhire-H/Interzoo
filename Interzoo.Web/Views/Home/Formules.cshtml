@@ -24,15 +24,15 @@
 
                                                 </ul>
                                             </div>
-                                            @if (!Interzoo.Web.Tools.Web.SessionUtilisateur.IsConnected)
+                                            @if (Interzoo.Web.Tools.Web.SessionUtilisateur.IsConnected)
                                             {
-                                                <a href="~/Parrain/Home/ChosenFormule/@item.IdFormule" class="btn w3ls-btn bg-theme  d-block">Send</a>
+                                                <a href="~/Parrain/Home/ChosenPackage/@item.IdFormule" class="btn w3ls-btn bg-theme  d-block">SEND MY CHOICE</a>
 
                                             }
                                             else
                                             {
                                             <button type="button" class="btn w3ls-btn bg-theme  d-block" data-toggle="modal" aria-pressed="false" data-target="#exampleModal" data-blast="bgColor">
-                                                SEND
+                                                LOGIN FIRST
                                             </button>
 
                                             }
