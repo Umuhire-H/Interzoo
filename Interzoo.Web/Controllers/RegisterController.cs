@@ -67,8 +67,16 @@ namespace Interzoo.Web.Controllers
                     // try catch 
                     bool reussi = ur.update(MapToDBModel.profileTOUtilisateur(pm));
                     //
+                    
+                    
+                 
                     if (reussi && pm.IdRole == 0)
                     {
+                        if (pm.IsAdmin)
+                        {
+                            return RedirectToAction("Index", new { controller = "Home", area = "Admin" });
+
+                        }
                         return RedirectToAction("Index", new { controller = "Home", area = "Parrain" });
 
                     }

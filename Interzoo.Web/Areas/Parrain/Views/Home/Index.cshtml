@@ -39,145 +39,155 @@
         </div>
         
     </div>
-    <div class="container">
-        <div class="rslides">
+    <div class="container" style="height: 100vh">
+        <div class="rslides d-flex justify-content-end">
             <h4> Hello, @Model.InfoParrain.Nom  @Model.InfoParrain.Prenom</h4>
             Hello from Mike
-        </div>
         <p>
             @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
             @Html.ActionLink("Back to List", "Index")
         </p>
-        <div class="flex-row">
+        </div>
+        
            
-            <div>
-                <div id="accordion">
-                    <div class="card">
-                        <div class="card-header" id="headingTwo">
-                            <h5 class="mb-0">
-                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                   YOUR PROFILE
-                                </button>
-                            </h5>
-                        </div>
-                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+        <div class="d-flex justify-content-between align-items-center">
+            <div id="accordion" class="w-50 p-3">
+                <div class="card">
+                    <div class="card-header" id="headingTwo">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                YOUR PROFILE
+                            </button>
+                        </h5>
+                    </div>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                        <div class="card-body">
+                            <div class="card " style="width: 5rem;">
+                                <img class="card-img-top flex justify-content-center" src="~/photos/utilisateur/@Model.InfoParrain.Photo" alt="Card image cap">
+                            </div>  
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">@Model.InfoParrain.Nom</li>
+                                <li class="list-group-item">@Model.InfoParrain.Prenom</li>
+                                <li class="list-group-item">@Model.InfoParrain.Courriel</li>
+                                <li class="list-group-item">@Model.InfoParrain.DateDeNaissance</li>
+                            </ul>
                             <div class="card-body">
-                                <div class="card" style="width: 10rem;">
-                                    <img class="card-img-top" src="~/photos/utilisateur/@Model.InfoParrain.Photo" alt="Card image cap">
-                                    @*<div class="card-body">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                      </div>
-                                      <ul class="list-group list-group-flush">
-                                        <li class="list-group-item">Cras justo odio</li>
-                                        <li class="list-group-item">Dapibus ac facilisis in</li>
-                                        <li class="list-group-item">Vestibulum at eros</li>
-                                     </ul>
-                                     <div class="card-body">
-                                        <a href="#" class="card-link">Card link</a>
-                                        <a href="#" class="card-link">Another link</a>
-                                     </div>*@
-                                </div>
+                                <a href="/Parrain/Home/EditProfile/@Model.InfoParrain.IdUtilisateur" class="btn w3ls-btn bg-theme  d-block">Edit your profil</a>
                             </div>
+
                         </div>
                     </div>
-                    <div class="card">
-                        <div class="card-header" id="headingThree">
-                            <h5 class="mb-0">
-                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                    YOUR ANIMAL
-                                </button>
-                            </h5>
-                        </div>
-                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-                            <div class="card-body">
-                                @{
-                                    if (Model.AnimauxAdoptes.Count != 0)
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingThree">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                YOUR ANIMAL
+                            </button>
+                        </h5>
+                    </div>
+                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                        <div class="card-body">
+                            @{
+                                if (Model.AnimauxAdoptes.Count != 0)
+                                {
+                                    foreach (var item in Model.AnimauxAdoptes)
                                     {
-                                        foreach (var item in Model.AnimauxAdoptes)
-                                        {
-                                            <!-- blog grid -->
-                                            <div class="col-lg-4 col-md-6 mt-sm-0 mt-4">
-                                                <div class="card">
-                                                    <div class="card-header p-0 position-relative">
+                                        <!-- blog grid -->
+                                        <div class="col-lg-4 col-md-6 mt-sm-0 mt-4">
+                                            <div class="card">
+                                                <div class="card-header p-0 position-relative">
+                                                    <a href="#exampleModal2" data-toggle="modal" aria-pressed="false" data-target="#exampleModal2"
+                                                       role="button">
+                                                        <img class="card-img-bottom" src="~/photos/animal/@item.Photo" alt="Card image cap">
+                                                        <span class="fa fa-user post-icon bg-theme" aria-hidden="true" data-blast="bgColor"></span>
+                                                    </a>
+                                                </div>
+                                                <div class="card-body">
+                                                    <h5 class="blog-title card-title font-weight-bold">
                                                         <a href="#exampleModal2" data-toggle="modal" aria-pressed="false" data-target="#exampleModal2"
-                                                           role="button">
-                                                            <img class="card-img-bottom" src="~/photos/animal/@item.Photo" alt="Card image cap">
-                                                            <span class="fa fa-user post-icon bg-theme" aria-hidden="true" data-blast="bgColor"></span>
-                                                        </a>
-                                                    </div>
-                                                    <div class="card-body">
-                                                        <h5 class="blog-title card-title font-weight-bold">
-                                                            <a href="#exampleModal2" data-toggle="modal" aria-pressed="false" data-target="#exampleModal2"
-                                                               role="button">@item.Nom</a>
-                                                        </h5>
-                                                    </div>
-                                                    <ul class="list-group list-group-flush">
-                                                        <li class="list-group-item">@item.NomScientifique</li>
-                                                        <li class="list-group-item">@item.RegionOrigine</li>
-                                                        @{
+                                                           role="button">@item.Nom</a>
+                                                    </h5>
+                                                </div>
+                                                <ul class="list-group list-group-flush">
+                                                    <li class="list-group-item">@item.NomScientifique</li>
+                                                    <li class="list-group-item">@item.RegionOrigine</li>
+                                                    @{
+                                                        if (@item.CaracteriticTypeValue.Count != 0)
+                                                        {
                                                             foreach (KeyValuePair<Interzoo.Web.Models.CaracteristiqueModel, Interzoo.Web.Models.AnimalCaracteristiqueModel> kvp in @item.CaracteriticTypeValue)
                                                             {
                                                                 <li class="list-group-item">@kvp.Key: @kvp.Value</li>
                                                             }
-                                                         }
-                                                    </ul>
-                                                    @*<button type="button" class="btn blog-btn wthree-bnr-btn" data-toggle="modal" aria-pressed="false"
-                                                            data-target="#exampleModal2">
-                                                        Read more
-                                                    </button>*@
-                                                </div>                                               
-                                            </div>
-                                            <!-- //blog grid -->
-                                        }
-
-                                    }
-                                }
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-header" id="headingOne">
-                            <h5 class="mb-0">
-                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                    YOUR PACKAGES &Aacute; EVENTS
-                                </button>
-                            </h5>
-                        </div>
-
-                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-                            <div class="card-body">
-                                @if (Model.TheFormule != null)
-                                 {
-                                
-                                    <div class="col-lg-4 col-sm-6 column mb-lg-0 mb-4">
-                                        <div class="box" data-blast="borderColor">
-                                            <div class="title">
-                                                <span class="fa fa-gg" data-blast="color"></span>
-                                                <h5 data-blast="color">@Model.TheFormule.Nom</h5>
-                                            </div>
-                                            <div class="price">
-                                                <h6>Price - <sup>$</sup><span class="font-weight-bold">@Model.TheFormule.Prix</span></h6>
-                                            </div>
-                                            <div class="option">
-                                                <ul>
-                                                    <li>@Model.TheFormule.Description</li>
-                                                    <li>From @Model.TheFormule.DateDebut to @Model.TheFormule.DateFin </li>
-
+                                                        }
+                                                    }
                                                 </ul>
+                                                <div class="card-body">
+                                                    <a href="/Home/Portfolio" class="btn w3ls-btn bg-theme  d-block">Adopt one more</a>
+                                                </div>
+                                                @*<button type="button" class="btn blog-btn wthree-bnr-btn" data-toggle="modal" aria-pressed="false"
+                data-target="#exampleModal2">
+            Read more
+        </button>*@
                                             </div>
-
-                                            @*<a href="~/Parrain/Home/ChosenPackage/@Model.FormuleOneUtilisateur.IdFormule" class="btn w3ls-btn bg-theme  d-block">I want to change my package</a>*@
                                         </div>
-                                    </div>
-                                 }
-                            </div>
+                                        <!-- //blog grid -->
+                                    }
+
+                                }
+                            }
+
                         </div>
                     </div>
                 </div>
+                <div class="card">
+                    <div class="card-header" id="headingOne">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                YOUR PACKAGES & EVENTS
+                            </button>
+                        </h5>
+                    </div>
+
+                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="card-body" style="padding-top:50px">
+                            @if (Model.TheFormule != null)
+                            {
+
+                                <div class="col-lg-4 col-sm-6 column mb-lg-0 mb-4">
+                                    <div class="box" data-blast="borderColor" style=" min-height:50px; ">
+                                        <div class="title">
+                                            <span class="fa fa-gg" data-blast="color"></span>
+                                            <h5 data-blast="color">@Model.TheFormule.Nom</h5>
+                                        </div>
+                                        <div class="price">
+                                            <h6>Price - <sup>$</sup><span class="font-weight-bold">@Model.TheFormule.Prix</span></h6>
+                                        </div>
+                                        <div class="option">
+                                            <ul>
+                                                <li>@Model.TheFormule.Description</li>           
+                                                <li>
+                                                    <small>
+                                                        <span class="font-weight-bold">From</span> @Model.TheFormule.DateDebut
+                                                        <span class="font-weight-bold">To</span> @Model.TheFormule.DateFin 
+                                                    </small>
+                                                </li>
+
+                                            </ul>
+                                        </div>
+
+                                        <a href="~/Parrain/Home/EditPackage/@Model.TheFormule.IdFormule" class="btn w3ls-btn bg-theme  d-block">Edit my package</a>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                      
+                    </div>
+                </div>
             </div>
-         </div>
+            
+        </div>
+         
      
 
     </div>

@@ -19,10 +19,11 @@ namespace Interzoo.Web.Areas.Parrain.Controllers
         {
             ViewBag.title = "Area Parrain - Marraine";
 
-            ParrainModel pm = new ParrainModel(); // donc contient : infosOfConnectedUser + IsConnected 
-            //if (TempData["chosenPackage"] != null)
+            ParrainModel pm = new ParrainModel(); // donc contient : infosOfConnectedUser + IsConnected + package
+
+            //if (TempData.ContainsKey("chosenPackage"))
             //{
-            //    pm.FormuleOneUtilisateur = TempData["chosenPackage"] as FormuleModel;
+            //    pm.TheFormule = TempData["chosenPackage"] as FormuleModel;
             //}
             // ici stocker le formule choisi : pm.FormuleOneUtilisateur : voir 
             return View(pm);
@@ -30,11 +31,11 @@ namespace Interzoo.Web.Areas.Parrain.Controllers
         // when the user choose a package
         public ActionResult ChosenPackage(int id=1)
         {
-            int reveivedIdFormule = id;
-            FormuleRepository fr = new FormuleRepository(ConfigurationManager.ConnectionStrings[/*"h_Cnstr"*/"My_Asptest_Cnstr"].ConnectionString);
-            ParrainModel pm = new ParrainModel();
-            pm.TheFormule = mapToVIEWmodels.formuleToFormuleModel(fr.getOne(id));
+            FormuleRepository fr = new FormuleRepository(ConfigurationManager.ConnectionStrings["h_Cnstr"/*"My_Asptest_Cnstr"*/].ConnectionString);
+            
+            SessionUtilisateur.ConnectedUserPackage = mapToVIEWmodels.formuleToFormuleModel(fr.getOne(id));
             //TempData["chosenPackage"] = mapToVIEWmodels.formuleToFormuleModel(fr.getOne(id));
+
             return RedirectToAction("Index");
         }
         public RedirectToRouteResult Logout()

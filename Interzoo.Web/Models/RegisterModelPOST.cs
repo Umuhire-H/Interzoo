@@ -17,7 +17,9 @@ namespace Interzoo.Web.Models
         private DateTime _dateDeNaissance;//
         private string photo; //
         private bool _isAdmin;//
-        private int _idRole;//
+        //private int? _idRole = null;
+        private int _idRole;
+
 
 
         public string IdUtilisateur
@@ -139,6 +141,7 @@ namespace Interzoo.Web.Models
             }
         }
         [Required(ErrorMessage = "veuillez préciser votre statut")]
+       
         public int IdRole
         {
             get

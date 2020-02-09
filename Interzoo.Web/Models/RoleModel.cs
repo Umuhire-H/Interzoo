@@ -7,10 +7,10 @@ namespace Interzoo.Web.Models
 {
     public class RoleModel
     {
-        private int _idRole;
+        private int? _idRole = null; 
         private string _typeRole;
 
-        public int IdRole
+        public int? IdRole
         {
             get
             {

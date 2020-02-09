@@ -23,6 +23,7 @@ namespace Interzoo.Web.Areas.Parrain.ModelsParrain
         {
             this.InfoParrain = SessionUtilisateur.ConnectedUser;
             this.isConnected = SessionUtilisateur.IsConnected;
+            this.TheFormule = SessionUtilisateur.ConnectedUserPackage;
             this.AnimauxAdoptes = new List<AnimalModel>();
         }
     }

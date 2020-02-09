@@ -1,0 +1,125 @@
+﻿
+@{
+    ViewBag.Title = "Admin |Index";
+}
+
+<!-- banner = home -->
+<div id="home">
+    <!-- --------------------------------  STAY - LAYOUT--------------------------------------------------->
+    <!-- color scheme -->
+    <div class="blast-box">
+        <div class="blast-frame">
+            <p>color schemes</p>
+            <div class="blast-colors d-flex justify-content-center">
+                <div class="blast-color">#23d48f</div>
+                <div class="blast-color">#d3b800</div>
+                <div class="blast-color">#18e7d3</div>
+                <div class="blast-color">#e5902a</div>
+                <div class="blast-color">#16d9e9</div>
+                <!-- you can add more colors here -->
+            </div>
+            <p class="blast-custom-colors">Choose Custom color</p>
+            <input type="color" name="blastCustomColor" value="#d3b800">
+
+        </div>
+        <div class="blast-icon"><span class="fa fa-paint-brush" aria-hidden="true"></span></div>
+    </div>
+    <!-- //color scheme -->
+    <!-- header -->
+    @section header{
+        @{
+            Html.RenderPartial("~/Views/Shared/_Header.cshtml");
+        }
+    }
+
+    <!-- //header -->
+
+    <div class="callbacks_container" style="background-color:rgba(0, 0, 0, 0.5); min-height:5em">
+
+    </div>
+
+</div>
+<div class="container" style="height: 100vh">
+    <div class="rslides d-flex justify-content-end">
+        <h4> Hello, @Model.InfoParrain.Nom  @Model.InfoParrain.Prenom</h4>
+        
+        <p>
+            @Html.ActionLink("Edit", "Edit", new
+            { /* id = Model.PrimaryKey */
+            }) |
+            @Html.ActionLink("Back to List", "Index")
+        </p>
+    </div>
+
+
+    <div class="d-flex justify-content-between align-items-center">
+        <div id="accordion" class="w-50 p-3">
+            <div class="card">
+                <div class="card-header" id="headingTwo">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            YOUR PROFILE
+                        </button>
+                    </h5>
+                </div>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                    <div class="card-body">
+                        <div class="card " style="width: 5rem;">
+                            <img class="card-img-top flex justify-content-center" src="~/photos/utilisateur/@Model.Photo" alt="Card image cap">
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">@Model.Nom</li>
+                            <li class="list-group-item">@Model.Prenom</li>
+                            <li class="list-group-item">@Model.Courriel</li>
+                        </ul>
+                        <div class="card-body">
+                            <a href="/Parrain/Home/EditProfile/@Model.IdUtilisateur" class="btn w3ls-btn bg-theme  d-block">Edit your profil</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header" id="headingThree">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            EDIT USER
+                        </button>
+                    </h5>
+                </div>
+                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                    <div class="card-body">
+                     
+                        <div class="card-body">
+                            <a href="/Parrain/Home/EditUser/@Model.IdUtilisateur" class="btn w3ls-btn bg-theme  d-block">Edit your profil</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header" id="headingOne">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            EDIT ANIMAL
+                        </button>
+                    </h5>
+                </div>
+
+                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                    <div class="card-body" style="padding-top:50px">
+
+                        <div class="card-body">
+                            <a href="/Parrain/Home/EditAnimal/@Model.IdUtilisateur" class="btn w3ls-btn bg-theme  d-block">Edit your profil</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+</div>
