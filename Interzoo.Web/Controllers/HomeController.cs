@@ -46,7 +46,7 @@ namespace Interzoo.Web.Controllers
             ViewFormuleModel vfm = new ViewFormuleModel();
             vfm.RoleModels = LoadRoles();
             //--
-            FormuleRepository fr = new FormuleRepository(ConfigurationManager.ConnectionStrings["h_Cnstr" /*"My_Asptest_Cnstr"*/].ConnectionString);
+            FormuleRepository fr = new FormuleRepository(ConfigurationManager.ConnectionStrings["My_Asptest_Cnstr"].ConnectionString);
             vfm.Formules = fr.getAll().Select(formule => mapToVIEWmodels.formuleToFormuleModel(formule)).ToList();
             return View(/*LoadRoles()*/vfm);
         }
@@ -66,7 +66,7 @@ namespace Interzoo.Web.Controllers
 
         private List<RoleModel> LoadRoles()
         {
-            UtilisateurRepository ur = new UtilisateurRepository(ConfigurationManager.ConnectionStrings["h_Cnstr"/*"My_Asptest_Cnstr"*/].ConnectionString);            
+            UtilisateurRepository ur = new UtilisateurRepository(ConfigurationManager.ConnectionStrings["My_Asptest_Cnstr"].ConnectionString);            
             return ur.getAllRolesForRegisterModel().Select(item => mapToVIEWmodels.RoleTORoleModel(item)).ToList();
         }
     }

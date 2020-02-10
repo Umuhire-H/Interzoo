@@ -17,7 +17,7 @@ namespace Interzoo.Web.Areas.Admin.Controllers
         public ActionResult Index()
         {
             AdminModel admiM = new AdminModel();
-            CategorieRepository ctr = new CategorieRepository(ConfigurationManager.ConnectionStrings["h_Cnstr"/*"My_Asptest_Cnstr"*/].ConnectionString);
+            CategorieRepository ctr = new CategorieRepository(ConfigurationManager.ConnectionStrings["My_Asptest_Cnstr"].ConnectionString);
             admiM.Animal.allCategories = ctr.getAll().Select(item => mapToVIEWmodels.CategorieTOCategorieModel(item)).ToList();
 
             return View(admiM);
@@ -37,7 +37,7 @@ namespace Interzoo.Web.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult EditAnimal(AnimalModel animM, HttpPostedFileBase photoAnim)
         {
-            AnimalRepository aniRepo = new AnimalRepository(ConfigurationManager.ConnectionStrings["h_Cnstr"/*"My_Asptest_Cnstr"*/].ConnectionString);
+            AnimalRepository aniRepo = new AnimalRepository(ConfigurationManager.ConnectionStrings["My_Asptest_Cnstr"].ConnectionString);
             if (!ModelState.IsValid)
             {
                 foreach (ModelState each_modelState in ViewData.ModelState.Values)

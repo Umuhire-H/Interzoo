@@ -163,6 +163,59 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         </div>
     </div>
     <!-- //login -->
+    <!----------VERIF ADMIN---------------->
+    <!-- login  -->
+    <div class="modal fade" id="verifAdminModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">ADMINISTRATOR - ENTER YOUR CODE </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="/Register/VerifAdmin" method="post" class="p-sm-3">
+                        @Html.AntiForgeryToken()
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Email</label>
+                            <input type="email" class="form-control" placeholder="soso@sisi.com " name="Courriel" id="recipient-name"
+                                   required="">
+                        </div>
+                        <div class="form-group">
+                            <label for="CodeAdmin" class="col-form-label">Administrator Code</label>
+                            <input type="password" class="form-control" placeholder="CodeAdmin" name="CodeAdmin" id="CodeAdmin"
+                                   required>
+                        </div>
+                        <div class="right-w3l">
+                            <input type="submit" class="form-control" value="CONFIRM">
+                        </div>
+                       
+                        <p class="text-center dont-do modal-footer1">
+                            @*@if (@ViewBag.ErrorMessage != null)
+                                 {
+                                 <br /> <span class="alert alert-danger">@Html.Raw(ViewBag.ErrorMessage)</span> <br />
+
+                                }*@
+                          @{ 
+                              if()
+                          }
+                            <br />
+                            Administrator account?
+                            <a href="#exampleModal1Admin" data-toggle="modal" data-target="#exampleModal1Admin" class="font-weight-bold"
+                               data-blast="color">
+                                Register Now
+                            </a>
+
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //login -->
+    <!---------------------------------->
     <!-- register -->
     <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1"
          aria-hidden="true">
@@ -196,7 +249,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             <label for="IdRole" class="col-form-label"> Statut </label>
                             <select type="text" class="form-control" placeholder="Votre statut" name="IdRole" id="IdRole"
                                     required>
-                                <option class="form-control" value="0">Futur.e  parrain.marraine</option>
+
                                 @{
                                     if (!Interzoo.Web.Tools.Web.SessionUtilisateur.IsConnected)
                                     {
@@ -266,7 +319,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         </div>
     </div>
     <!-- // register -->
-    <!-- ADMIN -------- register -->
+    <!---- ADMIN -------- Register -->
     <div class="modal fade" id="exampleModal1Admin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1"
          aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -294,21 +347,21 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             <input type="date" class="form-control" placeholder="2020-12-31 ..." name="DateDeNaissance" id="DateDeNaissance"
                                    required>
                         </div>
-                        <div class="form-group " >
+                        <div class="form-group ">
 
                             <label for="IdRole" class="col-form-label"> Statut </label>
                             <select @*type="hidden"*@ class="form-control" placeholder="Votre statut" name="IdRole" id="IdRole">
                                 <option class="form-control" selected disabled value="">Administrateur</option>
                                 @*@{
-                                    if (!Interzoo.Web.Tools.Web.SessionUtilisateur.IsConnected)
-                                    {
-                                        foreach (var rolM in Model.RoleModels)
+                                        if (!Interzoo.Web.Tools.Web.SessionUtilisateur.IsConnected)
                                         {
-                                            <option class="form-control" value=@rolM.IdRole>@rolM.TypeRole</option>
+                                            foreach (var rolM in Model.RoleModels)
+                                            {
+                                                <option class="form-control" value=@rolM.IdRole>@rolM.TypeRole</option>
+                                            }
                                         }
-                                    }
 
-                                }*@
+                                    }*@
 
                             </select>
                         </div>
