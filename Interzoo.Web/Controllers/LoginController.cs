@@ -48,7 +48,7 @@ namespace Interzoo.Web.Controllers
         [HttpPost]
         public ActionResult Login(LoginModel lm)
         {
-            UtilisateurRepository ur = new UtilisateurRepository(ConfigurationManager.ConnectionStrings["h_Cnstr"/*"My_Asptest_Cnstr"*/].ConnectionString);
+            UtilisateurRepository ur = new UtilisateurRepository(ConfigurationManager.ConnectionStrings["My_Asptest_Cnstr"].ConnectionString);
             if (!ModelState.IsValid)
             {
                 foreach (ModelState each_modelState in ViewData.ModelState.Values)

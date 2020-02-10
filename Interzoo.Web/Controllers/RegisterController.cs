@@ -15,21 +15,20 @@ namespace Interzoo.Web.Controllers
         // GET: Register
         public ActionResult Index()
         {
-            //  ============== I3 =====================
-            // ========================================
-            //UtilisateurRepository ur = new UtilisateurRepository(ConfigurationManager.ConnectionStrings["My_Asptest_Cnstr"].ConnectionString);
-
-
-            // ============== HOME ====================
-            // ========================================
-            // UtilisateurRepository ur = new UtilisateurRepository(ConfigurationManager.ConnectionStrings["h_Cnstr"].ConnectionString);
+            
+            // UtilisateurRepository ur = new UtilisateurRepository(ConfigurationManager.ConnectionStrings["My_Asptest_Cnstr"].ConnectionString);
             return RedirectToAction("Index", new { controller = "Home", area = "" });
+        }
+        public ActionResult VerifAdmin()
+        {
+
+            return View();
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Register(RegisterModelPOST rmPost, HttpPostedFileBase photo)
         {            
-            UtilisateurRepository ur = new UtilisateurRepository(ConfigurationManager.ConnectionStrings["h_Cnstr"/*"My_Asptest_Cnstr"*/].ConnectionString);
+            UtilisateurRepository ur = new UtilisateurRepository(ConfigurationManager.ConnectionStrings["My_Asptest_Cnstr"].ConnectionString);
             if (!ModelState.IsValid)
             {
                 foreach (ModelState each_modelState in ViewData.ModelState.Values)

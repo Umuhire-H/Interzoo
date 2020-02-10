@@ -15,7 +15,7 @@ namespace Interzoo.Web.Models
         private DateTime _dateDeNaissance;
         private string photo;
         private bool _isAdmin;
-        private int _idRole;
+        private int? _idRole;
         //private Nullable<int> _idRole = null;
 
         public int IdUtilisateur
@@ -122,7 +122,7 @@ namespace Interzoo.Web.Models
             }
         }
 
-        public int IdRole
+        public int? IdRole
         {
             get
             {

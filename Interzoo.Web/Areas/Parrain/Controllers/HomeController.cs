@@ -31,7 +31,7 @@ namespace Interzoo.Web.Areas.Parrain.Controllers
         // when the user choose a package
         public ActionResult ChosenPackage(int id=1)
         {
-            FormuleRepository fr = new FormuleRepository(ConfigurationManager.ConnectionStrings["h_Cnstr"/*"My_Asptest_Cnstr"*/].ConnectionString);
+            FormuleRepository fr = new FormuleRepository(ConfigurationManager.ConnectionStrings["My_Asptest_Cnstr"].ConnectionString);
             
             SessionUtilisateur.ConnectedUserPackage = mapToVIEWmodels.formuleToFormuleModel(fr.getOne(id));
             //TempData["chosenPackage"] = mapToVIEWmodels.formuleToFormuleModel(fr.getOne(id));

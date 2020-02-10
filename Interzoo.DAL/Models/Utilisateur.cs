@@ -18,7 +18,7 @@ namespace Interzoo.DAL.Models
         private DateTime _dateDeNaissance;
         private string photo;
         private bool _isAdmin;
-        private int _idRole;
+        private int? _idRole;
 
         public int IdUtilisateur { get => _idUtilisateur; set => _idUtilisateur = value; }
         public string Nom { get => _nom; set => _nom = value; }
@@ -56,7 +56,7 @@ namespace Interzoo.DAL.Models
             }
         }
 
-        public int IdRole
+        public int? IdRole
         {
             get
             {
