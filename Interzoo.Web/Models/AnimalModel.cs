@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -11,8 +12,9 @@ namespace Interzoo.Web.Models
         private string _nom;
         private string _nomScientifique;
         private string _regionOrigine;
-        private int _idCategorie;
+       // private int _idCategorie;
         private string _photo;
+
 
         public int IdAnimal
         {
@@ -26,6 +28,7 @@ namespace Interzoo.Web.Models
                 _idAnimal = value;
             }
         }
+        [Required(ErrorMessage = "is required")]
         public string Nom
         {
             get
@@ -50,6 +53,7 @@ namespace Interzoo.Web.Models
                 _nomScientifique = value;
             }
         }
+        [Required(ErrorMessage = "is required")]
         public string RegionOrigine
         {
             get
@@ -62,18 +66,18 @@ namespace Interzoo.Web.Models
                 _regionOrigine = value;
             }
         }
-        public int IdCategorie
-        {
-            get
-            {
-                return _idCategorie;
-            }
+        //public int IdCategorie
+        //{
+        //    get
+        //    {
+        //        return _idCategorie;
+        //    }
 
-            set
-            {
-                _idCategorie = value;
-            }
-        }
+        //    set
+        //    {
+        //        _idCategorie = value;
+        //    }
+        //}
         public string Photo
         {
             get
@@ -95,9 +99,25 @@ namespace Interzoo.Web.Models
         {
             get; set;
         }
+        public Dictionary<CategorieModel, AnimalCategorieModel> SaCategorie
+        {
+            get; set;
+        }
+        // ou 
+        public AnimalCategorieModel AnimalCategorie
+        {
+            get; set;
+        }
+        public IEnumerable<CategorieModel> allCategories
+        {
+            get; set;
+        }
+        
         public AnimalModel()
         {
             this.CaracteriticTypeValue = new Dictionary<CaracteristiqueModel, AnimalCaracteristiqueModel>();
+            this.SaCategorie = new Dictionary<CategorieModel, AnimalCategorieModel>();
+            this.allCategories = new List<CategorieModel>();
         }
     }
 }

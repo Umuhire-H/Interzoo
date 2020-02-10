@@ -41,7 +41,7 @@
 </div>
 <div class="container" style="height: 100vh">
     <div class="rslides d-flex justify-content-end">
-        <h4> Hello, @Model.InfoParrain.Nom  @Model.InfoParrain.Prenom</h4>
+        <h4> Hello, @Model.InfoAdmin.Nom  @Model.InfoAdmin.Prenom</h4>
         
         <p>
             @Html.ActionLink("Edit", "Edit", new
@@ -54,6 +54,7 @@
 
     <div class="d-flex justify-content-between align-items-center">
         <div id="accordion" class="w-50 p-3">
+            <!--------------- YOUR PROFILE ------------------------>
             <div class="card">
                 <div class="card-header" id="headingTwo">
                     <h5 class="mb-0">
@@ -65,20 +66,21 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                     <div class="card-body">
                         <div class="card " style="width: 5rem;">
-                            <img class="card-img-top flex justify-content-center" src="~/photos/utilisateur/@Model.Photo" alt="Card image cap">
+                            <img class="card-img-top flex justify-content-center" src="~/photos/utilisateur/@Model.InfoAdmin.Photo" alt="Card image cap">
                         </div>
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item">@Model.Nom</li>
-                            <li class="list-group-item">@Model.Prenom</li>
-                            <li class="list-group-item">@Model.Courriel</li>
+                            <li class="list-group-item">@Model.InfoAdmin.Nom</li>
+                            <li class="list-group-item">@Model.InfoAdmin.Prenom</li>
+                            <li class="list-group-item">@Model.InfoAdmin.Courriel</li>
                         </ul>
                         <div class="card-body">
-                            <a href="/Parrain/Home/EditProfile/@Model.IdUtilisateur" class="btn w3ls-btn bg-theme  d-block">Edit your profil</a>
+                            <a href="/Parrain/Home/EditProfile/@Model.InfoAdmin.IdUtilisateur" class="btn w3ls-btn bg-theme  d-block">Edit your profil</a>
                         </div>
 
                     </div>
                 </div>
             </div>
+            <!--------------- EDIT USER------------------------>
             <div class="card">
                 <div class="card-header" id="headingThree">
                     <h5 class="mb-0">
@@ -89,14 +91,85 @@
                 </div>
                 <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
                     <div class="card-body">
-                     
-                        <div class="card-body">
-                            <a href="/Parrain/Home/EditUser/@Model.IdUtilisateur" class="btn w3ls-btn bg-theme  d-block">Edit your profil</a>
-                        </div>
+                        <!------------LINK to open ------MEMBER EDITION------------------------------>
 
+                        <a href="#MemberEditionByAdmin" data-toggle="modal" data-target="#MemberEditionByAdmin" class="font-weight-bold"
+                           data-blast="color">
+                            Register Now
+                        </a>
+                        <!------------------MEMBER EDITION------------------------------>
+                        <!-- register -->
+                        <div class="modal fade" id="MemberEditionByAdmin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1"
+                             aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel1">__MEMBER EDITION__</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form enctype="multipart/form-data" action="~/Admin/Home/EditProfile" method="post" class="p-sm-3">
+                                            <div class="form-group">
+                                                <label for="recipient-name" class="col-form-label">Nom</label>
+                                                <input type="text" class="form-control" value="@Model.Utilisateur.Nom" name="Nom" id="recipient-rname"
+                                                       required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="Prenom" class="col-form-label">Prenom</label>
+                                                <input type="text" class="form-control" placeholder="" value="@Model.Utilisateur.Prenom" name="Prenom" id="Prenom"
+                                                       required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="DateDeNaissance" class="col-form-label">Date de Naissance</label>
+                                                <input type="date" class="form-control" value="@Model.Utilisateur.DateDeNaissance" name="DateDeNaissance" id="DateDeNaissance"
+                                                       required>
+                                            </div>
+                                            <div class="form-group">
+
+                                                <label for="IdRole" class="col-form-label"> Statut </label>
+                                                <input type="text" class="form-control" name="@Model.Utilisateur.IdRole" value="" @Model.Utilisateur.IdRole " id="IdRole" required>
+
+                                            </div>
+                                            @* isADMIN *@
+                                            <div class="form-group">
+                                                @*<label for="recipient-email" class="col-form-label">Administrateur</label>*@
+                                                <input type="hidden" class="form-control" placeholder="" value="false" name="IsAdmin" id="recipient-email"
+                                                       required>
+                                            </div>
+                                            @* END isAdmin *@
+                                            <div class="form-group">
+                                                <label for="recipient-email" class="col-form-label">Email</label>
+                                                <input type="email" class="form-control" value="@Model.Utilisateur.Courriel" name="Courriel" id="recipient-email"
+                                                       required>
+                                            </div>
+                                            
+                                            <div class="sub-w3l">
+                                                 <div class="sub-w3_pvt">
+                                                     <input type="checkbox" id="brand2" value="">
+                                                     <label for="brand2" class="mb-3">
+                                                        <span></span>Yes, I proceed the modifications
+                                                     </label>
+                                                  </div>
+                                            </div>
+                                            <div class="right-w3l">
+                                                <input type="submit" class="form-control" value="Register">
+                                            </div>
+
+                                            @Html.AntiForgeryToken()
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- // register -->
+                        <!-------------------------------------------------------------------------------------------->
                     </div>
                 </div>
             </div>
+            <!--------------- EDIT ANIMAL-----ADD------------------->
+
             <div class="card">
                 <div class="card-header" id="headingOne">
                     <h5 class="mb-0">
@@ -107,13 +180,80 @@
                 </div>
 
                 <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-                    <div class="card-body" style="padding-top:50px">
+                    
+                    <div class="card-body">
+                        <!------------LINK to open ------ADD-------ANIMAL------------------------------>
 
-                        <div class="card-body">
-                            <a href="/Parrain/Home/EditAnimal/@Model.IdUtilisateur" class="btn w3ls-btn bg-theme  d-block">Edit your profil</a>
+                        <a href="#AnimalEditionByAdmin" data-toggle="modal" data-target="#AnimalEditionByAdmin" class="font-weight-bold"
+                           data-blast="color">
+                            ADD A ANIMAL
+                        </a>
+                        <!------------------ADD-----------ANIMAL ------------------------------>
+                        <!-- register -->
+                        <div class="modal fade" id="AnimalEditionByAdmin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1"
+                             aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel1">__ADD A ANIMAL__</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form enctype="multipart/form-data" action="~/Admin/Home/EditAnimal" method="post" class="p-sm-3">
+                                            <div class="form-group">
+                                                <label for="Prenom" class="col-form-label">Nom Scientifique</label>
+                                                <input type="text" class="form-control" placeholder="" name="NomScientifique" id="NomScientifique"
+                                                       required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="recipient-name" class="col-form-label">Nom</label>
+                                                <input type="text" class="form-control" name="Nom" id="recipient-rname" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="RegionOrigine" class="col-form-label">Region d'origine</label>
+                                                <input type="text" class="form-control" name="RegionOrigine" id="RegionOrigine" required>
+                                            </div>
+                                            <!---------------------selection of categorie---------------------------------------------------->
+                                            <div class="form-group">
+                                                @*<label for="IdCategorie" class="col-form-label"> Catégorie </label>
+                                                <select class="form-control" name="IdCategorie" id="IdCategorie">
+
+                                                    @{
+                                                        if (Model.Animal.allCategories != null)
+                                                        {
+                                                            foreach (var item in Model.Animal.allCategories)
+                                                            {
+                                                                <option class="form-control" value=@item.IdCategorie>@item.TypeCategorie</option>
+                                                            }
+                                                        }
+
+                                                    }
+
+                                                </select>*@
+                                            </div>
+                                            <!------------------FIN---selection of categorie---------------------------------------------------->
+
+                                            <div class="form-group">
+                                                <label for="picture1" class="col-form-label">Une photo de profil</label>
+                                                <input type="file" class="form-control" placeholder="Chargez ..." name="Photo" id="picture1"
+                                                       required>
+                                            </div>
+
+                                            <div class="right-w3l">
+                                                <input type="submit" class="form-control" value="Register">
+                                            </div>
+
+                                            @Html.AntiForgeryToken()
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+                        <!-- // register -->
+                        <!-------------------------------------------------------------------------------------------->
                     </div>
-
                 </div>
             </div>
         </div>

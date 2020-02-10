@@ -49,7 +49,7 @@ namespace Interzoo.Web.Tools.Web
             };
         }
         //--
-        public static Animal animalToAnimalModel(AnimalModel am)
+        public static Animal animalModelToAnimal(AnimalModel am)
         {
             return new Animal()
             {
@@ -57,7 +57,6 @@ namespace Interzoo.Web.Tools.Web
                 Nom = am.Nom,
                 NomScientifique = am.NomScientifique,
                 RegionOrigine = am.RegionOrigine,
-                IdCategorie = am.IdCategorie,
                 Photo = am.Photo
             };
         }
@@ -80,9 +79,9 @@ namespace Interzoo.Web.Tools.Web
             };
         }
         //--
-        public static FormuleModel formuleToFormuleModel(Formule f)
+        public static Formule formuleModelToFormule(FormuleModel f)
         {
-            return new FormuleModel()
+            return new Formule()
             {
                 IdFormule = f.IdFormule,
                 Nom = f.Nom,
@@ -92,7 +91,15 @@ namespace Interzoo.Web.Tools.Web
                 DateFin = f.DateFin
             };
         }
+        public static Categorie CategorieModelTOCategorie(CategorieModel r)
+        {
+            return new Categorie()
+            {
+                IdCategorie = r.IdCategorie,
+                TypeCategorie = r.TypeCategorie
+            };
 
+        }
 
     }
 }

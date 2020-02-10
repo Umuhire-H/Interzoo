@@ -42,7 +42,6 @@ namespace Interzoo.Web.Tools.Web
                 Nom = a.Nom,
                 NomScientifique = a.NomScientifique,
                 RegionOrigine = a.RegionOrigine,
-                IdCategorie = a.IdCategorie,
                 Photo = a.Photo
             };
         }
@@ -74,6 +73,15 @@ namespace Interzoo.Web.Tools.Web
                 DateDebut = f.DateDebut,
                 DateFin = f.DateFin
             };
+        }
+        public static CategorieModel CategorieTOCategorieModel(Categorie r)
+        {
+            return new CategorieModel()
+            {
+                IdCategorie = r.IdCategorie,
+                TypeCategorie = r.TypeCategorie
+            };
+
         }
     }
 
