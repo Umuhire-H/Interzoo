@@ -13,12 +13,12 @@ namespace Interzoo.DAL.Repositories
         public AnimalRepository(string cnString) : base(cnString)
         {
             DeleteCommand = @"DELETE * FROM Animal WHERE IdAnimal=@IdAnimal";
-            UpdateCommand = @"UPDATE Animal SET Nom=@Nom, NomScientifique=@NomScientifique, RegionOrigine=@RegionOrigine, IdCategorie=@IdCategorie, Photo=@Photo   WHERE IdAnimal=@IdAnimal;";
+            UpdateCommand = @"UPDATE Animal SET Nom=@Nom, NomScientifique=@NomScientifique, RegionOrigine=@RegionOrigine, IdCategorie=@IdCategorie, Photo=@Photo   WHERE IdAnimal=@IdAnimal";
             InsertCommand = @"INSERT INTO  Animal (Nom ,NomScientifique ,RegionOrigine ,IdCategorie , Photo) OUTPUT inserted.IdAnimal 
                             VALUES(@Nom, @NomScientifique, @RegionOrigine, @IdCategorie, @Photo )";
 
             SelectAllCommand = "Select * from Animal";
-            SelectOneCommand = $"Select * from Animal where IdAnimal=@IdAnimal";
+            SelectOneCommand = "Select * from Animal where IdAnimal=@IdAnimal";
         }
 
         public override bool delete(int id)
@@ -32,7 +32,18 @@ namespace Interzoo.DAL.Repositories
         {
             return base.getAll(mapSqlDataRtoAnimal);
         }
-       
+        public  IEnumerable<Animal> getAllOfOneGodparent(int idUtilisateur)
+        {
+            SelectAllCommand = @"Select * from Animal 
+                INNER JOIN AnimalParrain on Animal.IdAnimal=AnimalParrain.idAnimal
+                INNER JOIN Parrain on Parrain.IdParrain=AnimalParrain.idParrain
+                INNER JOIN Utilisateur on Utilisateur.IdUtilisateur=Parrain.IdUtilisateur
+                WHERE Utilisateur.IdUtilisateur=@IdUtilisateur";
+
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@IdUtilisateur", idUtilisateur);                       
+            return base.getAll(mapSqlDataRtoAnimal, Parameters);
+        }
 
         public override Animal getOne(int id)
         {

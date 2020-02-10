@@ -1,13 +1,11 @@
-﻿using Interzoo.DAL.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web;
 
-namespace Interzoo.DAL.Models
+namespace Interzoo.Web.Models
 {
-    public class Caracteristique : IEntity<int>
+    public class CaracteristiqueModel
     {
         private int _idCaracteristique;
         private string _typeCaracteristique;
@@ -37,11 +35,9 @@ namespace Interzoo.DAL.Models
                 _typeCaracteristique = value;
             }
         }
-        // extras
-        public IEnumerable<Caracteristique> caracteristiquesOneAnimal // getAllCaractTYPEOfOneAnimal
+        public IEnumerable<CaracteristiqueModel> caracteristiquesOneAnimal // getAllCaractTYPEOfOneAnimal
         {
-            get;set;
+            get; set;
         }
-       
     }
 }

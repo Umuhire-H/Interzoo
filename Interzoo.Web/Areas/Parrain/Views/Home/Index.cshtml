@@ -1,0 +1,71 @@
+﻿
+@{
+    ViewBag.Title = "Parrain|Index";
+}
+
+<!-- banner = home -->
+    <div id="home">
+        <!-- --------------------------------  STAY - LAYOUT--------------------------------------------------->
+        <!-- color scheme -->
+        <div class="blast-box">
+            <div class="blast-frame">
+                <p>color schemes</p>
+                <div class="blast-colors d-flex justify-content-center">
+                    <div class="blast-color">#23d48f</div>
+                    <div class="blast-color">#d3b800</div>
+                    <div class="blast-color">#18e7d3</div>
+                    <div class="blast-color">#e5902a</div>
+                    <div class="blast-color">#16d9e9</div>
+                    <!-- you can add more colors here -->
+                </div>
+                <p class="blast-custom-colors">Choose Custom color</p>
+                <input type="color" name="blastCustomColor" value="#d3b800">
+
+            </div>
+            <div class="blast-icon"><span class="fa fa-paint-brush" aria-hidden="true"></span></div>
+        </div>
+        <!-- //color scheme -->
+        <!-- header -->
+        @section header{
+            @{
+                Html.RenderPartial("~/Views/Shared/_Header.cshtml");
+            }
+        }
+
+        <!-- //header -->
+
+    <div class="callbacks_container" style="background-color:rgba(0, 0, 0, 0.5); min-height:5em">
+
+    </div>
+        
+
+        
+    
+    </div><div class="container">
+    <div class="rslides">
+        <h4> Bonjour, @Model.InfoParrain.Nom  @Model.InfoParrain.Prenom</h4>
+        Hello from Mike
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="@Model.InfoParrain.Photo" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">Cras justo odio</li>
+            <li class="list-group-item">Dapibus ac facilisis in</li>
+            <li class="list-group-item">Vestibulum at eros</li>
+        </ul>
+        <div class="card-body">
+            <a href="#" class="card-link">Card link</a>
+            <a href="#" class="card-link">Another link</a>
+        </div>
+    </div>
+
+</div>

@@ -1,80 +1,40 @@
-﻿<!-- services = formules -->
-<div class="w3lspvt-about py-md-5 py-5" id="services">
-    <div class="container pt-lg-5">
+﻿<!-- pricing plans -->
+<section class="py-lg-5 py-4" id="plans">
+    <div class="container py-md-5">
         <div class="title-desc text-center pb-sm-3">
-            <h3 class="main-title-w3pvt">premium features</h3>
-            <p>helping animals & working on environmental issues.</p>
+            <h3 class="main-title-w3pvt">Our Packages</h3>
+            <p> Choose the One and start helping your animal</p>
         </div>
-        <div class="w3lspvt-about-row row  text-center pt-md-0 pt-5 mt-lg-5">
-            <div class="col-lg-4 col-sm-6 w3lspvt-about-grids">
-                <div class="p-md-5 p-sm-3">
-                    <span class="fa fa-map-marker" data-blast="borderColor"></span>
-                    <h4 class="mt-2 mb-3" data-blast="color">wind energy</h4>
-                    <p>Itaque earum rerum hic tenetur a sapiente delectus reiciendis maiores alias consequatur aut</p>
-                </div>
-            </div>
-            <div class="col-lg-4 col-sm-6 w3lspvt-about-grids  border-left border-right my-sm-0 my-5">
-                <div class="p-md-5 p-sm-3">
-                    <span class="fa fa-check-circle-o" data-blast="borderColor"></span>
-                    <h4 class="mt-2 mb-3" data-blast="color">pollution</h4>
-                    <p>Itaque earum rerum hic tenetur a sapiente delectus reiciendis maiores alias consequatur aut</p>
-                </div>
-            </div>
-            <div class="col-lg-4 w3lspvt-about-grids">
-                <div class="p-md-5 p-sm-3">
-                    <span class="fa fa-paw" data-blast="borderColor"></span>
-                    <h4 class="mt-2 mb-3" data-blast="color">saving animals</h4>
-                    <p>Itaque earum rerum hic tenetur a sapiente delectus reiciendis maiores alias consequatur aut</p>
-                </div>
-            </div>
-        </div>
-        <div class="w3lspvt-about-row border-top row text-center pt-md-0 pt-5 mt-md-0 mt-5">
-            <div class="col-lg-4 col-sm-6 w3lspvt-about-grids">
-                <div class="p-md-5 p-sm-3 col-label">
-                    <span class="fa fa-tint" data-blast="borderColor"></span>
-                    <h4 class="mt-2 mb-3" data-blast="color">water</h4>
-                    <p>Itaque earum rerum hic tenetur a sapiente delectus reiciendis maiores alias consequatur aut</p>
-                </div>
-            </div>
-            <div class="col-lg-4 col-sm-6 w3lspvt-about-grids mt-lg-0 mt-md-3 border-left border-right pt-sm-0 pt-5">
-                <div class="p-md-5 p-sm-3 col-label">
-                    <span class="fa fa-handshake-o" data-blast="borderColor">
-                    </span>
-                    <h4 class="mt-2 mb-3" data-blast="color">protection</h4>
-                    <p>Itaque earum rerum hic tenetur a sapiente delectus reiciendis maiores alias consequatur aut</p>
-                </div>
-            </div>
-            <div class="col-lg-4 w3lspvt-about-grids pt-md-0 pt-5">
-                <div class="p-md-5 p-sm-3 col-label">
-                    <span class="fa fa-bar-chart" data-blast="borderColor"></span>
-                    <h4 class="mt-2 mb-3" data-blast="color">nature</h4>
-                    <p>Itaque earum rerum hic tenetur a sapiente delectus reiciendis maiores alias consequatur aut</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- //services -->
-<!-- slide -->
-<div class="abt_bottom py-lg-5 bg-theme" data-blast="bgColor">
-    <div class="container py-sm-4 py-3">
-        <h4 class="abt-text text-capitalize text-sm-center">
-            Over 70% of donations made to us directly impact animals
-            in the wild
-        </h4>
-        <div class="d-sm-flex justify-content-center">
-            <a class="btn light-bg mt-4 w3_pvt-link-bnr scroll bg-theme1" href="#contact" role="button">
-                contact
-                us
-            </a>
-            <a href="#" role="button" data-toggle="modal" data-target="#exampleModal1" class="btn light-bg mt-4 ml-sm-3 w3_pvt-link-bnr">
-                make a contribution
-            </a>
-        </div>
-    </div>
-</div>
-<!-- //slide -->
+        <div class="row price-row">
+            @{
+                foreach (var item in Model.Formules)
+                {
+                        <div class="col-lg-4 col-sm-6 column mb-lg-0 mb-4">
+                                        <div class="box" data-blast="borderColor">
+                                            <div class="title">
+                                                <span class="fa fa-gg" data-blast="color"></span>
+                                                <h5 data-blast="color">@item.Nom</h5>
+                                            </div>
+                                            <div class="price">
+                                                <h6>Price - <sup>$</sup><span class="font-weight-bold">@item.Prix</span></h6>
+                                            </div>
+                                            <div class="option">
+                                                <ul>
+                                                    <li>@item.Description</li>
 
+                                                </ul>
+                                            </div>
+                                            
+                                            <a href="~/Parrain/Home/ChosenFormule/@item.IdFormule" class="btn w3ls-btn bg-theme  d-block">Send</a>
+                                        </div>
+                        </div>      
+                }
+            }
+          
+        </div>
+    </div>
+</section>
+<!-- //pricing plans -->
 <!-- header -->
 @section header{
     @{

@@ -1,5 +1,5 @@
-﻿using Interzoo.DAL.Models;
-using Interzoo.DAL.Repositories;
+
+﻿using Interzoo.DAL.Repositories;
 using Interzoo.Web.Models;
 using Interzoo.Web.Tools.Web;
 using System;
@@ -15,33 +15,68 @@ namespace Interzoo.Web.Controllers
     {
         public ActionResult Index()
         {
-            return View(LoadRoles());
+
+            ViewFormuleModel ivm = new ViewFormuleModel();
+            ivm.RoleModels = LoadRoles();
+            return View(ivm);
         }
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
 
-            return View(LoadRoles());
+            ViewFormuleModel ivm = new ViewFormuleModel();
+            ivm.RoleModels = LoadRoles();
+            return View(ivm);
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            //ViewBag.Message = "Your contact page.";
 
-            return View(LoadRoles());
+            ViewFormuleModel ivm = new ViewFormuleModel();
+            ivm.RoleModels = LoadRoles();
+            return View(ivm);
+        } 
+
+        public ActionResult Blog()
+        {
+            ViewFormuleModel ivm = new ViewFormuleModel();
+            ivm.RoleModels = LoadRoles();
+            return View(ivm);
         }
+        public ActionResult Formules()
+        {
+            ViewFormuleModel ivm = new ViewFormuleModel();
+            ivm.RoleModels = LoadRoles();
+            //--
+            FormuleRepository fr = new FormuleRepository(ConfigurationManager.ConnectionStrings[/*"h_Cnstr"*/"My_Asptest_Cnstr"].ConnectionString);
+            ivm.Formules = fr.getAll().Select(formule => mapToVIEWmodels.formuleToFormuleModel(formule)).ToList();
+            return View(/*LoadRoles()*/ivm);
+        }
+        public ActionResult Portfolio()
+        {
+            ViewFormuleModel ivm = new ViewFormuleModel();
+            ivm.RoleModels = LoadRoles();
+            return View(ivm);
+        }
+        public ActionResult Pricing()
+        {
+            ViewFormuleModel ivm = new ViewFormuleModel();
+            ivm.RoleModels = LoadRoles();
+            return View(ivm);
+        }
+        public ActionResult Team()
+        {
+            ViewFormuleModel ivm = new ViewFormuleModel();
+            ivm.RoleModels = LoadRoles();
+            return View(ivm);
+        }
+
 
         private List<RoleModel> LoadRoles()
         {
-             UtilisateurRepository ur = new UtilisateurRepository(ConfigurationManager.ConnectionStrings["My_Asptest_Cnstr"].ConnectionString);
-            List<Role> ListeRole = ur.getAllRolesForRegisterModel().ToList();
-            List<RoleModel> lr = new List<RoleModel>();
-            foreach (var item in ListeRole)
-            {
-                lr.Add(mapToVIEWmodels.RoleTORoleModel(item));
-            }
-            return lr;
+            UtilisateurRepository ur = new UtilisateurRepository(ConfigurationManager.ConnectionStrings[/*"h_Cnstr"*/"My_Asptest_Cnstr"].ConnectionString);            
+            return ur.getAllRolesForRegisterModel().Select(item => mapToVIEWmodels.RoleTORoleModel(item)).ToList();
         }
     }
 }

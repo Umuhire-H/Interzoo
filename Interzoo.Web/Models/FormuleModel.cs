@@ -1,13 +1,11 @@
-﻿using Interzoo.DAL.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web;
 
-namespace Interzoo.DAL.Models
+namespace Interzoo.Web.Models
 {
-    public class Formule : IEntity<int>
+    public class FormuleModel
     {
         private int _idFormule;
         private string _nom;
@@ -94,9 +92,9 @@ namespace Interzoo.DAL.Models
             }
         }
         // extras
-        public IEnumerable<Formule> FormulesOneUtilisateur
+        public IEnumerable<FormuleModel> FormulesOneUtilisateur
         {
-            get;set;
+            get; set;
         }
     }
 }

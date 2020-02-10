@@ -15,32 +15,78 @@ namespace Interzoo.Web.Controllers
         // GET: Register
         public ActionResult Index()
         {
+            //  ============== I3 =====================
+            // ========================================
             //UtilisateurRepository ur = new UtilisateurRepository(ConfigurationManager.ConnectionStrings["My_Asptest_Cnstr"].ConnectionString);
-            //// IEnum<Role> --> List<Role>
-            //RegisterModelGET rm = new RegisterModelGET();
-            //rm.ListeRole = ur.getAllRolesForRegisterModel (ConfigurationManager.ConnectionStrings["My_Asptest_Cnstr"].ConnectionString).ToList();
 
-           // UtilisateurRepository ur = new UtilisateurRepository(ConfigurationManager.ConnectionStrings["h_Cnstr"].ConnectionString);
-            // List<Role>  = List<modelDAL>  ----->  vue connait pas modelDAL --> creation modelVUE
-            //RegisterModelGET regisM = new RegisterModelGET();
-            // this is a list<ROLE>
-            //regisM.ListeRole = ur.getAllRolesForRegisterModel(ConfigurationManager.ConnectionStrings["h_Cnstr"].ConnectionString).ToList();
-            // list<RoleMODEL>
-            // essai 1
-            //foreach (var item in regisM.ListeRole)
-            //{
-            //    (regisM.ListeRoleModel.ToList()).Add(mapToVIEWmodels.RoleTORoleModel(item));
-            //}
-            //return View(regisM);
 
-            // essai 1
-            List<RoleModel> lr = new List<RoleModel>();
-            //foreach (var item in regisM.ListeRole)
-            //{
-            //    lr.Add(mapToVIEWmodels.RoleTORoleModel(item));
-            //}
+            // ============== HOME ====================
+            // ========================================
+            // UtilisateurRepository ur = new UtilisateurRepository(ConfigurationManager.ConnectionStrings["h_Cnstr"].ConnectionString);
+            return RedirectToAction("Index", new { controller = "Home", area = "" });
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Register(RegisterModelPOST rmPost, HttpPostedFileBase photo)
+        {            
+            UtilisateurRepository ur = new UtilisateurRepository(ConfigurationManager.ConnectionStrings[/*"h_Cnstr"*/"My_Asptest_Cnstr"].ConnectionString);
+            if (!ModelState.IsValid)
+            {
+                foreach (ModelState each_modelState in ViewData.ModelState.Values)
+                {
+                    foreach(ModelError each_error in each_modelState.Errors)
+                    {
+                        ViewBag.ErrorMessage += each_error.ErrorMessage + "<br>";
+                    }
+                }
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                
+                // 1. Ajouter MMembre sans photo
+                ProfileModel pm = mapToVIEWmodels.utilisateurTOprofileModel(ur.insert(MapToDBModel.registerToUtilisateur(rmPost)));
 
-            return View(lr);
+                // 2. photo : 
+                if (pm != null)
+                {
+                    List<string> listeMIME = new List<string>() { "image/jpeg", "image/png", "image/gif" };
+                    if (!listeMIME.Contains(photo.ContentType) || photo.ContentLength > 80000)
+                    {
+                        ViewBag.ErrorMessage = "Votre photo ne possède pas une extension autorisée (choisissez parmis : png, jpg, gif)";
+                        return View("Index");
+                    }
+                    
+                    string[] splitPhotoname = photo.FileName.Split(new char[] { '.' }, StringSplitOptions.RemoveEmptyEntries);
+                    string ext = splitPhotoname[splitPhotoname.Length - 1];
+                    string photoNew = pm.IdUtilisateur + "." + ext;
+                    string chemin = Server.MapPath("~/photos/utilisateur/");
+                    string photoToSave = chemin + "/" + photoNew;
+                    photo.SaveAs(photoToSave);
+                    pm.Photo = photoNew;
+                    // try catch 
+                    bool reussi = ur.update(MapToDBModel.profileTOUtilisateur(pm));
+                    //
+                    if (reussi && pm.IdRole == 0)
+                    {
+                        return RedirectToAction("Index", new { controller = "Home", area = "Parrain" });
+
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", new { controller = "Home", area = "Personnel" });
+
+                    }
+                    //
+
+                }
+                else
+                {
+
+
+                    return RedirectToAction("Index");
+                }
+            }               
         }
     }
 }

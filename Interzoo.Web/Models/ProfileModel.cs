@@ -1,26 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
 namespace Interzoo.Web.Models
 {
-    public class RegisterModelPOST //
+    public class ProfileModel
     {
-        private string _idUtilisateur;//
-        private string _nom;//
-        private string _prenom;//
-        private string _courriel;//
-        private string _motDePasse;//
-        private string _confirmeMotDePasse;//
-        private DateTime _dateDeNaissance;//
-        private string photo; //
-        private bool _isAdmin;//
-        private int _idRole;//
+        private int _idUtilisateur;
+        private string _nom;
+        private string _prenom;
+        private string _courriel;
+        private string _motDePasse;
+        private DateTime _dateDeNaissance;
+        private string photo;
+        private bool _isAdmin;
+        private int _idRole;
 
-
-        public string IdUtilisateur
+        public int IdUtilisateur
         {
             get
             {
@@ -32,7 +29,7 @@ namespace Interzoo.Web.Models
                 _idUtilisateur = value;
             }
         }
-        [Required(ErrorMessage ="Veuillez compléter le champ 'Nom'")]
+
         public string Nom
         {
             get
@@ -45,7 +42,7 @@ namespace Interzoo.Web.Models
                 _nom = value;
             }
         }
-        [Required(ErrorMessage = "Veuillez compléter le champ 'Prenom'")]
+
         public string Prenom
         {
             get
@@ -58,8 +55,7 @@ namespace Interzoo.Web.Models
                 _prenom = value;
             }
         }
-        [Required(ErrorMessage = "Veuillez compléter le champ 'Email'")]
-        [DataType(DataType.EmailAddress)]
+
         public string Courriel
         {
             get
@@ -72,8 +68,7 @@ namespace Interzoo.Web.Models
                 _courriel = value;
             }
         }
-        
-        [Required(ErrorMessage = "Veuillez compléter le champ 'Mot de passe'")]
+
         public string MotDePasse
         {
             get
@@ -86,21 +81,7 @@ namespace Interzoo.Web.Models
                 _motDePasse = value;
             }
         }
-        [Compare("MotDePasse", ErrorMessage ="Les deux mots de passe diffèrent")]
-        public string ConfirmeMotDePasse
-        {
-            get
-            {
-                return _confirmeMotDePasse;
-            }
 
-            set
-            {
-                _confirmeMotDePasse = value;
-            }
-        }
-        [Required(ErrorMessage = "Veuillez compléter le champ 'date de naissance'")]
-        [DataType(DataType.DateTime)]
         public DateTime DateDeNaissance
         {
             get
@@ -126,6 +107,7 @@ namespace Interzoo.Web.Models
                 photo = value;
             }
         }
+
         public bool IsAdmin
         {
             get
@@ -138,7 +120,7 @@ namespace Interzoo.Web.Models
                 _isAdmin = value;
             }
         }
-        [Required(ErrorMessage = "veuillez préciser votre statut")]
+
         public int IdRole
         {
             get
@@ -151,7 +133,5 @@ namespace Interzoo.Web.Models
                 _idRole = value;
             }
         }
-
-      
     }
 }

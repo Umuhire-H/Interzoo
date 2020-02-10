@@ -18,15 +18,81 @@ namespace Interzoo.Web.Tools.Web
                 MotDePasse = lm.MotDePasse
             };
         }
-        //public static Role RoleTORoleModel(RoleModel rm)
-        //{
-        //    return new Role()
-        //    {
-        //        IdRole = rm.IdRole,
-        //        TypeRole = rm.TypeRole
-        //    };
+       public static Utilisateur registerToUtilisateur (RegisterModelPOST rmPost)
+        {
+            return new Utilisateur()
+            {
+                //IdUtilisateur = rmPost.IdUtilisateur, // car  rmPOST n'en contient pas
+                Nom = rmPost.Nom,
+                Prenom = rmPost.Prenom,
+                Courriel = rmPost.Courriel,
+                MotDePasse = rmPost.MotDePasse,
+                DateDeNaissance = rmPost.DateDeNaissance,
+                Photo = rmPost.Photo,
+                IsAdmin = rmPost.IsAdmin,
+                IdRole = rmPost.IdRole
+            };
+        }
+        public static Utilisateur profileTOUtilisateur (ProfileModel pm)
+        {
+            return new Utilisateur()
+            {
+                IdUtilisateur = pm.IdUtilisateur,
+                Nom = pm.Nom,
+                Prenom = pm.Prenom,
+                Courriel = pm.Courriel,
+                MotDePasse = pm.MotDePasse,
+                DateDeNaissance = pm.DateDeNaissance,
+                Photo = pm.Photo,
+                IsAdmin = pm.IsAdmin,
+                IdRole = pm.IdRole
+            };
+        }
+        //--
+        public static Animal animalToAnimalModel(AnimalModel am)
+        {
+            return new Animal()
+            {
+                IdAnimal = am.IdAnimal, // <==
+                Nom = am.Nom,
+                NomScientifique = am.NomScientifique,
+                RegionOrigine = am.RegionOrigine,
+                IdCategorie = am.IdCategorie,
+                Photo = am.Photo
+            };
+        }
 
-        //}
+        public static AnimalCaracteristique animalCaracToAnimalCaractModel(AnimalCaracteristiqueModel acm)
+        {
+            return new AnimalCaracteristique()
+            {
+                IdAnimal = acm.IdAnimal,
+                IdCaracteristique = acm.IdCaracteristique,
+                NomCaracteristique = acm.NomCaracteristique
+            };
+        }
+        public static Caracteristique caracToCaractModel(CaracteristiqueModel cm)
+        {
+            return new Caracteristique()
+            {
+                IdCaracteristique = cm.IdCaracteristique,
+                TypeCaracteristique = cm.TypeCaracteristique
+            };
+        }
+        //--
+        public static FormuleModel formuleToFormuleModel(Formule f)
+        {
+            return new FormuleModel()
+            {
+                IdFormule = f.IdFormule,
+                Nom = f.Nom,
+                Description = f.Description,
+                Prix = f.Prix,
+                DateDebut = f.DateDebut,
+                DateFin = f.DateFin
+            };
+        }
+
 
     }
 }

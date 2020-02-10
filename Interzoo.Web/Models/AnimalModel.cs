@@ -1,13 +1,11 @@
-﻿using Interzoo.DAL.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web;
 
-namespace Interzoo.DAL.Models
+namespace Interzoo.Web.Models
 {
-    public class Animal : IEntity<int>
+    public class AnimalModel
     {
         private int _idAnimal;
         private string _nom;
@@ -15,7 +13,6 @@ namespace Interzoo.DAL.Models
         private string _regionOrigine;
         private int _idCategorie;
         private string _photo;
-
 
         public int IdAnimal
         {
@@ -89,16 +86,14 @@ namespace Interzoo.DAL.Models
                 _photo = value;
             }
         }
-        //----------extras
-        public IEnumerable<Animal> AllAnimalsOneGodparent { get; set; }
-        public Dictionary<Caracteristique , AnimalCaracteristique>caracteriticTypeValue { get; set; }
-        //public IEnumerable<AnimalCaracteristique> allCaracteristicsValues
-        //{
-        //    get; set;
-        //}
-        //public IEnumerable<Caracteristique> allCaracteristicsTypes
-        //{
-        //    get; set;
-        //}
+        // extra
+        public IEnumerable<AnimalModel> AllAnimalsOneGodparent
+        {
+            get; set;
+        }
+        public Dictionary<CaracteristiqueModel, AnimalCaracteristiqueModel> caracteriticTypeValue
+        {
+            get; set;
+        }
     }
 }

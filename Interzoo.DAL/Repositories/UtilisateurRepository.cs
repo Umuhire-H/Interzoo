@@ -15,10 +15,9 @@ namespace Interzoo.DAL.Repositories
         {
             DeleteCommand = @"DELETE FROM Utilisateur WHERE IdUtilisateur=@IdUtilisateur";
             UpdateCommand = @"UPDATE Utilisateur SET Nom=@Nom, Prenom=@Prenom, DateDeNaissance=@DateDeNaissance, Courriel=@Courriel,  MotDePasse = @MotDePasse, Photo=@Photo, IsAdmin=@IsAdmin, IdRole=@IdRole
-                         WHERE IdUtilisateur=@IdUtilisateur;";
+                         WHERE IdUtilisateur=@IdUtilisateur";
             InsertCommand = @"INSERT INTO  Utilisateur (Nom ,Prenom ,DateDeNaissance ,Courriel ,MotDePasse, Photo,IsAdmin, IdRole) OUTPUT inserted.IdUtilisateur 
-                            VALUES(@Nom, @Prenom, @DateDeNaissance, @Courriel,@MotDePasse, @Photo, @IsAdmin, @IdRole )";
-
+                            VALUES(@Nom, @Prenom, @DateDeNaissance, @Courriel, @MotDePasse, @Photo, @IsAdmin, @IdRole )";
             SelectAllCommand = "Select * from Utilisateur";
             SelectOneCommand = $"Select * from Utilisateur where IdUtilisateur=@IdUtilisateur";
 
@@ -46,8 +45,6 @@ namespace Interzoo.DAL.Repositories
         // getALL de table Role : 
         public IEnumerable<Role> getAllRolesForRegisterModel()
         {
-       
-            
             ///1. -objet Command : cmd contient en lui le dico de param + la query -
             ToolBox.Database.Command cmd = new ToolBox.Database.Command("Select * from Role ");
             ///2. -  dico of parameters -
@@ -58,7 +55,7 @@ namespace Interzoo.DAL.Repositories
             }
             ///3. -objet de connection-
             return base._oconn.ExecuteReader<Role>(cmd, mapSqldataRtoRole);
-            ///      
+
         }
      
         public override Utilisateur getOne(int id)
@@ -67,7 +64,16 @@ namespace Interzoo.DAL.Repositories
             Parameters.Add("@IdUtilisateur", id);
             return base.getOne(mapSqldataRtoUtilisateur, Parameters);
         }
-
+        //----
+        public Utilisateur verifLogin(Utilisateur u)
+        {
+            SelectOneCommand = $"Select * from Utilisateur WHERE Courriel=@Courriel AND MotDePasse = @MotDePasse";
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@Courriel", u.Courriel);
+            Parameters.Add("@MotDePasse", u.HashMDP);
+            return base.getOne(mapSqldataRtoUtilisateur, Parameters);
+        }
+        // ----
         public override Utilisateur insert(Utilisateur toInsert)
         {
             Dictionary<string, object> Parameters = utilisateurToDico(toInsert);
@@ -85,7 +91,7 @@ namespace Interzoo.DAL.Repositories
 
         // -----------
         // -----------
-        private Utilisateur mapSqldataRtoUtilisateur(SqlDataReader sqdr)
+        private Utilisateur mapSqldataRtoUtilisateur(SqlDataReader sqdr) // RETOUR <- DB
         {
             return new Utilisateur()
             {
@@ -93,25 +99,33 @@ namespace Interzoo.DAL.Repositories
                 Nom = sqdr["Nom"].ToString(),
                 Prenom = sqdr["Prenom"].ToString(),
                 Courriel = sqdr["Courriel"].ToString(),
-                // MotDePasse = sqdr["MotDePasse"].ToString(),
-                DateDeNaissance = (DateTime)sqdr["DateDeNaissance"]
+                DateDeNaissance = (DateTime)sqdr["DateDeNaissance"],
+                Photo = sqdr["Photo"].ToString(), // sera vide
+                IsAdmin = (bool)sqdr["IsAdmin"],
+                IdRole = (int)sqdr["IdRole"]
+
             };
         }
         
-        private Dictionary<string, object> utilisateurToDico(Utilisateur toInsert)
+        private Dictionary<string, object> utilisateurToDico(Utilisateur toInsert) // Etape pour ALLER -> DB
         {
             return new Dictionary<string, object>
             {
+               
+                ["IdUtilisateur"] = toInsert.IdUtilisateur,
                 ["Nom"] = toInsert.Nom,
                 ["Prenom"] = toInsert.Prenom,
                 ["Courriel"] = toInsert.Courriel,
-                ["MotDePasse"] = toInsert.HashMDP, // <<<<<=====================
-                ["DateDeNaissance"] = toInsert.DateDeNaissance
+                ["MotDePasse"] = toInsert.HashMDP, 
+                ["DateDeNaissance"] = toInsert.DateDeNaissance,
+                ["Photo"] = toInsert.Photo,
+                ["IsAdmin"] = toInsert.IsAdmin,
+                ["IdRole"] = toInsert.IdRole                
             };
         }
         // -----------
 
-        private Role mapSqldataRtoRole(SqlDataReader sqdr)
+        private Role mapSqldataRtoRole(SqlDataReader sqdr) // RETOUR <- DB
         {
             return new Role()
             {

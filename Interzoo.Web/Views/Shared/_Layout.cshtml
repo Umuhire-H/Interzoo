@@ -113,7 +113,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 </div>
                 <div class="modal-body">
                     <form action="/Login/Login" method="post" class="p-sm-3">
-                        @* @Html.AntiForgeryToken()*@
+                        @Html.AntiForgeryToken()
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Email</label>
                             <input type="email" class="form-control" placeholder="soso@sisi.com " name="Courriel" id="recipient-name"
@@ -140,18 +140,18 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         </div>
                         <p class="text-center dont-do modal-footer1">
                             @*@if (@ViewBag.ErrorMessage != null)
-                            {                         
-                            <br /> <span class="alert alert-danger">@Html.Raw(ViewBag.ErrorMessage)</span> <br />
-                            
-                           }*@
+                                 {
+                                 <br /> <span class="alert alert-danger">@Html.Raw(ViewBag.ErrorMessage)</span> <br />
+
+                                }*@
                             Don't have an account?
                             <a href="#exampleModal1" data-toggle="modal" data-target="#exampleModal1" class="font-weight-bold"
                                data-blast="color">
                                 Register Now
                             </a>
 
-                            </p>
-                        </form>
+                        </p>
+                    </form>
                 </div>
             </div>
         </div>
@@ -169,74 +169,78 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     </button>
                 </div> 
                 <div class="modal-body">
-                    <form enctype="multipart/form-data" action="/Register/Index" method="post" class="p-sm-3">
+                    <form enctype="multipart/form-data" action="/Register/Register" method="post" class="p-sm-3">
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Nom</label>
                             <input type="text" class="form-control" placeholder="" name="Nom" id="recipient-rname"
-                                   required="">
+                                   required>
                         </div>
                         <div class="form-group">
-                            <label for="recipient-name" class="col-form-label">Prenom</label>
-                            <input type="text" class="form-control" placeholder="" name="Prenom" id="recipient-rname"
-                                   required="">
+                            <label for="Prenom" class="col-form-label">Prenom</label>
+                            <input type="text" class="form-control" placeholder="" name="Prenom" id="Prenom"
+                                   required>
                         </div>
                         <div class="form-group">
-                            <label for="recipient-name" class="col-form-label">Date de Naissance</label>
-                            <input type="date" class="form-control" placeholder="2000-01-01 ..." name="DateDeNaissance" id="recipient-rname"
-                                   required="">
+                            <label for="DateDeNaissance" class="col-form-label">Date de Naissance</label>
+                            <input type="date" class="form-control" placeholder="2020-12-31 ..." name="DateDeNaissance" id="DateDeNaissance"
+                                   required>
                         </div>
                         <div class="form-group">
-                            @* ROLE --- value sera : @Model.IdRole
-                                    --- name sera champEXtra: via requete JOIN @model..*@
-                            <label for="recipient-name" class="col-form-label"> Statut </label>
-                            <select type="text" class="form-control" placeholder="Votre statut" name="ListeRoleModel" id="recipient-rname"
-                                    required="">
-                                <option class="form-control" value="0">Futur.e  parrain.marraine</option>
-                                @foreach (var item in Model)
-                                {
-                                    @*if (item.IdRole == 0)
-                                    { <option class="form-control" value="0">Futur.e  parrain.marraine</option>
-                                    }*@
 
-                                    <option class="form-control" value="@item.IdRole">@item.TypeRole</option>
+                            <label for="IdRole" class="col-form-label"> Statut </label>
+                            <select type="text" class="form-control" placeholder="Votre statut" name="IdRole" id="IdRole"
+                                    required>
+                                <option class="form-control" value="0">Futur.e  parrain.marraine</option>
+
+                                @{
+                                    if (!Interzoo.Web.Tools.Web.SessionUtilisateur.IsConnected)
+                                    {
+                                        foreach (var rolM in Model.RoleModels)
+                                        {
+                                            <option class="form-control" value=@rolM.IdRole>@rolM.TypeRole</option>
+                                        }
+                                    }
+
+
                                 }
+
                             </select>
                         </div>
                         @* isADMIN *@
                         <div class="form-group">
-                            <label for="recipient-email" class="col-form-label">Administrateur</label>
-                            <input type="hidden" class="form-control" placeholder="" value ="0" name="IsAdmin" id="recipient-email"
-                                   required="">
+                            @*<label for="recipient-email" class="col-form-label">Administrateur</label>*@
+                            <input type="hidden" class="form-control" placeholder="" value="false" name="IsAdmin" id="recipient-email"
+                                   required>
                         </div>
                         @* END isAdmin *@
                         <div class="form-group">
                             <label for="recipient-email" class="col-form-label">Email</label>
                             <input type="email" class="form-control" placeholder="" name="Courriel" id="recipient-email"
-                                   required="">
+                                   required>
                         </div>
                         <div class="form-group">
                             <label for="password1" class="col-form-label">Mot de passe</label>
                             <input type="password" class="form-control" placeholder="" name="MotDePasse" id="password1"
-                                   required="">
+                                   required>
                         </div>
                         <div class="form-group">
                             <label for="password2" class="col-form-label">Confirmez le mot de passe</label>
                             <input type="password" class="form-control" placeholder="" name="ConfirmeMotDePasse" id="password2"
-                                   required="">
+                                   required>
                         </div>
                         <div class="form-group">
-                            <label for="password2" class="col-form-label">Une photo de profil</label>
-                            <input type="file" class="form-control" placeholder="Chargez ..." name="" id="picture1"
-                                   required="">
+                            <label for="picture1" class="col-form-label">Une photo de profil</label>
+                            <input type="file" class="form-control" placeholder="Chargez ..." name="Photo" id="picture1"
+                                   required>
                         </div>
-                        <div class="sub-w3l">
-                            <div class="sub-w3_pvt">
-                                <input type="checkbox" id="brand2" value="">
-                                <label for="brand2" class="mb-3">
-                                    <span></span>I Accept to the Terms & Conditions
-                                </label>
-                            </div>
-                        </div>
+                        @*<div class="sub-w3l">
+                                <div class="sub-w3_pvt">
+                                    <input type="checkbox" id="brand2" value="">
+                                    <label for="brand2" class="mb-3">
+                                        <span></span>I Accept to the Terms & Conditions
+                                    </label>
+                                </div>
+                            </div>*@
                         <div class="right-w3l">
                             <input type="submit" class="form-control" value="Register">
                         </div>
@@ -246,6 +250,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                 @ViewBag.SuccessMessage
                             </div>
                         }
+                        @if (@ViewBag.ErrorMessage != null)
+                        {
+                            <br /> <span class="alert alert-danger">@Html.Raw(ViewBag.ErrorMessage)</span> <br />
+
+                        }
+                        @Html.AntiForgeryToken()
                     </form>
                 </div>
             </div>
@@ -264,7 +274,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     </button>
                 </div>
                 <div class="modal-body text-center">
-                    <img src="images/g1.jpg" class="img-fluid" alt="" />
+                    <img src="~/images/g1.jpg" class="img-fluid" alt="" />
                     <p class="text-left my-4">
                         Quisque velit nisi, pretium ut lacinia in, elementum id enim. Curabitur non nulla sit amet
                         nisl
@@ -288,7 +298,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     </button>
                 </div>
                 <div class="modal-body text-center">
-                    <img src="images/g2.jpg" class="img-fluid" alt="" />
+                    <img src="~/images/g2.jpg" class="img-fluid" alt="" />
                     <p class="text-left my-4">
                         Quisque velit nisi, pretium ut lacinia in, elementum id enim. Curabitur non nulla sit amet
                         nisl
@@ -312,7 +322,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     </button>
                 </div>
                 <div class="modal-body text-center">
-                    <img src="images/g3.jpg" class="img-fluid" alt="" />
+                    <img src="~/images/g3.jpg" class="img-fluid" alt="" />
                     <p class="text-left my-4">
                         Quisque velit nisi, pretium ut lacinia in, elementum id enim. Curabitur non nulla sit amet
                         nisl
@@ -432,6 +442,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     @Scripts.Render("~/Scripts/color-switch")
 
     @*<script src="js/blast.min.js"></script>*@
+    <!--=========================================================================-->
+    <!--========================MyFunctions=====================================-->
+    @Scripts.Render("~/Scripts/log-out-event")
+
+    <!--=========================================================================-->
+    <!--=========================================================================-->
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
