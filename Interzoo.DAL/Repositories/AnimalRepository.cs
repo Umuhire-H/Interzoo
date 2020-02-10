@@ -13,9 +13,9 @@ namespace Interzoo.DAL.Repositories
         public AnimalRepository(string cnString) : base(cnString)
         {
             DeleteCommand = @"DELETE * FROM Animal WHERE IdAnimal=@IdAnimal";
-            UpdateCommand = @"UPDATE Animal SET Nom=@Nom, NomScientifique=@NomScientifique, RegionOrigine=@RegionOrigine, IdCategorie=@IdCategorie, Photo=@Photo   WHERE IdAnimal=@IdAnimal";
-            InsertCommand = @"INSERT INTO  Animal (Nom ,NomScientifique ,RegionOrigine ,IdCategorie , Photo) OUTPUT inserted.IdAnimal 
-                            VALUES(@Nom, @NomScientifique, @RegionOrigine, @IdCategorie, @Photo )";
+            UpdateCommand = @"UPDATE Animal SET Nom=@Nom, NomScientifique=@NomScientifique, RegionOrigine=@RegionOrigine, Photo=@Photo   WHERE IdAnimal=@IdAnimal";
+            InsertCommand = @"INSERT INTO  Animal (Nom ,NomScientifique ,RegionOrigine  , Photo) OUTPUT inserted.IdAnimal 
+                            VALUES(@Nom, @NomScientifique, @RegionOrigine, @Photo )";
 
             SelectAllCommand = "Select * from Animal";
             SelectOneCommand = "Select * from Animal where IdAnimal=@IdAnimal";
@@ -76,7 +76,7 @@ namespace Interzoo.DAL.Repositories
                 NomScientifique = sqdr["RegionOrigine"].ToString(),
                 RegionOrigine = sqdr["Courriel"].ToString(),
                 Photo = sqdr["photo"].ToString(),
-                IdCategorie = (int)sqdr["IdCategorie"]
+               // IdCategorie = (int)sqdr["IdCategorie"]
             };
         }
        
@@ -88,7 +88,7 @@ namespace Interzoo.DAL.Repositories
                 ["NomScientifique"] = toInsert.NomScientifique,
                 ["RegionOrigine"] = toInsert.RegionOrigine,
                 ["Photo"] = toInsert.Photo,
-                ["IdCategorie"] = toInsert.IdCategorie
+                //["IdCategorie"] = toInsert.IdCategorie
             };
         }
         // -----------

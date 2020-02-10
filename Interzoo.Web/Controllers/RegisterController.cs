@@ -29,7 +29,7 @@ namespace Interzoo.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Register(RegisterModelPOST rmPost, HttpPostedFileBase photo)
         {            
-            UtilisateurRepository ur = new UtilisateurRepository(ConfigurationManager.ConnectionStrings[/*"h_Cnstr"*/"My_Asptest_Cnstr"].ConnectionString);
+            UtilisateurRepository ur = new UtilisateurRepository(ConfigurationManager.ConnectionStrings["h_Cnstr"/*"My_Asptest_Cnstr"*/].ConnectionString);
             if (!ModelState.IsValid)
             {
                 foreach (ModelState each_modelState in ViewData.ModelState.Values)
@@ -59,16 +59,24 @@ namespace Interzoo.Web.Controllers
                     
                     string[] splitPhotoname = photo.FileName.Split(new char[] { '.' }, StringSplitOptions.RemoveEmptyEntries);
                     string ext = splitPhotoname[splitPhotoname.Length - 1];
-                    string photoNew = pm.IdUtilisateur + "." + ext;
-                    string chemin = Server.MapPath("~/photos/utilisateur/");
+                    string photoNew = pm.IdUtilisateur + "." + ext; // <== save in DB
+                    string chemin = Server.MapPath("~/photos/utilisateur");
                     string photoToSave = chemin + "/" + photoNew;
                     photo.SaveAs(photoToSave);
-                    pm.Photo = photoNew;
+                    pm.Photo = photoNew; // saved in DB via mapper
                     // try catch 
                     bool reussi = ur.update(MapToDBModel.profileTOUtilisateur(pm));
                     //
+                    
+                    
+                 
                     if (reussi && pm.IdRole == 0)
                     {
+                        if (pm.IsAdmin)
+                        {
+                            return RedirectToAction("Index", new { controller = "Home", area = "Admin" });
+
+                        }
                         return RedirectToAction("Index", new { controller = "Home", area = "Parrain" });
 
                     }

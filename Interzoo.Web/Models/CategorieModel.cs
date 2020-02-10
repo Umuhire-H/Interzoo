@@ -5,37 +5,35 @@ using System.Web;
 
 namespace Interzoo.Web.Models
 {
-    public class RoleModel
+    public class CategorieModel
     {
-        private int? _idRole = null; 
-        private string _typeRole;
+        private int _idCategorie;
+        private string _typeCategorie;
 
-        public int? IdRole
+        public int IdCategorie
         {
             get
             {
-                return _idRole;
+                return _idCategorie;
             }
 
             set
             {
-                _idRole = value;
+                _idCategorie = value;
             }
         }
 
-        public string TypeRole
+        public string TypeCategorie
         {
             get
             {
-                return _typeRole;
+                return _typeCategorie;
             }
 
             set
             {
-                _typeRole = value;
+                _typeCategorie = value;
             }
         }
-
-
     }
 }

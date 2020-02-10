@@ -6,11 +6,27 @@
             <p>create your outstanding clean and high quality website.</p>
         </div>
         <ul class="demo row py-lg-5 py-sm-4 pb-4">
-            <li class="col-lg-3 col-sm-6">
-                <div class="gallery-grid1">
-                    <img src="~/images/g1.jpg" alt=" " class="img-fluid img-thumbnail" />
-                </div>
-            </li>
+            @{
+                if (!Interzoo.Web.Tools.Web.SessionUtilisateur.IsConnected)
+                {
+                    <li class="col-lg-3 col-sm-6">
+                        <div class="gallery-grid1">
+                            <img src="~/images/g1.jpg" alt=" " class="img-fluid img-thumbnail" />
+                        </div>
+                    </li>
+                }
+                else
+                {
+                    <a href="~/Parrain/Home/Index" class="col-lg-3 col-sm-6">
+                        <div class="gallery-grid1">
+                            <img src="~/images/g1.jpg" alt=" " class="img-fluid img-thumbnail" />
+                        </div>
+                    </a>
+
+                }
+
+            }
+
             <li class="col-lg-3 col-sm-6">
                 <div class="gallery-grid1">
                     <img src="~/images/g4.jpg" alt=" " class="img-fluid img-thumbnail" />

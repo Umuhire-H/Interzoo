@@ -34,38 +34,245 @@
 
         <!-- //header -->
 
-    <div class="callbacks_container" style="background-color:rgba(0, 0, 0, 0.5); min-height:5em">
+        <div class="callbacks_container" style="background-color:rgba(0, 0, 0, 0.5); min-height:5em">
 
-    </div>
-        
-
-        
-    
-    </div><div class="container">
-    <div class="rslides">
-        <h4> Bonjour, @Model.InfoParrain.Nom  @Model.InfoParrain.Prenom</h4>
-        Hello from Mike
-    </div>
-    <p>
-        @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-        @Html.ActionLink("Back to List", "Index")
-    </p>
-
-    <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src="@Model.InfoParrain.Photo" alt="Card image cap">
-        <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
         </div>
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item">Cras justo odio</li>
-            <li class="list-group-item">Dapibus ac facilisis in</li>
-            <li class="list-group-item">Vestibulum at eros</li>
-        </ul>
-        <div class="card-body">
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
-        </div>
+        
     </div>
+    <div class="container" style="height: 100vh">
+        <div class="rslides d-flex justify-content-end">
+            <h4> Hello, @Model.InfoParrain.Nom  @Model.InfoParrain.Prenom</h4>
+            Hello from Mike
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+            @Html.ActionLink("Back to List", "Index")
+        </p>
+        </div>
+        
+           
+        <div class="d-flex justify-content-between align-items-center">
+            <div id="accordion" class="w-50 p-3">
+                <div class="card">
+                    <div class="card-header" id="headingTwo">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                YOUR PROFILE
+                            </button>
+                        </h5>
+                    </div>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                        <div class="card-body">
+                            <div class="card " style="width: 5rem;">
+                                <img class="card-img-top flex justify-content-center" src="~/photos/utilisateur/@Model.InfoParrain.Photo" alt="Card image cap">
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">@Model.InfoParrain.Nom</li>
+                                <li class="list-group-item">@Model.InfoParrain.Prenom</li>
+                                <li class="list-group-item">@Model.InfoParrain.Courriel</li>
+                                <li class="list-group-item">@Model.InfoParrain.DateDeNaissance</li>
+                            </ul>
+                            <div class="card-body">
+                                @*<a href="/Parrain/Home/EditProfile/@Model.InfoParrain.IdUtilisateur" class="btn w3ls-btn bg-theme  d-block">Edit your profil</a>*@
 
-</div>
+                                <a href="#exampleModalEdition" data-toggle="modal" @*data-target="#exampleModalEdition"*@ class="btn w3ls-btn bg-theme  d-block">Edit your profil
+                                </a>
+                            </div>
+                            <!------------------MODAL EDITION------------------------------>
+                            <!-- register -->
+                            <div class="modal fade" id="exampleModalEdition" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1"
+                                 aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel1">YOU ARE UDATATING YOUR PROFILE</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form enctype="multipart/form-data" action="~/Parrain/Home/EditProfile/" method="post" class="p-sm-3">
+                                                <div class="form-group">
+                                                    <label for="recipient-name" class="col-form-label">Nom</label>
+                                                    <input type="text" class="form-control" value="@Model.Utilisateur.Nom" name="Nom" id="recipient-rname"
+                                                           required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="Prenom" class="col-form-label">Prenom</label>
+                                                    <input type="text" class="form-control" placeholder="" value="@Model.Utilisateur.Prenom" name="Prenom" id="Prenom"
+                                                           required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="DateDeNaissance" class="col-form-label">Date de Naissance</label>
+                                                    <input type="date" class="form-control" value="@Model.Utilisateur.DateDeNaissance" name="DateDeNaissance" id="DateDeNaissance"
+                                                           required>
+                                                </div>
+                                                <div class="form-group">
+
+                                                    <label for="IdRole" class="col-form-label"> Statut </label>
+                                                    <input type="text" class="form-control" name="@Model.Utilisateur.IdRole" value="" @Model.Utilisateur.IdRole " id="IdRole" required>
+
+                                                </div>
+                                                @* isADMIN *@
+                                                <div class="form-group">
+                                                    @*<label for="recipient-email" class="col-form-label">Administrateur</label>*@
+                                                    <input type="hidden" class="form-control" placeholder="" value="false" name="IsAdmin" id="recipient-email"
+                                                           required>
+                                                </div>
+                                                @* END isAdmin *@
+                                                <div class="form-group">
+                                                    <label for="recipient-email" class="col-form-label">Email</label>
+                                                    <input type="email" class="form-control" value="@Model.Utilisateur.Courriel" name="Courriel" id="recipient-email"
+                                                           required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="password1" class="col-form-label">Mot de passe</label>
+                                                    <input type="password" class="form-control" placeholder="" name="MotDePasse" id="password1"
+                                                           required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="password2" class="col-form-label">Confirmez le mot de passe</label>
+                                                    <input type="password" class="form-control" placeholder="" name="ConfirmeMotDePasse" id="password2"
+                                                           required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="picture1" class="col-form-label">Une photo de profil</label>
+                                                    <input type="file" class="form-control" placeholder="Chargez ..." name="Photo" id="picture1"
+                                                           required>
+                                                </div>
+                                                @*<div class="sub-w3l">
+                                <div class="sub-w3_pvt">
+                                    <input type="checkbox" id="brand2" value="">
+                                    <label for="brand2" class="mb-3">
+                                        <span></span>I Accept to the Terms & Conditions
+                                    </label>
+                                </div>
+                            </div>*@
+                                                <div class="right-w3l">
+                                                    <input type="submit" class="form-control" value="UPDATING">
+                                                </div>
+
+                                                @Html.AntiForgeryToken()
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- // register -->
+                            <!-------------------------------------------------------------------------------------------->
+
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingThree">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                YOUR ANIMAL
+                            </button>
+                        </h5>
+                    </div>
+                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                        <div class="card-body">
+                            @{
+                                if (Model.AnimauxAdoptes.Count != 0)
+                                {
+                                    foreach (var item in Model.AnimauxAdoptes)
+                                    {
+                                        <!-- blog grid -->
+                                        <div class="col-lg-4 col-md-6 mt-sm-0 mt-4">
+                                            <div class="card">
+                                                <div class="card-header p-0 position-relative">
+                                                    <a href="#exampleModal2" data-toggle="modal" aria-pressed="false" data-target="#exampleModal2"
+                                                       role="button">
+                                                        <img class="card-img-bottom" src="~/photos/animal/@item.Photo" alt="Card image cap">
+                                                        <span class="fa fa-user post-icon bg-theme" aria-hidden="true" data-blast="bgColor"></span>
+                                                    </a>
+                                                </div>
+                                                <div class="card-body">
+                                                    <h5 class="blog-title card-title font-weight-bold">
+                                                        <a href="#exampleModal2" data-toggle="modal" aria-pressed="false" data-target="#exampleModal2"
+                                                           role="button">@item.Nom</a>
+                                                    </h5>
+                                                </div>
+                                                <ul class="list-group list-group-flush">
+                                                    <li class="list-group-item">@item.NomScientifique</li>
+                                                    <li class="list-group-item">@item.RegionOrigine</li>
+                                                    @{
+                                                        if (@item.CaracteriticTypeValue.Count != 0)
+                                                        {
+                                                            foreach (KeyValuePair<Interzoo.Web.Models.CaracteristiqueModel, Interzoo.Web.Models.AnimalCaracteristiqueModel> kvp in @item.CaracteriticTypeValue)
+                                                            {
+                                                                <li class="list-group-item">@kvp.Key: @kvp.Value</li>
+                                                            }
+                                                        }
+                                                    }
+                                                </ul>
+                                                <div class="card-body">
+                                                    <a href="/Home/Portfolio" class="btn w3ls-btn bg-theme  d-block">Adopt one more</a>
+                                                </div>
+                                                @*<button type="button" class="btn blog-btn wthree-bnr-btn" data-toggle="modal" aria-pressed="false"
+                data-target="#exampleModal2">
+            Read more
+        </button>*@
+                                            </div>
+                                        </div>
+                                        <!-- //blog grid -->
+                                    }
+
+                                }
+                            }
+
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingOne">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                YOUR PACKAGES & EVENTS
+                            </button>
+                        </h5>
+                    </div>
+
+                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="card-body" style="padding-top:50px">
+                            @if (Model.TheFormule != null)
+                            {
+
+                                <div class="col-lg-4 col-sm-6 column mb-lg-0 mb-4">
+                                    <div class="box" data-blast="borderColor" style=" min-height:50px; ">
+                                        <div class="title">
+                                            <span class="fa fa-gg" data-blast="color"></span>
+                                            <h5 data-blast="color">@Model.TheFormule.Nom</h5>
+                                        </div>
+                                        <div class="price">
+                                            <h6>Price - <sup>$</sup><span class="font-weight-bold">@Model.TheFormule.Prix</span></h6>
+                                        </div>
+                                        <div class="option">
+                                            <ul>
+                                                <li>@Model.TheFormule.Description</li>           
+                                                <li>
+                                                    <small>
+                                                        <span class="font-weight-bold">From</span> @Model.TheFormule.DateDebut
+                                                        <span class="font-weight-bold">To</span> @Model.TheFormule.DateFin 
+                                                    </small>
+                                                </li>
+
+                                            </ul>
+                                        </div>
+
+                                        <a href="~/Parrain/Home/EditPackage/@Model.TheFormule.IdFormule" class="btn w3ls-btn bg-theme  d-block">Edit my package</a>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                      
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+         
+     
+
+    </div>

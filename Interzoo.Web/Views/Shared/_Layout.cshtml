@@ -149,6 +149,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                data-blast="color">
                                 Register Now
                             </a>
+                            <br />
+                            Administrator account?
+                            <a href="#exampleModal1Admin" data-toggle="modal" data-target="#exampleModal1Admin" class="font-weight-bold"
+                               data-blast="color">
+                                Register Now
+                            </a>
 
                         </p>
                     </form>
@@ -262,6 +268,108 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         </div>
     </div>
     <!-- // register -->
+    <!-- ADMIN -------- register -->
+    <div class="modal fade" id="exampleModal1Admin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel1">Administrator registration</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form enctype="multipart/form-data" action="/Register/Register" method="post" class="p-sm-3">
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Nom</label>
+                            <input type="text" class="form-control" placeholder="" name="Nom" id="recipient-rname"
+                                   required>
+                        </div>
+                        <div class="form-group">
+                            <label for="Prenom" class="col-form-label">Prenom</label>
+                            <input type="text" class="form-control" placeholder="" name="Prenom" id="Prenom"
+                                   required>
+                        </div>
+                        <div class="form-group">
+                            <label for="DateDeNaissance" class="col-form-label">Date de Naissance</label>
+                            <input type="date" class="form-control" placeholder="2020-12-31 ..." name="DateDeNaissance" id="DateDeNaissance"
+                                   required>
+                        </div>
+                        <div class="form-group " >
+
+                            <label for="IdRole" class="col-form-label"> Statut </label>
+                            <select @*type="hidden"*@ class="form-control" placeholder="Votre statut" name="IdRole" id="IdRole">
+                                <option class="form-control" selected disabled value="">Administrateur</option>
+                                @*@{
+                                    if (!Interzoo.Web.Tools.Web.SessionUtilisateur.IsConnected)
+                                    {
+                                        foreach (var rolM in Model.RoleModels)
+                                        {
+                                            <option class="form-control" value=@rolM.IdRole>@rolM.TypeRole</option>
+                                        }
+                                    }
+
+                                }*@
+
+                            </select>
+                        </div>
+                        @* isADMIN *@
+                        <div class="form-group">
+                            @*<label for="recipient-email" class="col-form-label">Administrateur</label>*@
+                            <input type="hidden" class="form-control" placeholder="" value="true" name="IsAdmin" id="recipient-email"
+                                   required>
+                        </div>
+                        @* END isAdmin *@
+                        <div class="form-group">
+                            <label for="recipient-email" class="col-form-label">Email</label>
+                            <input type="email" class="form-control" placeholder="" name="Courriel" id="recipient-email"
+                                   required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password1" class="col-form-label">Mot de passe</label>
+                            <input type="password" class="form-control" placeholder="" name="MotDePasse" id="password1"
+                                   required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password2" class="col-form-label">Confirmez le mot de passe</label>
+                            <input type="password" class="form-control" placeholder="" name="ConfirmeMotDePasse" id="password2"
+                                   required>
+                        </div>
+                        <div class="form-group">
+                            <label for="picture1" class="col-form-label">Une photo de profil</label>
+                            <input type="file" class="form-control" placeholder="Chargez ..." name="Photo" id="picture1"
+                                   required>
+                        </div>
+                        @*<div class="sub-w3l">
+                                <div class="sub-w3_pvt">
+                                    <input type="checkbox" id="brand2" value="">
+                                    <label for="brand2" class="mb-3">
+                                        <span></span>I Accept to the Terms & Conditions
+                                    </label>
+                                </div>
+                            </div>*@
+                        <div class="right-w3l">
+                            <input type="submit" class="form-control" value="Register">
+                        </div>
+                        @if (ViewBag.SuccessMessage != null)
+                        {
+                            <div class="alert alert-info">
+                                @ViewBag.SuccessMessage
+                            </div>
+                        }
+                        @if (@ViewBag.ErrorMessage != null)
+                        {
+                            <br /> <span class="alert alert-danger">@Html.Raw(ViewBag.ErrorMessage)</span> <br />
+
+                        }
+                        @Html.AntiForgeryToken()
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ADMIN ------// register -->
     <!-- blog modal1 -->
     <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2"
          aria-hidden="true">

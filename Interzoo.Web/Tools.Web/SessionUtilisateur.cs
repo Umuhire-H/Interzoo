@@ -39,7 +39,36 @@ namespace Interzoo.Web.Tools.Web
                 HttpContext.Current.Session["ConnectedUser"] = value;
             }
         }
+        public static FormuleModel ConnectedUserPackage
+        {
+            get
+            {
+                if (HttpContext.Current.Session["ConnectedUser"] != null)
+                {
+                    return (FormuleModel)HttpContext.Current.Session["ConnectedUserPackage"];
+                }
+                return null;
+            }
+            set
+            {
+                HttpContext.Current.Session["ConnectedUserPackage"] = value;
+            }
+        }
 
-
+        public static IEnumerable< AnimalModel> ConnectedUserAnimals
+        {
+            get
+            {
+                if (HttpContext.Current.Session["ConnectedUserAnimals"] != null)
+                {
+                    return (IEnumerable<AnimalModel>)HttpContext.Current.Session["ConnectedUserAnimals"];
+                }
+                return null;
+            }
+            set
+            {
+                HttpContext.Current.Session["ConnectedUserAnimals"] = value;
+            }
+        }
     }
 }
