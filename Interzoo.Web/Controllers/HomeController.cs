@@ -61,7 +61,7 @@ namespace Interzoo.Web.Controllers
         {
             StandartModel stm = new StandartModel();
             stm.RoleModels = LoadRoles();
-            // ===========doit envoyer à  la vue ListAnimalAdded by Admin
+            // ===========doit envoyer à  la vue ListAnimal from DB ----Added by Admin
             return View(stm);
         }
 
