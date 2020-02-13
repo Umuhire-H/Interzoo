@@ -127,11 +127,24 @@ namespace Interzoo.DAL.Repositories
 
         private Role mapSqldataRtoRole(SqlDataReader sqdr) // RETOUR <- DB
         {
-            return new Role()
+            if (sqdr["IdRole"] == DBNull.Value)
             {
-                IdRole = (int)sqdr["IdRole"],
-                TypeRole = sqdr["TypeRole"].ToString()               
-            };
+                return new Role()
+                {
+                    IdRole = null,
+                    TypeRole = sqdr["TypeRole"].ToString()
+                };
+
+            }
+            else
+            {
+                return new Role()
+                {
+                    IdRole = (int)sqdr["IdRole"],
+                    TypeRole = sqdr["TypeRole"].ToString()               
+                };
+
+            }
         }
 
 

@@ -9,10 +9,10 @@ namespace Interzoo.DAL.Models
 {
     public class Role : IEntity<int>
     {
-        private int _idRole;
+        private int? _idRole;
         private string _typeRole;
 
-        public int IdRole
+        public int? IdRole
         {
             get
             {
