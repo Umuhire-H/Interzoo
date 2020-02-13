@@ -1,6 +1,7 @@
 ﻿
 @{
     ViewBag.Title = "Parrain|Index";
+    
 }
 
 <!-- banner = home -->
@@ -47,6 +48,7 @@
             @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
             @Html.ActionLink("Back to List", "Index")
         </p>
+
         </div>
         
            
@@ -109,7 +111,7 @@
                                                 <div class="form-group">
 
                                                     <label for="IdRole" class="col-form-label"> Statut </label>
-                                                    <input type="text" class="form-control" name="@Model.Utilisateur.IdRole" value="" @Model.Utilisateur.IdRole " id="IdRole" required>
+                                                    <input type="text" class="form-control" name="@Model.Utilisateur.IdRole" value="" @Model.Utilisateur.IdRole id="IdRole" required>
 
                                                 </div>
                                                 @* isADMIN *@
@@ -261,7 +263,8 @@
                                             </ul>
                                         </div>
 
-                                        <a href="~/Parrain/Home/EditPackage/@Model.TheFormule.IdFormule" class="btn w3ls-btn bg-theme  d-block">Edit my package</a>
+                                        <a href="~/Parrain/Home/confirmPackage/@Model.TheFormule.IdFormule" class="btn w3ls-btn bg-theme  d-block">Confirm, I want it</a>
+                                        <h3>@ViewBag.Message</h3>
                                     </div>
                                 </div>
                             }

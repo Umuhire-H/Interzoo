@@ -140,20 +140,20 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         </div>
                         <p class="text-center dont-do modal-footer1">
                             @*@if (@ViewBag.ErrorMessage != null)
-                                 {
-                                 <br /> <span class="alert alert-danger">@Html.Raw(ViewBag.ErrorMessage)</span> <br />
+         {
+         <br /> <span class="alert alert-danger">@Html.Raw(ViewBag.ErrorMessage)</span> <br />
 
-                                }*@
+        }*@
                             Don't have an account?
                             <a href="#exampleModal1" data-toggle="modal" data-target="#exampleModal1" class="font-weight-bold"
                                data-blast="color">
                                 Register Now
                             </a>
                             <br />
-                            Administrator account?
-                            <a href="#exampleModal1Admin" data-toggle="modal" data-target="#exampleModal1Admin" class="font-weight-bold"
+                            Register
+                            <a href="#verifAdminModal" data-toggle="modal" data-target="#verifAdminModal" class="font-weight-bold"
                                data-blast="color">
-                                Register Now
+                                As Administrator
                             </a>
 
                         </p>
@@ -189,7 +189,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                    required>
                         </div>
                         <div class="right-w3l">
-                            <input type="submit" class="form-control" value="CONFIRM">
+                            <input type="submit" class="form-control" value="VERIFICATION">
                         </div>
                        
                         <p class="text-center dont-do modal-footer1">
@@ -198,15 +198,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                  <br /> <span class="alert alert-danger">@Html.Raw(ViewBag.ErrorMessage)</span> <br />
 
                                 }*@
-                          @{ 
-                              if()
-                          }
+                        
                             <br />
-                            Administrator account?
+                            @*Administrator account?
                             <a href="#exampleModal1Admin" data-toggle="modal" data-target="#exampleModal1Admin" class="font-weight-bold"
                                data-blast="color">
-                                Register Now
-                            </a>
+                                Verification
+                            </a>*@
 
                         </p>
                     </form>
@@ -249,7 +247,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             <label for="IdRole" class="col-form-label"> Statut </label>
                             <select type="text" class="form-control" placeholder="Votre statut" name="IdRole" id="IdRole"
                                     required>
-
+                                <option class="form-control"  value="">Administrateur</option>
                                 @{
                                     if (!Interzoo.Web.Tools.Web.SessionUtilisateur.IsConnected)
                                     {
@@ -263,13 +261,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
                             </select>
                         </div>
-                        @* isADMIN *@
+                        @* isADMIN <========================== *@
                         <div class="form-group">
                             @*<label for="recipient-email" class="col-form-label">Administrateur</label>*@
-                            <input type="hidden" class="form-control" placeholder="" value="false" name="IsAdmin" id="recipient-email"
+                            <input type="hidden" class="form-control" placeholder="" value="@Model.Administrator.IsAdmin" name="IsAdmin" id="recipient-email"
                                    required>
                         </div>
-                        @* END isAdmin *@
+                        @* END isAdmin ========================*@
+
                         <div class="form-group">
                             <label for="recipient-email" class="col-form-label">Email</label>
                             <input type="email" class="form-control" placeholder="" name="Courriel" id="recipient-email"
@@ -320,7 +319,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     </div>
     <!-- // register -->
     <!---- ADMIN -------- Register -->
-    <div class="modal fade" id="exampleModal1Admin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1"
+   
+    @*<div class="modal fade" id="exampleModal1Admin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1"
          aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -350,28 +350,17 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         <div class="form-group ">
 
                             <label for="IdRole" class="col-form-label"> Statut </label>
-                            <select @*type="hidden"*@ class="form-control" placeholder="Votre statut" name="IdRole" id="IdRole">
+                            <select  class="form-control" placeholder="Votre statut" name="IdRole" id="IdRole">
                                 <option class="form-control" selected disabled value="">Administrateur</option>
-                                @*@{
-                                        if (!Interzoo.Web.Tools.Web.SessionUtilisateur.IsConnected)
-                                        {
-                                            foreach (var rolM in Model.RoleModels)
-                                            {
-                                                <option class="form-control" value=@rolM.IdRole>@rolM.TypeRole</option>
-                                            }
-                                        }
-
-                                    }*@
+                              
 
                             </select>
                         </div>
-                        @* isADMIN *@
+                      
                         <div class="form-group">
-                            @*<label for="recipient-email" class="col-form-label">Administrateur</label>*@
                             <input type="hidden" class="form-control" placeholder="" value="true" name="IsAdmin" id="recipient-email"
                                    required>
                         </div>
-                        @* END isAdmin *@
                         <div class="form-group">
                             <label for="recipient-email" class="col-form-label">Email</label>
                             <input type="email" class="form-control" placeholder="" name="Courriel" id="recipient-email"
@@ -392,14 +381,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             <input type="file" class="form-control" placeholder="Chargez ..." name="Photo" id="picture1"
                                    required>
                         </div>
-                        @*<div class="sub-w3l">
+                        <div class="sub-w3l">
                                 <div class="sub-w3_pvt">
                                     <input type="checkbox" id="brand2" value="">
                                     <label for="brand2" class="mb-3">
                                         <span></span>I Accept to the Terms & Conditions
                                     </label>
                                 </div>
-                            </div>*@
+                            </div>
                         <div class="right-w3l">
                             <input type="submit" class="form-control" value="Register">
                         </div>
@@ -419,7 +408,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 </div>
             </div>
         </div>
-    </div>
+    </div>*@
+    
     <!-- ADMIN ------// register -->
     <!-- blog modal1 -->
     <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2"

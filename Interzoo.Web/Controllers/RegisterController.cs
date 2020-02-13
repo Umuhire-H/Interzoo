@@ -19,10 +19,17 @@ namespace Interzoo.Web.Controllers
             // UtilisateurRepository ur = new UtilisateurRepository(ConfigurationManager.ConnectionStrings["My_Asptest_Cnstr"].ConnectionString);
             return RedirectToAction("Index", new { controller = "Home", area = "" });
         }
-        public ActionResult VerifAdmin()
+        public ActionResult VerifAdmin(VerifAdminModel verifm)
         {
+            VerifAdminModel reference = new VerifAdminModel();
+            if (verifm.Code == reference.Code)
+            {
+                reference.IsAdmin = true;
+                TempData["isAdmin"] = reference.IsAdmin;
+            }
+            return RedirectToAction("Index", new {controller = "Home",  area = ""   });
+           
 
-            return View();
         }
         [HttpPost]
         [ValidateAntiForgeryToken]

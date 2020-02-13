@@ -5,15 +5,18 @@ using System.Web;
 
 namespace Interzoo.Web.Models
 {
-    public class ViewIndexModel
+    public class StandartModel
     {
         public List<RoleModel> RoleModels
         {
             get; set;
         }
-        public ViewIndexModel()
+        public VerifAdminModel Administrator;
+        public StandartModel()
         {
             this.RoleModels = new List<RoleModel>();
+            this.Administrator = new VerifAdminModel();
+                this.Administrator.IsAdmin = false;
         }
     }
 }

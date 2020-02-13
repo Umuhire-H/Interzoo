@@ -18,14 +18,7 @@ namespace Interzoo.Web.Areas.Parrain.Controllers
         public ActionResult Index()
         {
             ViewBag.title = "Area Parrain - Marraine";
-
             ParrainModel pm = new ParrainModel(); // donc contient : infosOfConnectedUser + IsConnected + package
-
-            //if (TempData.ContainsKey("chosenPackage"))
-            //{
-            //    pm.TheFormule = TempData["chosenPackage"] as FormuleModel;
-            //}
-            // ici stocker le formule choisi : pm.FormuleOneUtilisateur : voir 
             return View(pm);
         }
         // when the user choose a package
@@ -34,9 +27,31 @@ namespace Interzoo.Web.Areas.Parrain.Controllers
             FormuleRepository fr = new FormuleRepository(ConfigurationManager.ConnectionStrings["My_Asptest_Cnstr"].ConnectionString);
             
             SessionUtilisateur.ConnectedUserPackage = mapToVIEWmodels.formuleToFormuleModel(fr.getOne(id));
-            //TempData["chosenPackage"] = mapToVIEWmodels.formuleToFormuleModel(fr.getOne(id));
 
             return RedirectToAction("Index");
+        }
+        // when the user choose a ANIMAL
+        public ActionResult ChosenAnimal(int id = 1)
+        {
+            AnimalRepository ar = new AnimalRepository(ConfigurationManager.ConnectionStrings["My_Asptest_Cnstr"].ConnectionString);
+
+            SessionUtilisateur.ConnectedUserAnimals.ToList().Add(mapToVIEWmodels.animalToAnimalModel(ar.getOne(id)));
+
+            return RedirectToAction("Index");
+        }
+        public ActionResult confirmPackage(int id)
+        {
+            FormuleRepository fr = new FormuleRepository(ConfigurationManager.ConnectionStrings["My_Asptest_Cnstr"].ConnectionString);
+            FormuleModel insertedInFormulTable = mapToVIEWmodels.formuleToFormuleModel(fr.insert(fr.getOne(id)));
+            int insertedIdInParrain = fr.insertInParrainTable(insertedInFormulTable.IdFormule);
+            if (insertedIdInParrain == insertedInFormulTable.IdFormule)
+            {
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return RedirectToAction("Index", ViewBag.Message("Please Confirm again"));
+            }
         }
         public RedirectToRouteResult Logout()
         {
