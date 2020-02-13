@@ -55,7 +55,7 @@ namespace Interzoo.DAL.Repositories
             return base.getOne(sqldataRtoFormule, Parameters);
         }
 
-        public override Formule insert(Formule toInsert)
+        public override Formule insert(Formule toInsert) // <====================
         {
             Dictionary<string, object> Parameters = formuleToDico(toInsert);
             int id = base.insert(Parameters);

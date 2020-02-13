@@ -9,32 +9,33 @@ namespace Interzoo.Web.Areas.Parrain.ModelsParrain
 {
     public class ParrainModel
     {
-        public ProfileModel InfoParrain { get; set; }
+        public ProfileModel Utilisateur
+        { get; set; }
         public IEnumerable<AnimalModel> AnimauxAdoptes
         {
             get; set;
         }
-        public FormuleModel TheFormule
+        public FormuleModel ThePackage
         {
             get;set;
         }
         public bool isConnected { get; set; }
         public ParrainModel()
         {
-            this.InfoParrain = SessionUtilisateur.ConnectedUser;
+            
             this.isConnected = SessionUtilisateur.IsConnected;
-            if (SessionUtilisateur.ConnectedUserPackage != null)
-            {
-                this.TheFormule = SessionUtilisateur.ConnectedUserPackage;
-            }
-            if (SessionUtilisateur.ConnectedUserAnimals != null)
-            {
-                this.AnimauxAdoptes = SessionUtilisateur.ConnectedUserAnimals;
-            }
-            else 
-            {
+            //if (SessionUtilisateur.ConnectedUserPackage != null)
+            //{
+            //    this.ThePackage = SessionUtilisateur.ConnectedUserPackage;
+            //}
+            //if (SessionUtilisateur.ConnectedUserAnimals != null)
+            //{
+            //    this.AnimauxAdoptes = SessionUtilisateur.ConnectedUserAnimals;
+            //}
+            //else 
+            //{
                 this.AnimauxAdoptes = new List<AnimalModel>();
-            }
+            //}
         }
     }
 }

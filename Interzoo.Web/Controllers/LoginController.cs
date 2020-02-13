@@ -16,34 +16,52 @@ namespace Interzoo.Web.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            if (SessionUtilisateur.IsConnected)
+            if (!SessionUtilisateur.IsConnected)
             {
+                return RedirectToAction("Index", new
+                {
+                    Controller = "Home",
+                    Area = ""
+                });
+            }
+            else
+            {                
                 switch (SessionUtilisateur.ConnectedUser.IdRole)
                 {
                     case 0:
-                        return RedirectToAction("Index", new
+                        switch (SessionUtilisateur.ConnectedUser.IsAdmin)
                         {
-                            Controller = "Home",
-                            Area = "Parrain"
-                        });                        
+                            case true:
+                                return RedirectToAction("Index", new
+                                {
+                                    Controller = "Home",
+                                    Area = "Admin"
+                                });
+                               ;
+                            case false:
+                                return RedirectToAction("Index", new
+                                {
+                                    Controller = "Home",
+                                    Area = "Parrain"
+                                });
+                            default:
+                                return RedirectToAction("Index", new { Controller = "Home", Area = ""  });
+
+                        }
                     case 1:
                     case 2:
                     case 3:
+                        return RedirectToAction("Index", new { Controller = "Home", Area = "Personnel"  });
+                    default:
                         return RedirectToAction("Index", new
                         {
                             Controller = "Home",
-                            Area = "Personnel"
+                            Area = ""
                         });
-                    //default:
-                    //    return View();
                 }                
             }
-            //return View();
-            return RedirectToAction("Index", new
-            {
-                Controller = "Home",
-                Area = ""
-            });
+           
+            
         }
         [HttpPost]
         public ActionResult Login(LoginModel lm)

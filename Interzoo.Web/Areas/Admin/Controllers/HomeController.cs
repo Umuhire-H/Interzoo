@@ -17,9 +17,27 @@ namespace Interzoo.Web.Areas.Admin.Controllers
         public ActionResult Index()
         {
             AdminModel admiM = new AdminModel();
-            CategorieRepository ctr = new CategorieRepository(ConfigurationManager.ConnectionStrings["My_Asptest_Cnstr"].ConnectionString);
-            admiM.Animal.allCategories = ctr.getAll().Select(item => mapToVIEWmodels.CategorieTOCategorieModel(item)).ToList();
+            UtilisateurRepository ur = new UtilisateurRepository(ConfigurationManager.ConnectionStrings["My_Asptest_Cnstr"].ConnectionString);
+            // stocker l'utilisateur dans AdminModel
+            admiM.Utilisateur = mapToVIEWmodels.utilisateurTOprofileModel(ur.getOne(SessionUtilisateur.ConnectedUser.IdUtilisateur));
 
+            // stocker fraichement animalModif
+            if (SessionUtilisateur.ConnectedUserAnimals != null)
+            {
+                 admiM.Animal = SessionUtilisateur.ConnectedUserAnimals.Last();
+
+            }
+            //afficher les categories de l'animal
+            CategorieRepository ctr = new CategorieRepository(ConfigurationManager.ConnectionStrings["My_Asptest_Cnstr"].ConnectionString);
+            if (SessionUtilisateur.ConnectedUserPackage != null)
+            {
+                admiM.Animal = SessionUtilisateur.ConnectedUserAnimals.Last();
+               
+                // admiM.Animal.allCategories = ctr.getAll().Select(item => mapToVIEWmodels.CategorieTOCategorieModel(item)).ToList();
+
+            }
+            // stocker si animal = deleted or not
+            admiM.UserIsDeleted = Convert.ToBoolean(TempData["userDeleted"]);
             return View(admiM);
         }
         [HttpPost]
@@ -28,9 +46,12 @@ namespace Interzoo.Web.Areas.Admin.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult EditUser(ProfileModel utilisM)
+        public ActionResult DeleteUser(ProfileModel utilisM)
         {
-            return View();
+            UtilisateurRepository ur = new UtilisateurRepository(ConfigurationManager.ConnectionStrings["My_Asptest_Cnstr"].ConnectionString);
+            bool userIsDeleted = ur.delete(utilisM.IdUtilisateur);
+            TempData["userDeleted"] = userIsDeleted;
+            return RedirectToAction("Index");
         }
 
         [ValidateAntiForgeryToken]
@@ -73,9 +94,12 @@ namespace Interzoo.Web.Areas.Admin.Controllers
                     photoAnim.SaveAs(photoToSave);
                     // try catch 
                     bool reussi = aniRepo.update(MapToDBModel.animalModelToAnimal(anMo));
+
                     //
                     if (reussi)
                     {
+                        AnimalModel updatedAnModel = mapToVIEWmodels.animalToAnimalModel(aniRepo.getOne(animM.IdAnimal));
+                        SessionUtilisateur.ConnectedUserAnimals.ToList().Add(updatedAnModel);
                         return RedirectToAction("Index", new
                         {
                             controller = "Home",

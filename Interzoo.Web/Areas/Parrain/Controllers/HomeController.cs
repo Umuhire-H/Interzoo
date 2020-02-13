@@ -18,34 +18,75 @@ namespace Interzoo.Web.Areas.Parrain.Controllers
         public ActionResult Index()
         {
             ViewBag.title = "Area Parrain - Marraine";
-            ParrainModel pm = new ParrainModel(); // donc contient : infosOfConnectedUser + IsConnected + package
-            return View(pm);
+            ParrainModel parainM = new ParrainModel(); // donc contient :  IsConnected + package
+            UtilisateurRepository ur = new UtilisateurRepository(ConfigurationManager.ConnectionStrings["My_Asptest_Cnstr"].ConnectionString);
+            // 1.
+            parainM.Utilisateur = mapToVIEWmodels.utilisateurTOprofileModel(ur.getOne(SessionUtilisateur.ConnectedUser.IdUtilisateur));
+            // 2.
+            if (SessionUtilisateur.ConnectedUserPackage != null)
+            {
+                FormuleRepository fr = new FormuleRepository(ConfigurationManager.ConnectionStrings["My_Asptest_Cnstr"].ConnectionString);
+                parainM.ThePackage = mapToVIEWmodels.formuleToFormuleModel(fr.getOne(SessionUtilisateur.ConnectedUserPackage.IdFormule));
+            
+            }
+            // 3.
+            if (SessionUtilisateur.ConnectedUserAnimals != null)
+            {
+
+                AnimalRepository ar = new AnimalRepository(ConfigurationManager.ConnectionStrings["My_Asptest_Cnstr"].ConnectionString);
+                foreach (AnimalModel item in SessionUtilisateur.ConnectedUserAnimals)
+                {
+                    AnimalModel AnimalfromDB = mapToVIEWmodels.animalToAnimalModel(ar.getOne(item.IdAnimal));
+                    parainM.AnimauxAdoptes.ToList().Add(AnimalfromDB);
+                }
+            }
+
+            return View(parainM);
         }
         // when the user choose a package
         public ActionResult ChosenPackage(int id=1)
         {
             FormuleRepository fr = new FormuleRepository(ConfigurationManager.ConnectionStrings["My_Asptest_Cnstr"].ConnectionString);
             
-            SessionUtilisateur.ConnectedUserPackage = mapToVIEWmodels.formuleToFormuleModel(fr.getOne(id));
+             FormuleModel selectedPackage = mapToVIEWmodels.formuleToFormuleModel(fr.getOne(id));
+            if (selectedPackage != null)
+            {                
+                return RedirectToAction("Index");   
+            }
+            ViewBag.Message = "Package selection Failed";
+            return RedirectToAction("Formules", new
+            {
+                controller = "Home",
+                area = ""
+            });
 
-            return RedirectToAction("Index");
         }
         // when the user choose a ANIMAL
         public ActionResult ChosenAnimal(int id = 1)
         {
             AnimalRepository ar = new AnimalRepository(ConfigurationManager.ConnectionStrings["My_Asptest_Cnstr"].ConnectionString);
 
-            SessionUtilisateur.ConnectedUserAnimals.ToList().Add(mapToVIEWmodels.animalToAnimalModel(ar.getOne(id)));
-
-            return RedirectToAction("Index");
+            AnimalModel selectedAnim = mapToVIEWmodels.animalToAnimalModel(ar.getOne(id));
+            if (selectedAnim != null)
+            {
+                SessionUtilisateur.ConnectedUserAnimals.ToList().Add(selectedAnim);
+                return RedirectToAction("Index");                
+            }
+            ViewBag.Message = "Animal selection Failed";
+            return RedirectToAction("Portfolio", new
+            {
+                controller = "Home",
+                area = ""
+            });
         }
         public ActionResult confirmPackage(int id)
         {
             FormuleRepository fr = new FormuleRepository(ConfigurationManager.ConnectionStrings["My_Asptest_Cnstr"].ConnectionString);
             FormuleModel insertedInFormulTable = mapToVIEWmodels.formuleToFormuleModel(fr.insert(fr.getOne(id)));
-            int insertedIdInParrain = fr.insertInParrainTable(insertedInFormulTable.IdFormule);
-            if (insertedIdInParrain == insertedInFormulTable.IdFormule)
+            int idFormuleInsertedInParrain = fr.insertInParrainTable(insertedInFormulTable.IdFormule);
+            if (idFormuleInsertedInParrain == insertedInFormulTable.IdFormule)
             {
+                SessionUtilisateur.ConnectedUserPackage = insertedInFormulTable;
                 return RedirectToAction("Index");
             }
             else
