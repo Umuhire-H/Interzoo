@@ -17,11 +17,7 @@ namespace Interzoo.Web.Controllers
             StandartModel stm = new StandartModel();
             stm.RoleModels = LoadRoles();
            // stm.Administrator = new VerifAdminModel();
-            if (TempData.ContainsKey("isAdmin"))
-            {
-            stm.Administrator.IsAdmin = bool.Parse(TempData["isAdmin"].ToString());
             
-            }
             return View(stm);
         }
 
@@ -29,7 +25,6 @@ namespace Interzoo.Web.Controllers
         {
             StandartModel stm = new StandartModel();
             stm.RoleModels = LoadRoles();
-            stm.Administrator.IsAdmin = (bool)TempData["isAdmin"]; // <===============
             return View(stm);
         }
 
@@ -39,7 +34,6 @@ namespace Interzoo.Web.Controllers
 
             StandartModel stm = new StandartModel();
             stm.RoleModels = LoadRoles();
-            stm.Administrator.IsAdmin = (bool)TempData["isAdmin"]; // <===============
             return View(stm);
         } 
 
@@ -47,14 +41,12 @@ namespace Interzoo.Web.Controllers
         {
             StandartModel stm = new StandartModel();
             stm.RoleModels = LoadRoles();
-            stm.Administrator.IsAdmin = (bool)TempData["isAdmin"]; // <===============
             return View(stm);
         }
         public ActionResult Formules()
         {
             ViewFormuleModel vfm = new ViewFormuleModel();
             vfm.RoleModels = LoadRoles();
-            vfm.Administrator.IsAdmin = (bool)TempData["isAdmin"]; // <===============
             //--
             FormuleRepository fr = new FormuleRepository(ConfigurationManager.ConnectionStrings["My_Asptest_Cnstr"].ConnectionString);
             vfm.Formules = fr.getAll().Select(formule => mapToVIEWmodels.formuleToFormuleModel(formule)).ToList();
@@ -64,7 +56,6 @@ namespace Interzoo.Web.Controllers
         {
             StandartModel stm = new StandartModel();
             stm.RoleModels = LoadRoles();
-            stm.Administrator.IsAdmin = (bool)TempData["isAdmin"]; // <===============
             return View(stm);
         }
 
@@ -72,7 +63,7 @@ namespace Interzoo.Web.Controllers
         {
             StandartModel stm = new StandartModel();
             stm.RoleModels = LoadRoles();
-            stm.Administrator.IsAdmin = (bool)TempData["isAdmin"]; // <===============
+            // stm.Administrator.IsAdmin = (bool)TempData["isAdmin"]; // <===============
             return View(stm);
         }
 

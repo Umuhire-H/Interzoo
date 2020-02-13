@@ -11,7 +11,6 @@ namespace Interzoo.Web.Models
         {
             get;set;
         }
-        public VerifAdminModel Administrator;
         public IEnumerable<FormuleModel> Formules
         {
             get; set;
@@ -20,7 +19,6 @@ namespace Interzoo.Web.Models
         {
             this.RoleModels = new List<RoleModel>();
             this.Formules = new List<FormuleModel>();
-            this.Administrator.IsAdmin = false;
 
         }
 

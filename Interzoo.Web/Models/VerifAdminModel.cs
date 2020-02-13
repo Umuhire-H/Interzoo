@@ -7,22 +7,11 @@ namespace Interzoo.Web.Models
 {
     public class VerifAdminModel
     {
-        private string _courriel;
+        
         private string _code;
         private bool _isAdmin;
 
-        public string Courriel
-        {
-            get
-            {
-                return _courriel;
-            }
-
-            set
-            {
-                _courriel = value;
-            }
-        }
+     
 
         public string Code
         {
@@ -53,6 +42,7 @@ namespace Interzoo.Web.Models
         public VerifAdminModel()
         {
             this.Code = "1234";
+            this.IsAdmin = false;
             //this.Code = "monday@code";
         }
     }

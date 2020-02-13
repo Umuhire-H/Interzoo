@@ -16,7 +16,7 @@ namespace Interzoo.Web.Models
         private string _confirmeMotDePasse;//
         private DateTime _dateDeNaissance;//
         private string photo; //
-        private bool _isAdmin;//
+        private string _isAdmin;//
         //private int? _idRole = null;
         private int? _idRole;
 
@@ -128,7 +128,7 @@ namespace Interzoo.Web.Models
                 photo = value;
             }
         }
-        public bool IsAdmin
+        public string IsAdmin
         {
             get
             {
@@ -140,8 +140,7 @@ namespace Interzoo.Web.Models
                 _isAdmin = value;
             }
         }
-        //[Required(ErrorMessage = "veuillez préciser votre statut")]
-       
+               
         public int? IdRole
         {
             get

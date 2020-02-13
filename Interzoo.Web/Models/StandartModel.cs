@@ -11,12 +11,10 @@ namespace Interzoo.Web.Models
         {
             get; set;
         }
-        public VerifAdminModel Administrator;
+        
         public StandartModel()
         {
-            this.RoleModels = new List<RoleModel>();
-            this.Administrator = new VerifAdminModel();
-                this.Administrator.IsAdmin = false;
+            this.RoleModels = new List<RoleModel>();         
         }
     }
 }

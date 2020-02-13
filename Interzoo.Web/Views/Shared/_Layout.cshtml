@@ -106,7 +106,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Signin</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Sign In</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -150,11 +150,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                 Register Now
                             </a>
                             <br />
-                            Register
-                            <a href="#verifAdminModal" data-toggle="modal" data-target="#verifAdminModal" class="font-weight-bold"
-                               data-blast="color">
-                                As Administrator
-                            </a>
+                           
 
                         </p>
                     </form>
@@ -164,55 +160,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     </div>
     <!-- //login -->
     <!----------VERIF ADMIN---------------->
-    <!-- login  -->
-    <div class="modal fade" id="verifAdminModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-         aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">ADMINISTRATOR - ENTER YOUR CODE </h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form action="/Register/VerifAdmin" method="post" class="p-sm-3">
-                        @Html.AntiForgeryToken()
-                        <div class="form-group">
-                            <label for="recipient-name" class="col-form-label">Email</label>
-                            <input type="email" class="form-control" placeholder="soso@sisi.com " name="Courriel" id="recipient-name"
-                                   required="">
-                        </div>
-                        <div class="form-group">
-                            <label for="CodeAdmin" class="col-form-label">Administrator Code</label>
-                            <input type="password" class="form-control" placeholder="CodeAdmin" name="CodeAdmin" id="CodeAdmin"
-                                   required>
-                        </div>
-                        <div class="right-w3l">
-                            <input type="submit" class="form-control" value="VERIFICATION">
-                        </div>
-                       
-                        <p class="text-center dont-do modal-footer1">
-                            @*@if (@ViewBag.ErrorMessage != null)
-                                 {
-                                 <br /> <span class="alert alert-danger">@Html.Raw(ViewBag.ErrorMessage)</span> <br />
-
-                                }*@
-                        
-                            <br />
-                            @*Administrator account?
-                            <a href="#exampleModal1Admin" data-toggle="modal" data-target="#exampleModal1Admin" class="font-weight-bold"
-                               data-blast="color">
-                                Verification
-                            </a>*@
-
-                        </p>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- //login -->
+ 
     <!---------------------------------->
     <!-- register -->
     <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1"
@@ -247,7 +195,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             <label for="IdRole" class="col-form-label"> Statut </label>
                             <select type="text" class="form-control" placeholder="Votre statut" name="IdRole" id="IdRole"
                                     required>
-                                <option class="form-control"  value="">Administrateur</option>
+                                <option class="form-control" value="">Administrateur</option>
                                 @{
                                     if (!Interzoo.Web.Tools.Web.SessionUtilisateur.IsConnected)
                                     {
@@ -262,10 +210,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             </select>
                         </div>
                         @* isADMIN <========================== *@
+                       
                         <div class="form-group">
-                            @*<label for="recipient-email" class="col-form-label">Administrateur</label>*@
-                            <input type="hidden" class="form-control" placeholder="" value="@Model.Administrator.IsAdmin" name="IsAdmin" id="recipient-email"
-                                   required>
+                            <label for="recipient-is-admin" class="col-form-label">Administrator : enter the code </label>
+                            <input type="text" class="form-control" placeholder="" value="" name="IsAdmin" id="recipient-is-admin"
+                                   >
                         </div>
                         @* END isAdmin ========================*@
 
@@ -290,13 +239,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                    required>
                         </div>
                         @*<div class="sub-w3l">
-                                <div class="sub-w3_pvt">
-                                    <input type="checkbox" id="brand2" value="">
-                                    <label for="brand2" class="mb-3">
-                                        <span></span>I Accept to the Terms & Conditions
-                                    </label>
-                                </div>
-                            </div>*@
+            <div class="sub-w3_pvt">
+                <input type="checkbox" id="brand2" value="">
+                <label for="brand2" class="mb-3">
+                    <span></span>I Accept to the Terms & Conditions
+                </label>
+            </div>
+        </div>*@
                         <div class="right-w3l">
                             <input type="submit" class="form-control" value="Register">
                         </div>
