@@ -101,7 +101,7 @@ namespace Interzoo.DAL.Repositories
                 Courriel = sqdr["Courriel"].ToString(),
                 DateDeNaissance = (DateTime)sqdr["DateDeNaissance"],
                 Photo = sqdr["Photo"].ToString(), // sera vide
-                IsAdmin = (bool)sqdr["IsAdmin"],
+                IsAdmin = (bool)sqdr["IsAdmin"],/*Convert.ToBoolean(sqdr["IsAdmin"]),*/
                 IdRole = (int?)sqdr["IdRole"]
 
             };

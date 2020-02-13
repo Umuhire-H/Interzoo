@@ -63,7 +63,7 @@ namespace Interzoo.Web.Controllers
         {
             StandartModel stm = new StandartModel();
             stm.RoleModels = LoadRoles();
-            // stm.Administrator.IsAdmin = (bool)TempData["isAdmin"]; // <===============
+            // stm.Administrator.IsAdmin = Convert.ToBoolean(TempData["isAdmin"]); // <===============
             return View(stm);
         }
 
