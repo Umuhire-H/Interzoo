@@ -5,15 +5,16 @@ using System.Web;
 
 namespace Interzoo.Web.Models
 {
-    public class ViewIndexModel
+    public class StandartModel
     {
         public List<RoleModel> RoleModels
         {
             get; set;
         }
-        public ViewIndexModel()
+        
+        public StandartModel()
         {
-            this.RoleModels = new List<RoleModel>();
+            this.RoleModels = new List<RoleModel>();         
         }
     }
 }

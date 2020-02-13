@@ -12,18 +12,13 @@ namespace Interzoo.Web.Controllers
 {
     public class RegisterController : Controller
     {
-        // GET: Register
-        public ActionResult Index()
-        {
-            
-            // UtilisateurRepository ur = new UtilisateurRepository(ConfigurationManager.ConnectionStrings["My_Asptest_Cnstr"].ConnectionString);
-            return RedirectToAction("Index", new { controller = "Home", area = "" });
-        }
-        public ActionResult VerifAdmin()
-        {
-
-            return View();
-        }
+        //// GET: Register
+        //public ActionResult Index()
+        //{
+          
+        //    return RedirectToAction("Index", new { controller = "Home", area = "" });
+        //}
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Register(RegisterModelPOST rmPost, HttpPostedFileBase photo)
@@ -38,16 +33,32 @@ namespace Interzoo.Web.Controllers
                         ViewBag.ErrorMessage += each_error.ErrorMessage + "<br>";
                     }
                 }
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new { controller = "Home", area = "" });
             }
             else
             {
-                
+                //is admin ou not ?  
+                VerifAdminModel verifAdmin = new VerifAdminModel();
+                if (rmPost.IsAdmin == verifAdmin.Code) // long string
+                {
+                    verifAdmin.IsAdmin = true;              
+                }
+                else if (rmPost.IsAdmin == null || rmPost.IsAdmin != verifAdmin.Code)
+                {
+                    ViewBag.Message = "Not a administrator";                   
+                }
+                rmPost.IsAdmin = verifAdmin.IsAdmin.ToString();
+
                 // 1. Ajouter MMembre sans photo
                 ProfileModel pm = mapToVIEWmodels.utilisateurTOprofileModel(ur.insert(MapToDBModel.registerToUtilisateur(rmPost)));
 
                 // 2. photo : 
-                if (pm != null)
+                if(pm == null)
+                {
+                    ViewBag.Message = "The profileModel is Null";
+                    return RedirectToAction("Index", new { controller = "Home", area = "" });
+                }
+                else //if (pm != null)
                 {
                     List<string> listeMIME = new List<string>() { "image/jpeg", "image/png", "image/gif" };
                     if (!listeMIME.Contains(photo.ContentType) || photo.ContentLength > 80000)
@@ -67,32 +78,33 @@ namespace Interzoo.Web.Controllers
                     bool reussi = ur.update(MapToDBModel.profileTOUtilisateur(pm));
                     //
                     
-                    
-                 
-                    if (reussi && pm.IdRole == 0)
+                    if (!reussi)
                     {
-                        if (pm.IsAdmin)
+                        ViewBag.Message = "The profileModel updating failed (no picture)";
+                        return RedirectToAction("Index", new { controller = "Home", area = "" });
+                    }
+                    else // reussi
+                    {
+                        if (!pm.IsAdmin)
+                        {                        
+                            if(pm.IdRole == 0)
+                            {
+                                return RedirectToAction("Index", new { controller = "Home", area = "Parrain" });
+                            }
+                            else
+                            {
+                                return RedirectToAction("Index", new { controller = "Home", area = "Personnel" });
+
+                            }
+                        }
+                        else // is admin
                         {
                             return RedirectToAction("Index", new { controller = "Home", area = "Admin" });
-
-                        }
-                        return RedirectToAction("Index", new { controller = "Home", area = "Parrain" });
-
+                        }                        
                     }
-                    else
-                    {
-                        return RedirectToAction("Index", new { controller = "Home", area = "Personnel" });
-
-                    }
-                    //
 
                 }
-                else
-                {
-
-
-                    return RedirectToAction("Index");
-                }
+                
             }               
         }
     }

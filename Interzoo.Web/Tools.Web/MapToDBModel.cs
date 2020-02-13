@@ -29,7 +29,7 @@ namespace Interzoo.Web.Tools.Web
                 MotDePasse = rmPost.MotDePasse,
                 DateDeNaissance = rmPost.DateDeNaissance,
                 Photo = rmPost.Photo,
-                IsAdmin = rmPost.IsAdmin,
+                IsAdmin = Convert.ToBoolean(rmPost.IsAdmin),
                 IdRole = rmPost.IdRole
             };
         }

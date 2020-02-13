@@ -62,6 +62,17 @@ namespace Interzoo.DAL.Repositories
             toInsert.IdFormule = id;
             return toInsert;
         }
+        public int insertInParrainTable(int idFormule)
+        {
+            InsertCommand = @"INSERT INTO  Parrain (IdFormule)
+                                     OUTPUT inserted.IdFormule
+                                    VALUES (@IdFormule)";
+            Dictionary<string, object> Parameters = new Dictionary<string, object>();
+            Parameters.Add("@IdFormule", idFormule);
+            
+           return base.insert(Parameters);
+            
+        }
 
         public override bool update(Formule toUpdate)
         {

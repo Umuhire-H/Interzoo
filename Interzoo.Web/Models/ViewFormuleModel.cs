@@ -19,6 +19,7 @@ namespace Interzoo.Web.Models
         {
             this.RoleModels = new List<RoleModel>();
             this.Formules = new List<FormuleModel>();
+
         }
 
     }
