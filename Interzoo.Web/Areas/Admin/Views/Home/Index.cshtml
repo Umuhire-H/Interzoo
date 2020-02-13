@@ -41,7 +41,7 @@
 </div>
 <div class="container" style="height: 100vh">
     <div class="rslides d-flex justify-content-end">
-        <h4> Hello, @Model.InfoAdmin.Nom  @Model.InfoAdmin.Prenom</h4>
+        <h4> Hello, @Model.Utilisateur.Nom  @Model.Utilisateur.Prenom</h4>
         
         <p>
             @Html.ActionLink("Edit", "Edit", new
@@ -66,15 +66,15 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                     <div class="card-body">
                         <div class="card " style="width: 5rem;">
-                            <img class="card-img-top flex justify-content-center" src="~/photos/utilisateur/@Model.InfoAdmin.Photo" alt="Card image cap">
+                            <img class="card-img-top flex justify-content-center" src="~/photos/utilisateur/@Model.Utilisateur.Photo" alt="Card image cap">
                         </div>
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item">@Model.InfoAdmin.Nom</li>
-                            <li class="list-group-item">@Model.InfoAdmin.Prenom</li>
-                            <li class="list-group-item">@Model.InfoAdmin.Courriel</li>
+                            <li class="list-group-item">@Model.Utilisateur.Nom</li>
+                            <li class="list-group-item">@Model.Utilisateur.Prenom</li>
+                            <li class="list-group-item">@Model.Utilisateur.Courriel</li>
                         </ul>
                         <div class="card-body">
-                            <a href="/Parrain/Home/EditProfile/@Model.InfoAdmin.IdUtilisateur" class="btn w3ls-btn bg-theme  d-block">Edit your profil</a>
+                            <a href="/Parrain/Home/EditProfile/@Model.Utilisateur.IdUtilisateur" class="btn w3ls-btn bg-theme  d-block">Edit your profil</a>
                         </div>
 
                     </div>

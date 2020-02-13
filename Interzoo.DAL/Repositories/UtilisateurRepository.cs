@@ -101,7 +101,7 @@ namespace Interzoo.DAL.Repositories
                 Courriel = sqdr["Courriel"].ToString(),
                 DateDeNaissance = (DateTime)sqdr["DateDeNaissance"],
                 Photo = sqdr["Photo"].ToString(), // sera vide
-                IsAdmin = (bool)sqdr["IsAdmin"],/*Convert.ToBoolean(sqdr["IsAdmin"]),*/
+                IsAdmin = (bool)sqdr["IsAdmin"],
                 IdRole = (int?)sqdr["IdRole"]
 
             };
@@ -127,24 +127,24 @@ namespace Interzoo.DAL.Repositories
 
         private Role mapSqldataRtoRole(SqlDataReader sqdr) // RETOUR <- DB
         {
-            //if (sqdr["IdRole"] == DBNull.Value)
-            //{
-            //    return new Role()
-            //    {
-            //        IdRole = null,
-            //        TypeRole = sqdr["TypeRole"].ToString()
-            //    };
-
-            //}
-            //else
-            //{
+            if (sqdr["IdRole"] == DBNull.Value)
+            {
                 return new Role()
                 {
-                    IdRole = (int?)sqdr["IdRole"],
-                    TypeRole = sqdr["TypeRole"].ToString()               
+                    IdRole = null,
+                    TypeRole = sqdr["TypeRole"].ToString()
                 };
 
-            //}
+            }
+            else
+            {
+                return new Role()
+                {
+                    IdRole = (int)sqdr["IdRole"],
+                    TypeRole = sqdr["TypeRole"].ToString()
+                };
+
+            }
         }
 
 

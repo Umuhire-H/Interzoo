@@ -9,22 +9,22 @@ namespace Interzoo.Web.Areas.Admin.ModelsAdmin
 {
     public class AdminModel
     {
-        public ProfileModel InfoAdmin
+        
+        public AnimalModel Animal //<===================unused
         {
             get; set;
         }
-        public AnimalModel Animal
+        public ProfileModel Utilisateur
         {
             get; set;
         }
-       public ProfileModel Utilisateur
+        public bool UserIsDeleted
         {
-            get; set;
+            get;set;
         }
-
-    public AdminModel()
+        public AdminModel()
         {
-            this.InfoAdmin = SessionUtilisateur.ConnectedUser;
+            this.Utilisateur = SessionUtilisateur.ConnectedUser;
         }
     }
 }

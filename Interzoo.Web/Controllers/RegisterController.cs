@@ -15,10 +15,14 @@ namespace Interzoo.Web.Controllers
         //// GET: Register
         //public ActionResult Index()
         //{
-          
-        //    return RedirectToAction("Index", new { controller = "Home", area = "" });
+
+        //    return RedirectToAction("Index", new
+        //    {
+        //        controller = "Home",
+        //        area = ""
+        //    });
         //}
-        
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Register(RegisterModelPOST rmPost, HttpPostedFileBase photo)
@@ -37,7 +41,7 @@ namespace Interzoo.Web.Controllers
             }
             else
             {
-                //is admin ou not ?  
+                //is admin or not ?  
                 VerifAdminModel verifAdmin = new VerifAdminModel();
                 if (rmPost.IsAdmin == verifAdmin.Code) // long string
                 {

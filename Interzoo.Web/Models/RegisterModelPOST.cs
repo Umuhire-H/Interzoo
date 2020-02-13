@@ -16,9 +16,9 @@ namespace Interzoo.Web.Models
         private string _confirmeMotDePasse;//
         private DateTime _dateDeNaissance;//
         private string photo; //
-        private string _isAdmin;//
-        //private int? _idRole = null;
-        private int? _idRole;
+        private string _isAdmin;// <=======================
+        //private int? _idRole = null; 
+        private int? _idRole; // <=======================
 
 
 

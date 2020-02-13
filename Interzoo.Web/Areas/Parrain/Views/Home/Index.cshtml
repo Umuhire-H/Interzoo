@@ -42,7 +42,7 @@
     </div>
     <div class="container" style="height: 100vh">
         <div class="rslides d-flex justify-content-end">
-            <h4> Hello, @Model.InfoParrain.Nom  @Model.InfoParrain.Prenom</h4>
+            <h4> Hello, @Model.Utilisateur.Nom  @Model.Utilisateur.Prenom</h4>
             Hello from Mike
         <p>
             @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
@@ -65,16 +65,16 @@
                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                         <div class="card-body">
                             <div class="card " style="width: 5rem;">
-                                <img class="card-img-top flex justify-content-center" src="~/photos/utilisateur/@Model.InfoParrain.Photo" alt="Card image cap">
+                                <img class="card-img-top flex justify-content-center" src="~/photos/utilisateur/@Model.Utilisateur.Photo" alt="Card image cap">
                             </div>
                             <ul class="list-group list-group-flush">
-                                <li class="list-group-item">@Model.InfoParrain.Nom</li>
-                                <li class="list-group-item">@Model.InfoParrain.Prenom</li>
-                                <li class="list-group-item">@Model.InfoParrain.Courriel</li>
-                                <li class="list-group-item">@Model.InfoParrain.DateDeNaissance</li>
+                                <li class="list-group-item">@Model.Utilisateur.Nom</li>
+                                <li class="list-group-item">@Model.Utilisateur.Prenom</li>
+                                <li class="list-group-item">@Model.Utilisateur.Courriel</li>
+                                <li class="list-group-item">@Model.Utilisateur.DateDeNaissance</li>
                             </ul>
                             <div class="card-body">
-                                @*<a href="/Parrain/Home/EditProfile/@Model.InfoParrain.IdUtilisateur" class="btn w3ls-btn bg-theme  d-block">Edit your profil</a>*@
+                                @*<a href="/Parrain/Home/EditProfile/@Model.Utilisateur.IdUtilisateur" class="btn w3ls-btn bg-theme  d-block">Edit your profil</a>*@
 
                                 <a href="#exampleModalEdition" data-toggle="modal" @*data-target="#exampleModalEdition"*@ class="btn w3ls-btn bg-theme  d-block">Edit your profil
                                 </a>
@@ -238,32 +238,32 @@
 
                     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
                         <div class="card-body" style="padding-top:50px">
-                            @if (Model.TheFormule != null)
+                            @if (Model.ThePackage != null)
                             {
 
                                 <div class="col-lg-4 col-sm-6 column mb-lg-0 mb-4">
                                     <div class="box" data-blast="borderColor" style=" min-height:50px; ">
                                         <div class="title">
                                             <span class="fa fa-gg" data-blast="color"></span>
-                                            <h5 data-blast="color">@Model.TheFormule.Nom</h5>
+                                            <h5 data-blast="color">@Model.ThePackage.Nom</h5>
                                         </div>
                                         <div class="price">
-                                            <h6>Price - <sup>$</sup><span class="font-weight-bold">@Model.TheFormule.Prix</span></h6>
+                                            <h6>Price - <sup>$</sup><span class="font-weight-bold">@Model.ThePackage.Prix</span></h6>
                                         </div>
                                         <div class="option">
                                             <ul>
-                                                <li>@Model.TheFormule.Description</li>           
+                                                <li>@Model.ThePackage.Description</li>           
                                                 <li>
                                                     <small>
-                                                        <span class="font-weight-bold">From</span> @Model.TheFormule.DateDebut
-                                                        <span class="font-weight-bold">To</span> @Model.TheFormule.DateFin 
+                                                        <span class="font-weight-bold">From</span> @Model.ThePackage.DateDebut
+                                                        <span class="font-weight-bold">To</span> @Model.ThePackage.DateFin 
                                                     </small>
                                                 </li>
 
                                             </ul>
                                         </div>
 
-                                        <a href="~/Parrain/Home/confirmPackage/@Model.TheFormule.IdFormule" class="btn w3ls-btn bg-theme  d-block">Confirm, I want it</a>
+                                        <a href="~/Parrain/Home/confirmPackage/@Model.ThePackage.IdFormule" class="btn w3ls-btn bg-theme  d-block">Confirm, I want it</a>
                                         <h3>@ViewBag.Message</h3>
                                     </div>
                                 </div>
