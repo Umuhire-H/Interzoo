@@ -11,10 +11,14 @@ namespace Interzoo.Web.Models
         {
             get; set;
         }
-        
+        public IEnumerable<AnimalModel> ListeAnimaux
+        {
+            get;set;
+        }
         public StandartModel()
         {
-            this.RoleModels = new List<RoleModel>();         
+            this.RoleModels = new List<RoleModel>();
+            this.ListeAnimaux = new List<AnimalModel>();
         }
     }
 }
