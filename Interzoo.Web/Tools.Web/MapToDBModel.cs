@@ -56,6 +56,7 @@ namespace Interzoo.Web.Tools.Web
                 IdAnimal = am.IdAnimal, // <==
                 Nom = am.Nom,
                 NomScientifique = am.NomScientifique,
+                IdCategorie = am.IdCategorie,
                 RegionOrigine = am.RegionOrigine,
                 Photo = am.Photo
             };

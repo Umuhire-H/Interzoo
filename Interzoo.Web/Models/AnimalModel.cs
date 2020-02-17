@@ -12,7 +12,7 @@ namespace Interzoo.Web.Models
         private string _nom;
         private string _nomScientifique;
         private string _regionOrigine;
-       // private int _idCategorie;
+        private int _idCategorie;
         private string _photo;
 
 
@@ -66,18 +66,18 @@ namespace Interzoo.Web.Models
                 _regionOrigine = value;
             }
         }
-        //public int IdCategorie
-        //{
-        //    get
-        //    {
-        //        return _idCategorie;
-        //    }
+        public int IdCategorie
+        {
+            get
+            {
+                return _idCategorie;
+            }
 
-        //    set
-        //    {
-        //        _idCategorie = value;
-        //    }
-        //}
+            set
+            {
+                _idCategorie = value;
+            }
+        }
         public string Photo
         {
             get
