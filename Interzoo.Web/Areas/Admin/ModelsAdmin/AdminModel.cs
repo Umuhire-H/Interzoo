@@ -22,6 +22,7 @@ namespace Interzoo.Web.Areas.Admin.ModelsAdmin
         {
             get;set;
         }
+        
         public AdminModel()
         {
             this.Utilisateur = SessionUtilisateur.ConnectedUser;

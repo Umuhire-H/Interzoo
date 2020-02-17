@@ -140,17 +140,17 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         </div>
                         <p class="text-center dont-do modal-footer1">
                             @*@if (@ViewBag.ErrorMessage != null)
-         {
-         <br /> <span class="alert alert-danger">@Html.Raw(ViewBag.ErrorMessage)</span> <br />
+                                 {
+                                 <br /> <span class="alert alert-danger">@Html.Raw(ViewBag.ErrorMessage)</span> <br />
 
-        }*@
+                                }*@
                             Don't have an account?
                             <a href="#exampleModal1" data-toggle="modal" data-target="#exampleModal1" class="font-weight-bold"
                                data-blast="color">
                                 Register Now
                             </a>
                             <br />
-                           
+
 
                         </p>
                     </form>
@@ -159,8 +159,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         </div>
     </div>
     <!-- //login -->
-    <!----------VERIF ADMIN---------------->
- 
     <!---------------------------------->
     <!-- register -->
     <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1"
@@ -210,11 +208,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             </select>
                         </div>
                         @* isADMIN <========================== *@
-                       
+
                         <div class="form-group">
                             <label for="recipient-is-admin" class="col-form-label">Administrator : enter the code </label>
-                            <input type="text" class="form-control" placeholder="" value="" name="IsAdmin" id="recipient-is-admin"
-                                   >
+                            <input type="text" class="form-control" placeholder="" value="" name="IsAdmin" id="recipient-is-admin">
                         </div>
                         @* END isAdmin ========================*@
 
@@ -239,13 +236,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                    required>
                         </div>
                         @*<div class="sub-w3l">
-            <div class="sub-w3_pvt">
-                <input type="checkbox" id="brand2" value="">
-                <label for="brand2" class="mb-3">
-                    <span></span>I Accept to the Terms & Conditions
-                </label>
-            </div>
-        </div>*@
+                                <div class="sub-w3_pvt">
+                                    <input type="checkbox" id="brand2" value="">
+                                    <label for="brand2" class="mb-3">
+                                        <span></span>I Accept to the Terms & Conditions
+                                    </label>
+                                </div>
+                            </div>*@
                         <div class="right-w3l">
                             <input type="submit" class="form-control" value="Register">
                         </div>
@@ -267,8 +264,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         </div>
     </div>
     <!-- // register -->
-    <!---- ADMIN -------- Register -->
-   
+    <!---- //START : ADMIN --ANIMAL------ Register -->
+
     @*<div class="modal fade" id="exampleModal1Admin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1"
          aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -280,14 +277,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form enctype="multipart/form-data" action="/Register/Register" method="post" class="p-sm-3">
+                    <form enctype="multipart/form-data" action="/Admin/Home/EditAnimal" method="post" class="p-sm-3">
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Nom</label>
                             <input type="text" class="form-control" placeholder="" name="Nom" id="recipient-rname"
                                    required>
                         </div>
                         <div class="form-group">
-                            <label for="Prenom" class="col-form-label">Prenom</label>
+                            <label for="Prenom" class="col-form-label">NomScientifique</label>
                             <input type="text" class="form-control" placeholder="" name="Prenom" id="Prenom"
                                    required>
                         </div>
@@ -299,13 +296,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         <div class="form-group ">
 
                             <label for="IdRole" class="col-form-label"> Statut </label>
-                            <select  class="form-control" placeholder="Votre statut" name="IdRole" id="IdRole">
+                            <select class="form-control" placeholder="Votre statut" name="IdRole" id="IdRole">
                                 <option class="form-control" selected disabled value="">Administrateur</option>
-                              
+
 
                             </select>
                         </div>
-                      
+
                         <div class="form-group">
                             <input type="hidden" class="form-control" placeholder="" value="true" name="IsAdmin" id="recipient-email"
                                    required>
@@ -331,13 +328,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                    required>
                         </div>
                         <div class="sub-w3l">
-                                <div class="sub-w3_pvt">
-                                    <input type="checkbox" id="brand2" value="">
-                                    <label for="brand2" class="mb-3">
-                                        <span></span>I Accept to the Terms & Conditions
-                                    </label>
-                                </div>
+                            <div class="sub-w3_pvt">
+                                <input type="checkbox" id="brand2" value="">
+                                <label for="brand2" class="mb-3">
+                                    <span></span>I Accept to the Terms & Conditions
+                                </label>
                             </div>
+                        </div>
                         <div class="right-w3l">
                             <input type="submit" class="form-control" value="Register">
                         </div>
@@ -358,8 +355,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             </div>
         </div>
     </div>*@
-    
-    <!-- ADMIN ------// register -->
+
+    <!-- -----//END : ADMIN --ANIMAL ----// register -->
     <!-- blog modal1 -->
     <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2"
          aria-hidden="true">
