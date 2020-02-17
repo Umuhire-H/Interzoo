@@ -22,20 +22,18 @@ namespace Interzoo.Web.Areas.Admin.Controllers
             admiM.Utilisateur = mapToVIEWmodels.utilisateurTOprofileModel(ur.getOne(SessionUtilisateur.ConnectedUser.IdUtilisateur));
 
             // stocker fraichement animalModif
-            if (SessionUtilisateur.ConnectedUserAnimals != null)
-            {
-                 admiM.Animal = SessionUtilisateur.ConnectedUserAnimals.Last();
+            //if (SessionUtilisateur.ConnectedUserAnimals != null)
+            //{
+            //     admiM.Animal = SessionUtilisateur.ConnectedUserAnimals.Last();
 
-            }
+            //}
             //afficher les categories de l'animal
             CategorieRepository ctr = new CategorieRepository(ConfigurationManager.ConnectionStrings["My_Asptest_Cnstr"].ConnectionString);
-            if (SessionUtilisateur.ConnectedUserPackage != null)
-            {
-                admiM.Animal = SessionUtilisateur.ConnectedUserAnimals.Last();
-               
-                // admiM.Animal.allCategories = ctr.getAll().Select(item => mapToVIEWmodels.CategorieTOCategorieModel(item)).ToList();
-
-            }
+            admiM.Animal.allCategories = ctr.getAll().Select(item => mapToVIEWmodels.CategorieTOCategorieModel(item)).ToList();
+            //if (SessionUtilisateur.ConnectedUserPackage != null)
+            //{
+            //    admiM.Animal = SessionUtilisateur.ConnectedUserAnimals.Last();              
+            //}
             // stocker si animal = deleted or not
             admiM.UserIsDeleted = Convert.ToBoolean(TempData["userDeleted"]);
             return View(admiM);
@@ -79,7 +77,7 @@ namespace Interzoo.Web.Areas.Admin.Controllers
                 if (anMo != null)
                 {
                     List<string> listeMIME = new List<string>() { "image/jpeg", "image/png", "image/gif" };
-                    if (!listeMIME.Contains(photoAnim.ContentType) || photoAnim.ContentLength > 80000)
+                    if (!listeMIME.Contains(photoAnim.ContentType) /*|| photoAnim.ContentLength > 800000*/)
                     {
                         ViewBag.ErrorMessage = "unauthorized extention (choose : png, jpg or gif)";
                         return View("Index");
@@ -110,6 +108,77 @@ namespace Interzoo.Web.Areas.Admin.Controllers
 
                 }
                 return View(ViewBag.Message = "Insersion failed");
+            }
+        }
+
+        //------------update Animal
+        
+
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public ActionResult UpdateAnimal(AnimalModel toUpdate, HttpPostedFileBase animPic)
+        {
+            if (!ModelState.IsValid)
+            {
+                foreach (ModelState each_modelState in ViewData.ModelState.Values)
+                {
+                    foreach (ModelError each_error in each_modelState.Errors)
+                    {
+                        ViewBag.ErrorMessage += each_error.ErrorMessage + "<br>";
+                    }
+                }
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                AnimalRepository aniRepo = new AnimalRepository(ConfigurationManager.ConnectionStrings["My_Asptest_Cnstr"].ConnectionString);
+
+                // 1. update reussi ?
+                bool updatePart1OK = aniRepo.update(MapToDBModel.animalModelToAnimal(toUpdate));
+
+                // 2. photo : 
+                if (updatePart1OK)
+                {
+                    if (animPic == null)
+                    {
+                        return View(ViewBag.Message = "Picture null, insersion failed");
+                    }
+                    else
+                    {
+                        List<string> listeMIME = new List<string>() { "image/jpeg", "image/png", "image/gif" };
+                        if (!listeMIME.Contains(animPic.ContentType) /*|| photoAnim.ContentLength > 800000*/)
+                        {
+                            ViewBag.ErrorMessage = "unauthorized extention (choose : png, jpg or gif)";
+                            return View("Index");
+                        }
+                        string[] splitPhotoname = animPic.FileName.Split(new char[] { '.' }, StringSplitOptions.RemoveEmptyEntries);
+                        string ext = splitPhotoname[splitPhotoname.Length - 1];
+                        string photoNew = toUpdate.IdAnimal + "profil" + "." + ext;
+                        toUpdate.Photo = photoNew; // saved in DB via mapper
+                        string chemin = Server.MapPath("~/photos/animal");
+                        string photoToSave = chemin + "/" + photoNew;
+                        animPic.SaveAs(photoToSave);
+                        // try catch 
+                        bool updatePart2OK = aniRepo.update(MapToDBModel.animalModelToAnimal(toUpdate));
+
+                        //
+                        //if (updatePart2OK)
+                        //{
+                            return RedirectToAction("Index", new
+                            {
+                                controller = "Home",
+                                area = "Admin"
+                            });
+
+                        //}
+                    }
+
+
+                }
+                else
+                {
+                    return View(ViewBag.Message = "Insersion failed");
+                }
             }
         }
     }

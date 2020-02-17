@@ -102,7 +102,8 @@ namespace Interzoo.DAL.Repositories
                 DateDeNaissance = (DateTime)sqdr["DateDeNaissance"],
                 Photo = sqdr["Photo"].ToString(), // sera vide
                 IsAdmin = (bool)sqdr["IsAdmin"],
-                IdRole = (int?)sqdr["IdRole"]
+                //IdRole = (int?)sqdr["IdRole"]
+                IdRole = (sqdr["IdRole"] == DBNull.Value) ? null : (int?)sqdr["IdRole"]
 
             };
         }
