@@ -204,6 +204,7 @@
     <Content Include="js\smooth-scrolling-of-move-up.js" />
     <Content Include="js\SmoothScroll.min.js" />
     <Content Include="photos\animal\1animal.jpg" />
+    <Content Include="photos\animal\2animal.jpg" />
     <Content Include="photos\animal\3animal.jpg" />
     <Content Include="photos\utilisateur\12.png" />
     <Content Include="Scripts\bootstrap.js" />

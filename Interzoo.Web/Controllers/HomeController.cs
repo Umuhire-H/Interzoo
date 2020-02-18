@@ -55,10 +55,10 @@ namespace Interzoo.Web.Controllers
         public ActionResult Portfolio()
         {
             StandartModel stm = new StandartModel();
-            stm.RoleModels = LoadRoles();
+            //stm.RoleModels = LoadRoles();
             // ===========doit envoyer à  la vue ListAnimalAdded
-            AnimalRepository animRepo = new AnimalRepository(ConfigurationManager.ConnectionStrings["My_Asptest_Cnstr"].ConnectionString);
-            stm.ListeAnimaux = animRepo.getAll().Select(item => mapToVIEWmodels.animalToAnimalModel(item)).ToList();
+            //AnimalRepository animRepo = new AnimalRepository(ConfigurationManager.ConnectionStrings["My_Asptest_Cnstr"].ConnectionString);
+            //stm.ListeAnimaux = animRepo.getAll().Select(item => mapToVIEWmodels.animalToAnimalModel(item)).ToList();
             return View(stm);
         }
 

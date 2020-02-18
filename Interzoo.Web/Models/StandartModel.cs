@@ -23,10 +23,20 @@ namespace Interzoo.Web.Models
             this.RoleModels = new List<RoleModel>();
             UtilisateurRepository ur = new UtilisateurRepository(ConfigurationManager.ConnectionStrings["My_Asptest_Cnstr"].ConnectionString);
             RoleModels = ur.getAllRolesForRegisterModel().Select(item => mapToVIEWmodels.RoleTORoleModel(item)).ToList();
-            //-------------------------------------------------------------------------
+            // -----------------------------------------------------------------------------------
             this.ListeAnimaux = new List<AnimalModel>();
             AnimalRepository animRepo = new AnimalRepository(ConfigurationManager.ConnectionStrings["My_Asptest_Cnstr"].ConnectionString);
             ListeAnimaux = animRepo.getAll().Select(item => mapToVIEWmodels.animalToAnimalModel(item)).ToList();
+            // ------------                                                           -----------
+            // ------------                                                           -----------
+            CategorieRepository ctr = new CategorieRepository(ConfigurationManager.ConnectionStrings["My_Asptest_Cnstr"].ConnectionString);
+             foreach(AnimalModel eachAnimalModel in ListeAnimaux)
+            {
+                eachAnimalModel.allCategories = ctr.getAll().Select(item => mapToVIEWmodels.CategorieTOCategorieModel(item)).ToList();
+            }
+          
+
+            
         }
     }
 }

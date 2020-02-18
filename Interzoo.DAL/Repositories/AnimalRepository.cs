@@ -74,9 +74,9 @@ namespace Interzoo.DAL.Repositories
                 IdAnimal = (int)sqdr["IdAnimal"],
                 Nom = sqdr["Nom"].ToString(),
                 NomScientifique = sqdr["RegionOrigine"].ToString(),
-                RegionOrigine = sqdr["Courriel"].ToString(),
+                RegionOrigine = sqdr["RegionOrigine"].ToString(),
                 IdCategorie = (int)sqdr["IdCategorie"],
-                Photo = sqdr["photo"].ToString(),
+                Photo = sqdr["Photo"].ToString(),
             };
         }
        

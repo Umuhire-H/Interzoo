@@ -263,7 +263,84 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             </div>
         </div>
     </div>
-  
+
+    <!--------------------------------------------------------------------------------->
+    <!------------LINK to open ------UPDATE-------ANIMAL-----BY ADMIN----------------->
+
+    <a href="#AnimalEditionByAdmin" data-toggle="modal" data-target="#AnimalUpdatingByAdmin" class="font-weight-bold"
+       data-blast="color">
+        update one
+    </a>
+    <!------------------UPDATE-----------ANIMAL ------BY ADMIN------------------------->
+    <!-- register -->
+    <div class="modal fade" id="AnimalUpdatingByAdmin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel1">__UPDATING A ANIMAL__</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form enctype="multipart/form-data" action="~/Admin/Home/UpdateAnimal" method="post" class="p-sm-3">
+                        <div class="form-group">
+                            <label for="IdAnimal" class="col-form-label">Animal ID</label>
+                            <input type="text" class="form-control" placeholder="" name="IdAnimal" id="IdAnimal"
+                                   required>
+                        </div>
+                        <div class="form-group">
+                            <label for="NomScientifique" class="col-form-label">Nom Scientifique</label>
+                            <input type="text" class="form-control" placeholder="" name="NomScientifique" id="NomScientifique"
+                                   required>
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Nom</label>
+                            <input type="text" class="form-control" name="Nom" id="recipient-rname" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="RegionOrigine" class="col-form-label">Region d'origine</label>
+                            <input type="text" class="form-control" name="RegionOrigine" id="RegionOrigine" required>
+                        </div>
+                        <!---------------------selection of categorie---------------------------------------------------->
+                        <div class="form-group">
+                            <label for="IdCategorie" class="col-form-label"> Catégorie </label>
+                            <select class="form-control" name="IdCategorie" id="IdCategorie">
+
+                                @{
+                                    if (Model.ListeAnimaux != null)
+                                    {
+                                        foreach (var item in Model.ListeAnimaux.allCategories)
+                                        {
+                                            <option class="form-control" value=@item.IdCategorie>@item.TypeCategorie</option>
+                                        }
+                                    }
+
+                                }
+
+                            </select>
+                        </div>
+                        <!------------------FIN---selection of categorie---------------------------------------------------->
+
+                        <div class="form-group">
+                            <label for="Photo" class="col-form-label">Une photo de profil</label>
+                            <input type="file" class="form-control" placeholder="Chargez ..." name="Photo" id="Photo"
+                                   required>
+                        </div>
+
+                        <div class="right-w3l">
+                            <input type="submit" class="form-control" value="Update Animal">
+                        </div>
+
+                        @Html.AntiForgeryToken()
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- // register -->
+    <!--------------------------------------------------------------------------------->
     <!-- blog modal1 -->
     <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2"
          aria-hidden="true">

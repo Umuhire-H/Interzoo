@@ -6,7 +6,7 @@
             <p>create your outstanding clean and high quality website.</p>
         </div>
          <ul class="demo row py-lg-5 py-sm-4 pb-4">
-           @{
+             @{
                  if (!Interzoo.Web.Tools.Web.SessionUtilisateur.IsConnected)
                  {
                      <li class="col-lg-3 col-sm-6">
@@ -20,11 +20,23 @@
                      switch (Interzoo.Web.Tools.Web.SessionUtilisateur.ConnectedUser.IdRole)
                      {
                          case null:
-                             <a href="~/Admin/Home/UpdateAnimal" class="col-lg-3 col-sm-6">
+                             @*<a href="~/Admin/Home/UpdateAnimal" class="col-lg-3 col-sm-6">
                                  <div class="gallery-grid1">
                                      <img src="~/images/g1.jpg" alt=" " class="img-fluid img-thumbnail" />
+
                                  </div>
+                             </a>*@
+
+                             // --------test test open a modal located in Admin/Home/Index.cshtml-----------------
+                             <div class="gallery-grid1">
+                                 <img src="~/images/g1.jpg" alt=" " class="img-fluid img-thumbnail" />
+
+                             <a href="#AnimalEditionByAdmin" data-toggle="modal" data-target="#AnimalUpdatingByAdmin" class="font-weight-bold"
+                                data-blast="color">
+                                 update [id= ]
                              </a>
+                             </div>
+                             //--------------------------
                              break;
                          case 0:
                              <a href="~/Parrain/Home/ChosenAnimal" class="col-lg-3 col-sm-6">
@@ -41,14 +53,14 @@
                                      <img src="~/images/g1.jpg" alt=" " class="img-fluid img-thumbnail" />
                                  </div>
                              </a>
-                                 break;
-                          @*default: 
-                                <h5> Viewbag.Message</h5>*@
+                             break;
+                             @*default:
+                        <h5> Viewbag.Message</h5>*@
                      }
-                              
 
 
-                  }
+
+                 }
 
              }
 
