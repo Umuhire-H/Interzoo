@@ -203,6 +203,8 @@
     <Content Include="js\scrolling-nav.js" />
     <Content Include="js\smooth-scrolling-of-move-up.js" />
     <Content Include="js\SmoothScroll.min.js" />
+    <Content Include="photos\animal\1animal.jpg" />
+    <Content Include="photos\animal\3animal.jpg" />
     <Content Include="photos\utilisateur\12.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -218,6 +220,7 @@
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -266,7 +269,6 @@
     <Folder Include="Areas\Personnel\Controllers\" />
     <Folder Include="Areas\Personnel\Data\" />
     <Folder Include="Areas\Personnel\Views\Shared\" />
-    <Folder Include="photos\animal\" />
     <Folder Include="Views\Login\" />
     <Folder Include="Views\Personnel\" />
     <Folder Include="Views\Register\" />

@@ -51,10 +51,12 @@ namespace Interzoo.Web.Areas.Admin.Controllers
             TempData["userDeleted"] = userIsDeleted;
             return RedirectToAction("Index");
         }
-
+        // ===================================================================================================================
+        // ============================================= EDITION =============================================================
+        // ===================================================================================================================
         [ValidateAntiForgeryToken]
         [HttpPost]
-        public ActionResult EditAnimal(AnimalModel animM, HttpPostedFileBase photoAnim)
+        public ActionResult EditAnimal(AnimalModel animM, HttpPostedFileBase Photo)
         {
             AnimalRepository aniRepo = new AnimalRepository(ConfigurationManager.ConnectionStrings["My_Asptest_Cnstr"].ConnectionString);
             if (!ModelState.IsValid)
@@ -72,28 +74,24 @@ namespace Interzoo.Web.Areas.Admin.Controllers
             {
                 // 1. Ajouter ANIMAL sans photo
                 AnimalModel anMo = mapToVIEWmodels.animalToAnimalModel(aniRepo.insert(MapToDBModel.animalModelToAnimal(animM)));
-
                 // 2. photo : 
                 if (anMo != null)
                 {
                     List<string> listeMIME = new List<string>() { "image/jpeg", "image/png", "image/gif" };
-                    if (!listeMIME.Contains(photoAnim.ContentType) /*|| photoAnim.ContentLength > 800000*/)
+                    if (!listeMIME.Contains(Photo.ContentType) /*|| photoAnim.ContentLength > 800000*/)
                     {
                         ViewBag.ErrorMessage = "unauthorized extention (choose : png, jpg or gif)";
                         return View("Index");
                     }
-
-                    string[] splitPhotoname = photoAnim.FileName.Split(new char[] { '.' }, StringSplitOptions.RemoveEmptyEntries);
+                    string[] splitPhotoname = Photo.FileName.Split(new char[] { '.' }, StringSplitOptions.RemoveEmptyEntries);
                     string ext = splitPhotoname[splitPhotoname.Length - 1];
-                    string photoNew = anMo.IdAnimal + "profil" + "." + ext;
+                    string photoNew = anMo.IdAnimal + "animal" + "." + ext;
                     anMo.Photo = photoNew; // saved in DB via mapper
                     string chemin = Server.MapPath("~/photos/animal");
                     string photoToSave = chemin + "/" + photoNew;
-                    photoAnim.SaveAs(photoToSave);
+                    Photo.SaveAs(photoToSave);
                     // try catch 
                     bool reussi = aniRepo.update(MapToDBModel.animalModelToAnimal(anMo));
-
-                    //
                     if (reussi)
                     {
                         AnimalModel updatedAnModel = mapToVIEWmodels.animalToAnimalModel(aniRepo.getOne(animM.IdAnimal));
@@ -103,20 +101,18 @@ namespace Interzoo.Web.Areas.Admin.Controllers
                             controller = "Home",
                             area = "Admin"
                         });
-
                     }
-
                 }
                 return View(ViewBag.Message = "Insersion failed");
             }
         }
 
-        //------------update Animal
-        
-
+        // ==================================================================================================================
+        // ============================================= UPDATE =============================================================
+        // ==================================================================================================================
         [ValidateAntiForgeryToken]
         [HttpPost]
-        public ActionResult UpdateAnimal(AnimalModel toUpdate, HttpPostedFileBase animPic)
+        public ActionResult UpdateAnimal(AnimalModel toUpdate, HttpPostedFileBase Photo)
         {
             if (!ModelState.IsValid)
             {
@@ -135,32 +131,30 @@ namespace Interzoo.Web.Areas.Admin.Controllers
 
                 // 1. update reussi ?
                 bool updatePart1OK = aniRepo.update(MapToDBModel.animalModelToAnimal(toUpdate));
-
                 // 2. photo : 
                 if (updatePart1OK)
                 {
-                    if (animPic == null)
+                    if (Photo == null)
                     {
                         return View(ViewBag.Message = "Picture null, insersion failed");
                     }
                     else
                     {
                         List<string> listeMIME = new List<string>() { "image/jpeg", "image/png", "image/gif" };
-                        if (!listeMIME.Contains(animPic.ContentType) /*|| photoAnim.ContentLength > 800000*/)
+                        if (!listeMIME.Contains(Photo.ContentType) /*|| photoAnim.ContentLength > 800000*/)
                         {
                             ViewBag.ErrorMessage = "unauthorized extention (choose : png, jpg or gif)";
                             return View("Index");
                         }
-                        string[] splitPhotoname = animPic.FileName.Split(new char[] { '.' }, StringSplitOptions.RemoveEmptyEntries);
+                        string[] splitPhotoname = Photo.FileName.Split(new char[] { '.' }, StringSplitOptions.RemoveEmptyEntries);
                         string ext = splitPhotoname[splitPhotoname.Length - 1];
-                        string photoNew = toUpdate.IdAnimal + "profil" + "." + ext;
+                        string photoNew = toUpdate.IdAnimal + "animal" + "." + ext;
                         toUpdate.Photo = photoNew; // saved in DB via mapper
                         string chemin = Server.MapPath("~/photos/animal");
                         string photoToSave = chemin + "/" + photoNew;
-                        animPic.SaveAs(photoToSave);
+                        Photo.SaveAs(photoToSave);
                         // try catch 
                         bool updatePart2OK = aniRepo.update(MapToDBModel.animalModelToAnimal(toUpdate));
-
                         //
                         //if (updatePart2OK)
                         //{
