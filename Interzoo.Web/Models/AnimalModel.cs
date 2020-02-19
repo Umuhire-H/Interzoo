@@ -99,15 +99,11 @@ namespace Interzoo.Web.Models
         {
             get; set;
         }
-        public Dictionary<CategorieModel, AnimalCategorieModel> SaCategorie
+        public CategorieModel SaCategorie
         {
             get; set;
         }
-        // ou 
-        public AnimalCategorieModel AnimalCategorie
-        {
-            get; set;
-        }
+             
         public IEnumerable<CategorieModel> allCategories
         {
             get; set;
@@ -116,7 +112,7 @@ namespace Interzoo.Web.Models
         public AnimalModel()
         {
             this.CaracteriticTypeValue = new Dictionary<CaracteristiqueModel, AnimalCaracteristiqueModel>();
-            this.SaCategorie = new Dictionary<CategorieModel, AnimalCategorieModel>();
+            this.SaCategorie = new CategorieModel ();
             this.allCategories = new List<CategorieModel>();
         }
     }

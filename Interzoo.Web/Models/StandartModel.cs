@@ -18,6 +18,10 @@ namespace Interzoo.Web.Models
         {
             get;set;
         }
+        public IEnumerable<CategorieModel> AllCategories
+        {
+            get;set;
+        }
         public StandartModel()
         {
             this.RoleModels = new List<RoleModel>();
@@ -30,10 +34,13 @@ namespace Interzoo.Web.Models
             // ------------                                                           -----------
             // ------------                                                           -----------
             CategorieRepository ctr = new CategorieRepository(ConfigurationManager.ConnectionStrings["My_Asptest_Cnstr"].ConnectionString);
-             foreach(AnimalModel eachAnimalModel in ListeAnimaux)
-            {
-                eachAnimalModel.allCategories = ctr.getAll().Select(item => mapToVIEWmodels.CategorieTOCategorieModel(item)).ToList();
-            }
+            this.AllCategories = new List<CategorieModel>();
+            AllCategories = ctr.getAll().Select(item => mapToVIEWmodels.CategorieTOCategorieModel(item)).ToList();
+            //foreach (AnimalModel eachAnimalModel in ListeAnimaux)
+            //{
+                
+            //    eachAnimalModel.allCategories = ctr.getAll().Select(item => mapToVIEWmodels.CategorieTOCategorieModel(item)).ToList();
+            //}
           
 
             

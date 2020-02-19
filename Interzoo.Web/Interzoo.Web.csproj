@@ -135,7 +135,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AnimalCaracteristiqueModel.cs" />
-    <Compile Include="Models\AnimalCategorieModel.cs" />
     <Compile Include="Models\AnimalModel.cs" />
     <Compile Include="Models\CaracteristiqueModel.cs" />
     <Compile Include="Models\CategorieModel.cs" />

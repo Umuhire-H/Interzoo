@@ -90,10 +90,7 @@ namespace Interzoo.DAL.Models
             }
         }
         //----------extras
-        public AnimalCategorie AnimalCategorie
-        {
-            get; set;
-        }
+     
         public IEnumerable<Animal> AllAnimalsOneGodparent { get; set; }
         public Dictionary<Caracteristique , AnimalCaracteristique>caracteriticTypeValue { get; set; }
         public IEnumerable<Categorie> allCategories

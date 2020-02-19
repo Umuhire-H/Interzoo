@@ -46,7 +46,6 @@
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Models\Animal.cs" />
     <Compile Include="Models\AnimalCaracteristique.cs" />
-    <Compile Include="Models\AnimalCategorie.cs" />
     <Compile Include="Models\AnimalParrain.cs" />
     <Compile Include="Models\Caracteristique.cs" />
     <Compile Include="Models\Categorie.cs" />
