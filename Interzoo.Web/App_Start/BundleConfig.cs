@@ -13,7 +13,7 @@ namespace Interzoo.Web
             // --------------------------------------------------------------
             bundles.Add(new StyleBundle("~/Content/bootstrap").Include(
                 "~/css/bootstrap.css"));
-            bundles.Add(new StyleBundle("~/Content/blast.min").Include(
+            bundles.Add(new StyleBundle("~/Content/blast").Include(
                  "~/css/blast.min.css"));
 
             bundles.Add(new StyleBundle("~/Content/portfolio").Include(
@@ -22,11 +22,11 @@ namespace Interzoo.Web
             bundles.Add(new StyleBundle("~/Content/style").Include(
                "~/css/style.css"));
 
-            bundles.Add(new StyleBundle("~/Content/font-awesome.min").Include(
+            bundles.Add(new StyleBundle("~/Content/font-awesome").Include(
                 "~/css/font-awesome.min.css"));
 
             // ----------------------------------------------------------------
-            bundles.Add(new ScriptBundle("~/Scripts/jquery-2.2.3").Include(
+            bundles.Add(new ScriptBundle("~/Scripts/jquery").Include(
                 "~/js/jquery-2.2.3.min.js"));
                 
             bundles.Add(new ScriptBundle("~/Scripts/password").Include(

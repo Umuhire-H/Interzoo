@@ -25,7 +25,7 @@ namespace Interzoo.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Register(RegisterModelPOST rmPost, HttpPostedFileBase photo)
+        public ActionResult Register(RegisterModelPOST rmPost, HttpPostedFileBase Photo)
         {            
             UtilisateurRepository ur = new UtilisateurRepository(ConfigurationManager.ConnectionStrings["My_Asptest_Cnstr"].ConnectionString);
             if (!ModelState.IsValid)
@@ -65,18 +65,18 @@ namespace Interzoo.Web.Controllers
                 else //if (pm != null)
                 {
                     List<string> listeMIME = new List<string>() { "image/jpeg", "image/png", "image/gif" };
-                    if (!listeMIME.Contains(photo.ContentType) || photo.ContentLength > 80000)
+                    if (!listeMIME.Contains(Photo.ContentType) || Photo.ContentLength > 80000)
                     {
                         ViewBag.ErrorMessage = "Votre photo ne possède pas une extension autorisée (choisissez parmis : png, jpg, gif)";
                         return View("Index");
                     }
                     
-                    string[] splitPhotoname = photo.FileName.Split(new char[] { '.' }, StringSplitOptions.RemoveEmptyEntries);
+                    string[] splitPhotoname = Photo.FileName.Split(new char[] { '.' }, StringSplitOptions.RemoveEmptyEntries);
                     string ext = splitPhotoname[splitPhotoname.Length - 1];
                     string photoNew = pm.IdUtilisateur + "." + ext; // <== save in DB
                     string chemin = Server.MapPath("~/photos/utilisateur");
                     string photoToSave = chemin + "/" + photoNew;
-                    photo.SaveAs(photoToSave);
+                    Photo.SaveAs(photoToSave);
                     pm.Photo = photoNew; // saved in DB via mapper
                     // try catch 
                     bool reussi = ur.update(MapToDBModel.profileTOUtilisateur(pm));

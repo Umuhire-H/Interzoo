@@ -22,9 +22,20 @@ namespace Interzoo.Web.Areas.Admin.ModelsAdmin
         {
             get;set;
         }
+        
         public AdminModel()
         {
             this.Utilisateur = SessionUtilisateur.ConnectedUser;
+            //CategorieRepository ctr = new CategorieRepository(ConfigurationManager.ConnectionStrings["My_Asptest_Cnstr"].ConnectionString);
+
+            this.Animal = new AnimalModel()
+            {
+                allCategories = new List<CategorieModel>()
+                //{
+                //     ctr.getAll().Select(item => mapToVIEWmodels.CategorieTOCategorieModel(item)).ToList()
+                //}
+
+            };
         }
     }
 }

@@ -74,7 +74,7 @@
                             <li class="list-group-item">@Model.Utilisateur.Courriel</li>
                         </ul>
                         <div class="card-body">
-                            <a href="/Parrain/Home/EditProfile/@Model.Utilisateur.IdUtilisateur" class="btn w3ls-btn bg-theme  d-block">Edit your profil</a>
+                            <a href="~/Parrain/Home/EditProfile/@Model.Utilisateur.IdUtilisateur" class="btn w3ls-btn bg-theme  d-block">Edit your profil</a>
                         </div>
 
                     </div>
@@ -154,7 +154,7 @@
                                                   </div>
                                             </div>
                                             <div class="right-w3l">
-                                                <input type="submit" class="form-control" value="Register">
+                                                <input type="submit" class="form-control" value="EDIT MEMBER">
                                             </div>
 
                                             @Html.AntiForgeryToken()
@@ -186,8 +186,8 @@
 
                         <a href="#AnimalEditionByAdmin" data-toggle="modal" data-target="#AnimalEditionByAdmin" class="font-weight-bold"
                            data-blast="color">
-                            ADD A ANIMAL
-                        </a>
+                            add one
+                        </a> <br />
                         <!------------------ADD-----------ANIMAL ------------------------------>
                         <!-- register -->
                         <div class="modal fade" id="AnimalEditionByAdmin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1"
@@ -217,7 +217,7 @@
                                             </div>
                                             <!---------------------selection of categorie---------------------------------------------------->
                                             <div class="form-group">
-                                                @*<label for="IdCategorie" class="col-form-label"> Catégorie </label>
+                                                <label for="IdCategorie" class="col-form-label"> Catégorie </label>
                                                 <select class="form-control" name="IdCategorie" id="IdCategorie">
 
                                                     @{
@@ -231,7 +231,7 @@
 
                                                     }
 
-                                                </select>*@
+                                                </select>
                                             </div>
                                             <!------------------FIN---selection of categorie---------------------------------------------------->
 
@@ -242,7 +242,7 @@
                                             </div>
 
                                             <div class="right-w3l">
-                                                <input type="submit" class="form-control" value="Register">
+                                                <input type="submit" class="form-control" value="ADD ANIMAL">
                                             </div>
 
                                             @Html.AntiForgeryToken()
@@ -252,7 +252,83 @@
                             </div>
                         </div>
                         <!-- // register -->
-                        <!-------------------------------------------------------------------------------------------->
+                        <!--------------------------------------------------------------------------------->
+                        <!------------LINK to open ------UPDATE-------ANIMAL-----BY ADMIN----------------->
+
+                        @*<a href="#AnimalEditionByAdmin" data-toggle="modal" data-target="#AnimalUpdatingByAdmin" class="font-weight-bold"
+                           data-blast="color">
+                            update one
+                        </a>
+                        <!------------------UPDATE-----------ANIMAL ------BY ADMIN------------------------->
+                        <!-- register -->
+                        <div class="modal fade" id="AnimalUpdatingByAdmin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1"
+                             aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel1">__UPDATING A ANIMAL__</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form enctype="multipart/form-data" action="~/Admin/Home/UpdateAnimal" method="post" class="p-sm-3">
+                                            <div class="form-group">
+                                                <label for="IdAnimal" class="col-form-label">Animal ID</label>
+                                                <input type="text" class="form-control" placeholder="" name="IdAnimal" id="IdAnimal"
+                                                       required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="NomScientifique" class="col-form-label">Nom Scientifique</label>
+                                                <input type="text" class="form-control" placeholder="" name="NomScientifique" id="NomScientifique"
+                                                       required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="recipient-name" class="col-form-label">Nom</label>
+                                                <input type="text" class="form-control" name="Nom" id="recipient-rname" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="RegionOrigine" class="col-form-label">Region d'origine</label>
+                                                <input type="text" class="form-control" name="RegionOrigine" id="RegionOrigine" required>
+                                            </div>
+                                            <!---------------------selection of categorie---------------------------------------------------->
+                                            <div class="form-group">
+                                                <label for="IdCategorie" class="col-form-label"> Catégorie </label>
+                                                <select class="form-control" name="IdCategorie" id="IdCategorie">
+
+                                                    @{
+                                                        if (Model.Animal.allCategories != null)
+                                                        {
+                                                            foreach (var item in Model.Animal.allCategories)
+                                                            {
+                                                                <option class="form-control" value=@item.IdCategorie>@item.TypeCategorie</option>
+                                                            }
+                                                        }
+
+                                                    }
+
+                                                </select>
+                                            </div>
+                                            <!------------------FIN---selection of categorie---------------------------------------------------->
+
+                                            <div class="form-group">
+                                                <label for="Photo" class="col-form-label">Une photo de profil</label>
+                                                <input type="file" class="form-control" placeholder="Chargez ..." name="Photo" id="Photo"
+                                                       required>
+                                            </div>
+
+                                            <div class="right-w3l">
+                                                <input type="submit" class="form-control" value="Update Animal">
+                                            </div>
+
+                                            @Html.AntiForgeryToken()
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- // register -->
+                        <!--------------------------------------------------------------------------------->*@
                     </div>
                 </div>
             </div>

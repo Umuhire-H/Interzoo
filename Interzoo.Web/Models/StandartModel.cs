@@ -1,5 +1,8 @@
-﻿using System;
+﻿using Interzoo.DAL.Repositories;
+using Interzoo.Web.Tools.Web;
+using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 
@@ -11,10 +14,29 @@ namespace Interzoo.Web.Models
         {
             get; set;
         }
-        
+        public IEnumerable<AnimalModel> ListeAnimaux
+        {
+            get;set;
+        }
         public StandartModel()
         {
-            this.RoleModels = new List<RoleModel>();         
+            this.RoleModels = new List<RoleModel>();
+            UtilisateurRepository ur = new UtilisateurRepository(ConfigurationManager.ConnectionStrings["My_Asptest_Cnstr"].ConnectionString);
+            RoleModels = ur.getAllRolesForRegisterModel().Select(item => mapToVIEWmodels.RoleTORoleModel(item)).ToList();
+            // -----------------------------------------------------------------------------------
+            this.ListeAnimaux = new List<AnimalModel>();
+            AnimalRepository animRepo = new AnimalRepository(ConfigurationManager.ConnectionStrings["My_Asptest_Cnstr"].ConnectionString);
+            ListeAnimaux = animRepo.getAll().Select(item => mapToVIEWmodels.animalToAnimalModel(item)).ToList();
+            // ------------                                                           -----------
+            // ------------                                                           -----------
+            CategorieRepository ctr = new CategorieRepository(ConfigurationManager.ConnectionStrings["My_Asptest_Cnstr"].ConnectionString);
+             foreach(AnimalModel eachAnimalModel in ListeAnimaux)
+            {
+                eachAnimalModel.allCategories = ctr.getAll().Select(item => mapToVIEWmodels.CategorieTOCategorieModel(item)).ToList();
+            }
+          
+
+            
         }
     }
 }

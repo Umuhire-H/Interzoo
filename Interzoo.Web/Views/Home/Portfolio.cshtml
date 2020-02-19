@@ -1,83 +1,120 @@
 ﻿<!-- portfolio -->
 <section class="wthree-row w3-gallery cliptop-portfolio-wthree pt-lg-5" id="portfolio">
     <div class="container-fluid">
-        <div class="title-desc text-center pb-3">
+         <div class="title-desc text-center pb-3">
             <h3 class="main-title-w3pvt">portfolio</h3>
             <p>create your outstanding clean and high quality website.</p>
         </div>
-        <ul class="demo row py-lg-5 py-sm-4 pb-4">
-            @{
-                if (!Interzoo.Web.Tools.Web.SessionUtilisateur.IsConnected)
-                {
-                    <li class="col-lg-3 col-sm-6">
-                        <div class="gallery-grid1">
-                            <img src="~/images/g1.jpg" alt=" " class="img-fluid img-thumbnail" />
-                        </div>
-                    </li>
-                }
-                else
-                {
-                    <a href="~/Parrain/Home/ChosenAnimal/@Model." class="col-lg-3 col-sm-6">
-                        <div class="gallery-grid1">
-                            <img src="~/images/g1.jpg" alt=" " class="img-fluid img-thumbnail" />
-                        </div>
-                    </a>
+         <ul class="demo row py-lg-5 py-sm-4 pb-4">
+             @{
+                 if (!Interzoo.Web.Tools.Web.SessionUtilisateur.IsConnected)
+                 {
+                     <li class="col-lg-3 col-sm-6">
+                         <div class="gallery-grid1">
+                             <img src="~/images/g1.jpg" alt=" " class="img-fluid img-thumbnail" />
+                         </div>
+                     </li>
+                 }
+                 else
+                 {
+                     switch (Interzoo.Web.Tools.Web.SessionUtilisateur.ConnectedUser.IdRole)
+                     {
+                         case null:
+                             @*<a href="~/Admin/Home/UpdateAnimal" class="col-lg-3 col-sm-6">
+                                 <div class="gallery-grid1">
+                                     <img src="~/images/g1.jpg" alt=" " class="img-fluid img-thumbnail" />
 
-                }
+                                 </div>
+                             </a>*@
 
-            }
+                             // --------test test open a modal located in Admin/Home/Index.cshtml-----------------
+                             <div class="gallery-grid1">
+                                 <img src="~/images/g1.jpg" alt=" " class="img-fluid img-thumbnail" />
 
-            <li class="col-lg-3 col-sm-6">
-                <div class="gallery-grid1">
-                    <img src="~/images/g4.jpg" alt=" " class="img-fluid img-thumbnail" />
-                </div>
-            </li>
-            <li class="col-lg-3 col-sm-6">
-                <div class="gallery-grid1">
-                    <img src="~/images/g5.jpg" alt=" " class="img-fluid img-thumbnail" />
-                </div>
-            </li>
-            <li class="col-lg-3 col-sm-6">
-                <div class="gallery-grid1">
-                    <img src="~/images/g3.jpg" alt=" " class="img-fluid img-thumbnail" />
-                </div>
-            </li>
-            <li class="col-lg-4 col-sm-6">
-                <div class="gallery-grid1">
-                    <img src="~/images/g2.jpg" alt=" " class="img-fluid img-thumbnail" />
-                </div>
-            </li>
-            <li class="col-lg-4 col-sm-6">
-                <div class="gallery-grid1">
-                    <img src="~/images/g1.jpg" alt=" " class="img-fluid img-thumbnail" />
-                </div>
-            </li>
-            <li class="col-lg-4 col-sm-6 mx-auto">
-                <div class="gallery-grid1">
-                    <img src="~/images/g4.jpg" alt=" " class="img-fluid img-thumbnail" />
-                </div>
-            </li>
-            <li class="col-lg-3 col-sm-6">
-                <div class="gallery-grid1">
-                    <img src="~/images/g5.jpg" alt=" " class="img-fluid img-thumbnail" />
-                </div>
-            </li>
-            <li class="col-lg-3 col-sm-6">
-                <div class="gallery-grid1">
-                    <img src="~/images/g4.jpg" alt=" " class="img-fluid img-thumbnail" />
-                </div>
-            </li>
-            <li class="col-lg-3 col-sm-6">
-                <div class="gallery-grid1">
-                    <img src="~/images/g6.jpg" alt=" " class="img-fluid img-thumbnail" />
-                </div>
-            </li>
-            <li class="col-lg-3 col-sm-6">
-                <div class="gallery-grid1">
-                    <img src="~/images/g5.jpg" alt=" " class="img-fluid img-thumbnail" />
-                </div>
-            </li>
-        </ul>
+                             <a href="#AnimalEditionByAdmin" data-toggle="modal" data-target="#AnimalUpdatingByAdmin" class="font-weight-bold"
+                                data-blast="color">
+                                 update [id= ]
+                             </a>
+                             </div>
+                             //--------------------------
+                             break;
+                         case 0:
+                             <a href="~/Parrain/Home/ChosenAnimal" class="col-lg-3 col-sm-6">
+                                 <div class="gallery-grid1">
+                                     <img src="~/images/g1.jpg" alt=" " class="img-fluid img-thumbnail" />
+                                 </div>
+                             </a>
+                             break;
+                         case 1:
+                         case 2:
+                         case 3:
+                             <a href="~/Parrain/Home/AnimalChecking" class="col-lg-3 col-sm-6">
+                                 <div class="gallery-grid1">
+                                     <img src="~/images/g1.jpg" alt=" " class="img-fluid img-thumbnail" />
+                                 </div>
+                             </a>
+                             break;
+                             @*default:
+                        <h5> Viewbag.Message</h5>*@
+                     }
+
+
+
+                 }
+
+             }
+
+             <li class="col-lg-3 col-sm-6">
+                 <div class="gallery-grid1">
+                     <img src="~/images/g4.jpg" alt=" " class="img-fluid img-thumbnail" />
+                 </div>
+             </li>
+             <li class="col-lg-3 col-sm-6">
+                 <div class="gallery-grid1">
+                     <img src="~/images/g5.jpg" alt=" " class="img-fluid img-thumbnail" />
+                 </div>
+             </li>
+             <li class="col-lg-3 col-sm-6">
+                 <div class="gallery-grid1">
+                     <img src="~/images/g3.jpg" alt=" " class="img-fluid img-thumbnail" />
+                 </div>
+             </li>
+             <li class="col-lg-4 col-sm-6">
+                 <div class="gallery-grid1">
+                     <img src="~/images/g2.jpg" alt=" " class="img-fluid img-thumbnail" />
+                 </div>
+             </li>
+             <li class="col-lg-4 col-sm-6">
+                 <div class="gallery-grid1">
+                     <img src="~/images/g1.jpg" alt=" " class="img-fluid img-thumbnail" />
+                 </div>
+             </li>
+             <li class="col-lg-4 col-sm-6 mx-auto">
+                 <div class="gallery-grid1">
+                     <img src="~/images/g4.jpg" alt=" " class="img-fluid img-thumbnail" />
+                 </div>
+             </li>
+             <li class="col-lg-3 col-sm-6">
+                 <div class="gallery-grid1">
+                     <img src="~/images/g5.jpg" alt=" " class="img-fluid img-thumbnail" />
+                 </div>
+             </li>
+             <li class="col-lg-3 col-sm-6">
+                 <div class="gallery-grid1">
+                     <img src="~/images/g4.jpg" alt=" " class="img-fluid img-thumbnail" />
+                 </div>
+             </li>
+             <li class="col-lg-3 col-sm-6">
+                 <div class="gallery-grid1">
+                     <img src="~/images/g6.jpg" alt=" " class="img-fluid img-thumbnail" />
+                 </div>
+             </li>
+             <li class="col-lg-3 col-sm-6">
+                 <div class="gallery-grid1">
+                     <img src="~/images/g5.jpg" alt=" " class="img-fluid img-thumbnail" />
+                 </div>
+             </li>
+         </ul>
     </div>
 </section>
 <!-- //portfolio -->
@@ -213,8 +250,8 @@
 <!-- header -->
 @section header{
     @{
-        Html.RenderPartial("~/Views/Shared/_Header.cshtml");
-    }
-}
+                         Html.RenderPartial("~/Views/Shared/_Header.cshtml");
+                     }
+                 }
 
 <!-- //header -->
