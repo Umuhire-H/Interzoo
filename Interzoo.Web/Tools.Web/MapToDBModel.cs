@@ -10,7 +10,7 @@ namespace Interzoo.Web.Tools.Web
     public static class MapToDBModel
     {
         // départ_VUE : ---- Models_DB <---- ModelsVUE 
-        public static Utilisateur loginToUtilisateur(LoginModel lm)
+        public static Utilisateur loginToUtilisateur(LoginModel lm) //<===============
         {
             return new Utilisateur()
             {
@@ -18,7 +18,7 @@ namespace Interzoo.Web.Tools.Web
                 MotDePasse = lm.MotDePasse
             };
         }
-       public static Utilisateur registerToUtilisateur (RegisterModelPOST rmPost)
+       public static Utilisateur registerToUtilisateur (RegisterModelPOST rmPost) //<===================
         {
             return new Utilisateur()
             {
@@ -33,7 +33,7 @@ namespace Interzoo.Web.Tools.Web
                 IdRole = rmPost.IdRole
             };
         }
-        public static Utilisateur profileTOUtilisateur (ProfileModel pm)
+        public static Utilisateur profileTOUtilisateur (ProfileModel pm) // <====================
         {
             return new Utilisateur()
             {
